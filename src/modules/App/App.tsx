@@ -1,6 +1,7 @@
 import { useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import { CustomCard } from "../../components/Card/CustomCard";
+import { ContactCard } from "../../components/ContactCard/ContactCard";
 import { Appbar } from "../Appbar/Appbar";
 import { sxAppContainer } from "./App.styles";
 
@@ -11,6 +12,7 @@ function App() {
     <div style={{ backgroundColor: theme.palette.background.default }}>
       <Appbar />
       <Box sx={sxAppContainer}>
+        <ContactCard />
         <CustomCard />
         <CustomCard />
         <CustomCard />
