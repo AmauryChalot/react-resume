@@ -5,7 +5,7 @@ export const sxAppContainer: SxProps<Theme> = {
     height: '100%',
     p: 0,
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     backgroundColor: (theme) => theme.palette.background.default,
 };
