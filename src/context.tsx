@@ -11,6 +11,9 @@ const darkTheme = createTheme({
       primary: "#fff",
     },
   },
+  typography: {
+    fontFamily: '"Helvetica", "Arial", "Roboto", sans-serif',
+  },
 });
 
 const lightTheme = createTheme({
@@ -26,11 +29,14 @@ const lightTheme = createTheme({
       primary: "#000",
     },
   },
+  typography: {
+    fontFamily: '"Helvetica", "Arial", "Roboto", sans-serif',
+  },
 });
 
 //export type ThemeMode = "light" | "dark";
 
-//const localStorageThemeItem = "amaury-chalot-theme";
+const localStorageThemeItem = "amaury-chalot-theme";
 
 export type ThemeContextType = {
   currentTheme: "light" | "dark";
@@ -47,8 +53,12 @@ export interface ContextsProvidersProps {
 }
 
 export const ContextsProviders = (props: ContextsProvidersProps) => {
-  const [themeMode, setThemeMode] = React.useState("light" as "light" | "dark");
+  const currentTheme: "light" | "dark" =
+    (localStorage.getItem(localStorageThemeItem) as "light" | "dark") ||
+    "light";
+  const [themeMode, setThemeMode] = React.useState(currentTheme);
   const setTheme = (theme: "light" | "dark") => {
+    localStorage.setItem(localStorageThemeItem, theme);
     setThemeMode(theme);
   };
 
@@ -59,12 +69,4 @@ export const ContextsProviders = (props: ContextsProvidersProps) => {
       </ThemeProvider>
     </ThemeContext.Provider>
   );
-
-  /*return (
-    <ThemeContext.Provider value={{ currentTheme: themeMode, setTheme }}>
-      <ThemeProvider theme={themeMode === "light" ? lightTheme : darkTheme}>
-        {props.children}
-      </ThemeProvider>
-    </ThemeContext.Provider>
-  );*/
 };

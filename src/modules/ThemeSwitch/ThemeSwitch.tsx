@@ -57,6 +57,13 @@ const MaterialUISwitch = styled((props: SwitchProps) => {
       ? theme.palette.primary.light
       : theme.palette.primary.contrastText,
   borderRadius: "9999px",
+  transition: "background-color 0.1s ease-in-out",
+  "&:hover": {
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? theme.palette.primary.main
+        : theme.palette.grey[900],
+  },
   ".CustomSwitch-lightIcon": {
     color: "rgba(255, 255, 255, 0.8)",
     transition: "all .3s ease-in-out",

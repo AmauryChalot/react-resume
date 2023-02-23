@@ -8,9 +8,19 @@ function App() {
   const theme = useTheme();
 
   return (
-    <div style={{ height: "200vh", overflow: "hidden" }}>
+    <div style={{ backgroundColor: theme.palette.background.default }}>
       <Appbar />
       <Box sx={sxAppContainer}>
+        <CustomCard />
+        <CustomCard />
+        <CustomCard />
+        <CustomCard />
+        <CustomCard />
+        <CustomCard />
+        <CustomCard />
+        <CustomCard />
+        <CustomCard />
+        <CustomCard />
         <CustomCard />
       </Box>
     </div>
