@@ -5,10 +5,10 @@ const darkTheme = createTheme({
   palette: {
     mode: "dark",
     background: {
-      default: "black",
+      default: "#000",
     },
     text: {
-      primary: "white",
+      primary: "#fff",
     },
   },
 });
@@ -16,11 +16,14 @@ const darkTheme = createTheme({
 const lightTheme = createTheme({
   palette: {
     mode: "light",
+    primary: {
+      main: "rgb(6, 182, 212)",
+    },
     background: {
-      default: "white",
+      default: "#fff",
     },
     text: {
-      primary: "black",
+      primary: "#000",
     },
   },
 });
