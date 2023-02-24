@@ -16,7 +16,7 @@ export const ContactCard = () => {
   const theme = useTheme();
 
   return (
-    <Box sx={sxContactCardContainer}>
+    <Box sx={sxContactCardContainer} id={"#aboutme"}>
       <Box sx={sxContactCardPictureContainer}>
         <img
           style={{ width: "115%", marginTop: "-10px" }}

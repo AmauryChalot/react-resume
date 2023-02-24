@@ -7,15 +7,34 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import Link from "@mui/material/Link";
 import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
 import { ThemeContext } from "../../context";
+import { AppbarMenuItem } from "./Appbar.models";
 
 export const Appbar = () => {
   const { currentTheme, setTheme } = React.useContext(ThemeContext);
 
   const theme = useTheme();
 
-  const menuItems = ["About me", "Skills", "Experiences"];
+  const menuItems: AppbarMenuItem[] = [
+    {
+      displayName: "About me",
+      value: "#aboutme",
+    },
+    {
+      displayName: "Skills",
+      value: "#skills",
+    },
+    {
+      displayName: "Experiences",
+      value: "#experiences",
+    },
+    {
+      displayName: "contact",
+      value: "#contact",
+    },
+  ];
 
   return (
     <AppBar
@@ -27,6 +46,7 @@ export const Appbar = () => {
         position: "sticky",
         backgroundColor: "transparent",
         backdropFilter: "blur(8px)",
+        scrollBehavior: "smooth",
       }}
     >
       <Container maxWidth="xl" sx={{ backgroundColor: "transparent" }}>
@@ -51,8 +71,11 @@ export const Appbar = () => {
             </Typography>
             {menuItems.map((element, index) => {
               return (
-                <Typography
+                <Link
                   key={index}
+                  color={"inherit"}
+                  href={element.value}
+                  underline={"none"}
                   sx={{
                     display: "inline-block",
                     position: "relative",
@@ -81,8 +104,8 @@ export const Appbar = () => {
                     },
                   }}
                 >
-                  {element}
-                </Typography>
+                  {element.displayName}
+                </Link>
               );
             })}
           </Box>

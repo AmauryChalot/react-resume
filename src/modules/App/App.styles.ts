@@ -13,4 +13,11 @@ export const sxAppContainer: SxProps<Theme> = {
     gap: '2rem',
     padding: "2rem",
     backgroundColor: (theme) => theme.palette.background.default,
+    position: "relative",
+    scrollBehavior: "smooth",
+    scrollSnapType: "y mandatory",
+
+    "> *": {
+        scrollSnapAlign: "start",
+    }
 };
