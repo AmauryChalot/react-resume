@@ -53,7 +53,7 @@ export const sxContactCardSubtitle: SxProps<Theme> = {
 
 export const sxContactCardBody: SxProps<Theme> = {
     marginTop: "16px",
-    color: (theme) => theme.palette.text.secondary,
+    color: (theme) => theme.palette.text.primary,
     fontSize: (theme) => theme.typography.body1.fontSize,
     fontWeight: 500,
     fontFamily: (theme) => theme.typography.fontFamily,

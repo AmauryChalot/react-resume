@@ -15,6 +15,8 @@ export const Appbar = () => {
 
   const theme = useTheme();
 
+  const menuItems = ["About me", "Skills", "Experiences"];
+
   return (
     <AppBar
       sx={{
@@ -29,7 +31,14 @@ export const Appbar = () => {
     >
       <Container maxWidth="xl" sx={{ backgroundColor: "transparent" }}>
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: "1" }}>
+          <Box
+            sx={{
+              flexGrow: "1",
+              display: "flex",
+              alignItems: "center",
+              gap: "58px",
+            }}
+          >
             <Typography
               component="h1"
               sx={{
@@ -40,6 +49,42 @@ export const Appbar = () => {
             >
               Portfolio
             </Typography>
+            {menuItems.map((element, index) => {
+              return (
+                <Typography
+                  key={index}
+                  sx={{
+                    display: "inline-block",
+                    position: "relative",
+                    fontSize: theme.typography.body1.fontSize,
+                    fontWeight: 600,
+                    fontFamily: theme.typography.fontFamily,
+                    cursor: "pointer",
+                    "&:hover": {
+                      color: theme.palette.primary.main,
+                    },
+                    "&:after": {
+                      content: "''",
+                      position: "absolute",
+                      width: "100%",
+                      transform: "scaleX(0)",
+                      height: "2px",
+                      bottom: 0,
+                      left: 0,
+                      backgroundColor: theme.palette.primary.main,
+                      transformOrigin: "bottom right",
+                      transition: "transform 0.3s ease-out",
+                    },
+                    "&:hover:after": {
+                      transform: "scaleX(1)",
+                      transformOrigin: "bottom left",
+                    },
+                  }}
+                >
+                  {element}
+                </Typography>
+              );
+            })}
           </Box>
           <Box sx={{ flexGrow: "0" }}>
             <ThemeSwitch />
