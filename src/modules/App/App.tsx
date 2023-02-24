@@ -3,29 +3,29 @@ import Box from "@mui/material/Box";
 import { CustomCard } from "../../components/Card/CustomCard";
 import { ContactCard } from "../../components/ContactCard/ContactCard";
 import { Appbar } from "../Appbar/Appbar";
-import { sxAppContainer } from "./App.styles";
+import { sxAppContainer, sxPageContainer } from "./App.styles";
 
 function App() {
   const theme = useTheme();
 
   return (
-    <div style={{ backgroundColor: theme.palette.background.default }}>
+    <Box sx={sxPageContainer}>
       <Appbar />
       <Box sx={sxAppContainer}>
         <ContactCard />
         <CustomCard />
+        <CustomCard id={"skills"} />
         <CustomCard />
         <CustomCard />
         <CustomCard />
         <CustomCard />
+        <CustomCard id={"contact"} />
         <CustomCard />
         <CustomCard />
-        <CustomCard />
-        <CustomCard />
-        <CustomCard />
+        <CustomCard id={"experiences"} />
         <CustomCard />
       </Box>
-    </div>
+    </Box>
   );
 }
 

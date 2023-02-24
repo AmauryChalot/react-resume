@@ -1,10 +1,11 @@
 import React from "react";
 import { Card } from "@mui/material";
 import { sxCustomCardContainer } from "./CustomCard.styles";
+import { CustomCardProps } from "./CustomCard.models";
 
-export const CustomCard = () => {
+export const CustomCard = (props: CustomCardProps) => {
   return (
-    <Card sx={sxCustomCardContainer}>
+    <Card sx={sxCustomCardContainer} id={props.id}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras elementum
       sit amet quam vitae congue. Morbi vitae odio rutrum, eleifend nulla nec,
       commodo erat. Pellentesque eu lacus at mauris sollicitudin lobortis.

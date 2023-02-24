@@ -46,7 +46,7 @@ export const Appbar = () => {
         position: "sticky",
         backgroundColor: "transparent",
         backdropFilter: "blur(8px)",
-        scrollBehavior: "smooth",
+        height: "64px",
       }}
     >
       <Container maxWidth="xl" sx={{ backgroundColor: "transparent" }}>
