@@ -38,7 +38,7 @@ export const Appbar = () => {
                 fontFamily: theme.typography.fontFamily,
               }}
             >
-              Amaury Chalot
+              Portfolio
             </Typography>
           </Box>
           <Box sx={{ flexGrow: "0" }}>
