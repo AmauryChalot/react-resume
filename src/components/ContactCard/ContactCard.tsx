@@ -1,8 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 import {
   sxContactCardContainer,
   sxContactCardPictureContainer,
@@ -10,13 +9,18 @@ import {
   sxContactCardTitle,
   sxContactCardSubtitle,
   sxContactCardBody,
+  sxContactCardContainerSmall,
 } from "./ContactCard.styles";
 
 export const ContactCard = () => {
   const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <Box sx={sxContactCardContainer} id={"aboutme"}>
+    <Box
+      sx={isSmall ? sxContactCardContainerSmall : sxContactCardContainer}
+      id={"aboutme"}
+    >
       <Box sx={sxContactCardPictureContainer}>
         <img
           style={{ width: "115%", marginTop: "-10px" }}
