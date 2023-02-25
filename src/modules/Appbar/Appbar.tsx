@@ -96,7 +96,7 @@ export const Appbar = () => {
                       left: 0,
                       backgroundColor: theme.palette.primary.main,
                       transformOrigin: "bottom right",
-                      transition: "transform 0.3s ease-out",
+                      transition: "transform 0.2s ease-out",
                     },
                     "&:hover:after": {
                       transform: "scaleX(1)",

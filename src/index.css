@@ -4,6 +4,8 @@
   font-weight: 400;
 
   scroll-behavior: smooth;
+  height: 100vh;
+  scroll-padding-top: 64px,
 
   /*color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);

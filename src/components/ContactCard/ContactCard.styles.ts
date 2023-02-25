@@ -11,6 +11,7 @@ export const sxContactCardContainer: SxProps<Theme> = {
     height: "fit-content",
     boxSizing: "border-box",
     gap: "32px",
+    scrollMarginTop: "96px",
 }
 
 export const sxContactCardPictureContainer: SxProps = {
