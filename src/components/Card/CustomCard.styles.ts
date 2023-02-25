@@ -9,4 +9,7 @@ export const sxCustomCardContainer: SxProps<Theme> = {
     fontWeight: 500,
     fontFamily: (theme) => theme.typography.fontFamily,
     scrollMarginTop: "80px",
+    borderRadius: "10px",
+    backgroundColor: (theme) => theme.palette.background.paper,
+    backgroundImage: "none",
 }

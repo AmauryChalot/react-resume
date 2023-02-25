@@ -31,7 +31,7 @@ export const Appbar = () => {
       value: "#experiences",
     },
     {
-      displayName: "contact",
+      displayName: "Contact",
       value: "#contact",
     },
   ];

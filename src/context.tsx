@@ -5,7 +5,7 @@ const darkTheme = createTheme({
   palette: {
     mode: "dark",
     background: {
-      default: "#000",
+      default: "#070707",
     },
     text: {
       primary: "#fff",
@@ -23,7 +23,8 @@ const lightTheme = createTheme({
       main: "rgb(6, 182, 212)",
     },
     background: {
-      default: "#fff",
+      default: "#f8f8f8",
+      paper: "#fff",
     },
     text: {
       primary: "#000",
@@ -37,6 +38,7 @@ const lightTheme = createTheme({
 //export type ThemeMode = "light" | "dark";
 
 const localStorageThemeItem = "amaury-chalot-theme";
+const localStorageLanguageItem = "amaury-chalot-language";
 
 export type ThemeContextType = {
   currentTheme: "light" | "dark";
@@ -46,6 +48,16 @@ export type ThemeContextType = {
 export const ThemeContext = React.createContext<ThemeContextType>({
   currentTheme: "light",
   setTheme: () => null,
+});
+
+export type LanguageContextType = {
+  currentLanguage: "french" | "english";
+  setLanguage: (language: "french" | "english") => void;
+};
+
+export const LanguageContext = React.createContext<LanguageContextType>({
+  currentLanguage: "french",
+  setLanguage: () => null,
 });
 
 export interface ContextsProvidersProps {
@@ -62,11 +74,24 @@ export const ContextsProviders = (props: ContextsProvidersProps) => {
     setThemeMode(theme);
   };
 
+  const currentLanguage: "french" | "english" =
+    (localStorage.getItem(localStorageLanguageItem) as "french" | "english") ||
+    "french";
+  const [languageMode, setLanguageMode] = React.useState(currentLanguage);
+  const setLanguage = (language: "french" | "english") => {
+    localStorage.setItem(localStorageLanguageItem, language);
+    setLanguageMode(language);
+  };
+
   return (
-    <ThemeContext.Provider value={{ currentTheme: themeMode, setTheme }}>
-      <ThemeProvider theme={themeMode === "light" ? lightTheme : darkTheme}>
-        {props.children}
-      </ThemeProvider>
-    </ThemeContext.Provider>
+    <LanguageContext.Provider
+      value={{ currentLanguage: languageMode, setLanguage }}
+    >
+      <ThemeContext.Provider value={{ currentTheme: themeMode, setTheme }}>
+        <ThemeProvider theme={themeMode === "light" ? lightTheme : darkTheme}>
+          {props.children}
+        </ThemeProvider>
+      </ThemeContext.Provider>
+    </LanguageContext.Provider>
   );
 };
