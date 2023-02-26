@@ -6,12 +6,16 @@ import { SwitchProps } from "@mui/material/Switch";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-const MaterialUISwitch = styled((props: SwitchProps) => {
+interface UISwitchProps extends SwitchProps {
+  customOnClick: () => void;
+}
+
+const MaterialUISwitch = styled((props: UISwitchProps) => {
   return (
     <Box
       className={props.className}
       onClick={(e) => {
-        if (props.onChange) props.onChange(e, !props.checked);
+        props.customOnClick();
       }}
     >
       <LightModeIcon
@@ -111,7 +115,7 @@ export const ThemeSwitch = () => {
     <Box>
       <MaterialUISwitch
         checked={currentTheme === "dark"}
-        onChange={() => {
+        customOnClick={() => {
           setTheme(currentTheme === "light" ? "dark" : "light");
         }}
       />
