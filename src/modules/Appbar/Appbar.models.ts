@@ -1,4 +1,5 @@
 export interface AppbarMenuItem {
-    displayName: string;
+    frenchDisplayName?: string;
+    englishDisplayName?: string;
     value: string;
 }

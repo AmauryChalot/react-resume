@@ -7,6 +7,7 @@ import { Appbar } from "../Appbar/Appbar";
 import {
   sxAppContainer,
   sxAppContentContainer,
+  sxAppContentContainerSmall,
   sxAppContentLeftContainer,
   sxAppContentRightContainer,
   sxPageContainer,
@@ -21,7 +22,7 @@ function App() {
       <Appbar />
       <Box sx={sxAppContainer}>
         <ContactCard />
-        <Box sx={sxAppContentContainer}>
+        <Box sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}>
           <Box sx={sxAppContentLeftContainer}>
             <CustomCard />
             <CustomCard id={"skills"} />

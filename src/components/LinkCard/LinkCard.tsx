@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import React from "react";
 import {
   sxLinkCardContainer,
+  sxLinkCardContainerSmall,
   sxLinkCardItemContainer,
   sxLinkCardItemTypography,
   sxLinkCardTitle,
@@ -13,10 +14,17 @@ import EmailIcon from "@mui/icons-material/Email";
 import Typography from "@mui/material/Typography";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 export const LinkCard = () => {
+  const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
-    <Box sx={sxLinkCardContainer} id={"contact"}>
+    <Box
+      sx={isSmall ? sxLinkCardContainerSmall : sxLinkCardContainer}
+      id={"contact"}
+    >
       <Typography sx={sxLinkCardTitle}>Contact</Typography>
       <Box sx={sxLinkCardItemContainer}>
         <PhoneIcon color="primary" />

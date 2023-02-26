@@ -23,8 +23,13 @@ export const sxAppContentContainer: SxProps<Theme> = {
     boxSizing: "border-box",
     display: "flex",
     gap: "24px",
-    position: "relative",
 };
+
+export const sxAppContentContainerSmall: SxProps<Theme> = {
+    ...sxAppContentContainer,
+    flexDirection: "column-reverse",
+    gap: "16px",
+}
 
 export const sxAppContentLeftContainer: SxProps = {
     display: "flex",

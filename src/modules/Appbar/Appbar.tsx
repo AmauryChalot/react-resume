@@ -11,11 +11,9 @@ import {
 } from "@mui/material";
 import Link from "@mui/material/Link";
 import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
-import { ThemeContext } from "../../context";
+import { ThemeContext, LanguageContext } from "../../context";
 import { AppbarMenuItem } from "./Appbar.models";
 import MenuIcon from "@mui/icons-material/Menu";
-import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
-import TranslateIcon from "@mui/icons-material/Translate";
 import {
   sxAppbar,
   sxAppbarContainer,
@@ -24,28 +22,34 @@ import {
   sxAppbarNavigationItem,
   sxAppbarRightContainer,
 } from "./Appbar.styles";
+import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
 
 export const Appbar = () => {
   const { currentTheme, setTheme } = React.useContext(ThemeContext);
+  const { currentLanguage, setLanguage } = React.useContext(LanguageContext);
 
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
 
   const menuItems: AppbarMenuItem[] = [
     {
-      displayName: "About me",
+      frenchDisplayName: "A propos de moi",
+      englishDisplayName: "About me",
       value: "#aboutme",
     },
     {
-      displayName: "Skills",
+      frenchDisplayName: "Compétences",
+      englishDisplayName: "Skills",
       value: "#skills",
     },
     {
-      displayName: "Experiences",
+      frenchDisplayName: "Expériences",
+      englishDisplayName: "Experiences",
       value: "#experiences",
     },
     {
-      displayName: "Contact",
+      frenchDisplayName: "Contact",
+      englishDisplayName: "Contact",
       value: "#contact",
     },
   ];
@@ -82,15 +86,15 @@ export const Appbar = () => {
                     underline={"none"}
                     sx={sxAppbarNavigationItem}
                   >
-                    {element.displayName}
+                    {currentLanguage === "french"
+                      ? element.frenchDisplayName
+                      : element.englishDisplayName}
                   </Link>
                 );
               })}
           </Box>
           <Box sx={sxAppbarRightContainer}>
-            <IconButton>
-              <TranslateIcon />
-            </IconButton>
+            <LanguageSelection />
             <ThemeSwitch />
           </Box>
         </Toolbar>
