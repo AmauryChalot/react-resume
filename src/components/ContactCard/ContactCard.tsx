@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Divider, useMediaQuery, useTheme } from "@mui/material";
 import {
   sxContactCardContainer,
   sxContactCardPictureContainer,
@@ -10,7 +10,11 @@ import {
   sxContactCardSubtitle,
   sxContactCardBody,
   sxContactCardContainerSmall,
+  sxContactCardDivider,
+  sxContactCardLinkContainer,
 } from "./ContactCard.styles";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export const ContactCard = () => {
   const theme = useTheme();
@@ -40,6 +44,17 @@ export const ContactCard = () => {
           sollicitudin. Pellentesque sed est rhoncus, semper lorem consectetur,
           suscipit purus. Fusce accumsan tortor nec tortor maximus lacinia.
         </Typography>
+        {/* <Divider sx={sxContactCardDivider} />
+        <Box sx={sxContactCardLinkContainer}>
+          <Box>
+            <GitHubIcon />
+            github.com/AmauryChalot
+          </Box>
+          <Box>
+            <LinkedInIcon />
+            linkedin.com/in/amaury-chalot-6519b319b
+          </Box>
+        </Box> */}
       </Box>
     </Box>
   );

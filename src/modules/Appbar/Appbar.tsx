@@ -15,6 +15,7 @@ import { ThemeContext } from "../../context";
 import { AppbarMenuItem } from "./Appbar.models";
 import MenuIcon from "@mui/icons-material/Menu";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
+import TranslateIcon from "@mui/icons-material/Translate";
 import {
   sxAppbar,
   sxAppbarContainer,
@@ -88,7 +89,7 @@ export const Appbar = () => {
           </Box>
           <Box sx={sxAppbarRightContainer}>
             <IconButton>
-              <LanguageOutlinedIcon />
+              <TranslateIcon />
             </IconButton>
             <ThemeSwitch />
           </Box>

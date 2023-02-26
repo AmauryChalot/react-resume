@@ -13,12 +13,12 @@ export const sxContactCardContainer: SxProps<Theme> = {
     gap: "32px",
     scrollMarginTop: "96px",
     boxShadow: "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
-}
+};
 
 export const sxContactCardContainerSmall: SxProps<Theme> = {
     ...sxContactCardContainer,
     flexDirection: "column",
-}
+};
 
 export const sxContactCardPictureContainer: SxProps = {
     width: "200px",
@@ -30,7 +30,7 @@ export const sxContactCardPictureContainer: SxProps = {
     alignItems: "flex-start",
     justifyContent: "center",
     flexShrink: 0,
-}
+};
 
 export const sxContactCardInfoContainer: SxProps = {
     flexGrow: 1,
@@ -41,14 +41,14 @@ export const sxContactCardInfoContainer: SxProps = {
     justifyContent: "flex-start",
     flexDirection: "column",
     boxSizing: "border-box",
-}
+};
 
 export const sxContactCardTitle: SxProps<Theme> = {
     color: (theme) => theme.palette.text.primary,
     fontSize: (theme) => theme.typography.h4.fontSize,
     fontWeight: 800,
     fontFamily: (theme) => theme.typography.fontFamily,
-}
+};
 
 export const sxContactCardSubtitle: SxProps<Theme> = {
     marginTop: "4px",
@@ -56,7 +56,7 @@ export const sxContactCardSubtitle: SxProps<Theme> = {
     fontSize: (theme) => theme.typography.h5.fontSize,
     fontWeight: 800,
     fontFamily: (theme) => theme.typography.fontFamily,
-}
+};
 
 export const sxContactCardBody: SxProps<Theme> = {
     marginTop: "16px",
@@ -64,4 +64,15 @@ export const sxContactCardBody: SxProps<Theme> = {
     fontSize: (theme) => theme.typography.body1.fontSize,
     fontWeight: 500,
     fontFamily: (theme) => theme.typography.fontFamily,
+};
+
+export const sxContactCardDivider: SxProps = {
+    marginTop: "16px",
+    width: "100%",
+};
+
+export const sxContactCardLinkContainer: SxProps = {
+    marginTop: "16px",
+    display: "flex",
+    alignItems: "center",
 }
