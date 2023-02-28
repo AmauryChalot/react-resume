@@ -27,7 +27,7 @@ export const LanguageSelection = () => {
       <IconButton onClick={handleClick}>
         <TranslateIcon />
       </IconButton>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+      <Menu anchorEl={anchorEl} open={open} onClose={handleClose} disableScrollLock>
         <MenuItem
           onClick={() => {
             setLanguage("french");

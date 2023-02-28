@@ -29,12 +29,7 @@ function App() {
             <CustomCard />
             <CustomCard />
             <CustomCard />
-            <CustomCard />
-            <CustomCard />
-            <CustomCard />
-            <CustomCard />
             <CustomCard id={"experiences"} />
-            <CustomCard />
           </Box>
           <Box sx={sxAppContentRightContainer}>
             <LinkCard />
