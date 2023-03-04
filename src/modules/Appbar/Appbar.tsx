@@ -13,7 +13,6 @@ import Link from "@mui/material/Link";
 import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
 import { ThemeContext, LanguageContext } from "../../context";
 import { AppbarMenuItem } from "./Appbar.models";
-import MenuIcon from "@mui/icons-material/Menu";
 import {
   sxAppbar,
   sxAppbarContainer,
@@ -24,6 +23,7 @@ import {
 } from "./Appbar.styles";
 import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
 import { SidePanel } from "../../components/SidePanel/SidePanel";
+import { AnimatedBurgerIcon } from "../../components/AnimatedBurgerIcon/AnimatedBurgerIcon";
 
 export const Appbar = () => {
   const { currentTheme, setTheme } = React.useContext(ThemeContext);
@@ -108,7 +108,7 @@ export const Appbar = () => {
             >
               {isSmall && (
                 <IconButton onClick={() => setSidePanelOpen(!sidePanelOpen)}>
-                  <MenuIcon />
+                  <AnimatedBurgerIcon active={sidePanelOpen} />
                 </IconButton>
               )}
               <Typography
