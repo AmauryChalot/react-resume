@@ -29,8 +29,6 @@ function App() {
     //   console.log(entry);
     // });
     // if (myRef.current) observer.observe(myRef.current);
-    console.log(myRef.current?.offsetTop);
-    console.log(window.scrollY);
     const handleScroll = (e: Event) => {
       if (window.scrollY >= 0 && window.scrollY <= window.innerHeight / 4) {
         // Set states for nav items here if the user is on the first section
@@ -59,7 +57,10 @@ function App() {
         <ContactCard />
         <Box sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}>
           <Box sx={sxAppContentLeftContainer}>
-            <CustomCard id={"experiences"} title={"Experiences"} />
+            <section>
+              <CustomCard id={"experiences"} title={"Experiences"} />
+            </section>
+
             <section ref={myRef}>
               <CustomCard
                 id={"skills"}
@@ -67,7 +68,9 @@ function App() {
                 title={"Skills"}
               />
             </section>
-            <CustomCard id={"projects"} title={"Projects"} />
+            <section>
+              <CustomCard id={"projects"} title={"Projects"} />
+            </section>
           </Box>
           <Box sx={sxAppContentRightContainer}>
             <LinkCard />
