@@ -30,7 +30,8 @@ export const Appbar = () => {
   const { currentLanguage, setLanguage } = React.useContext(LanguageContext);
 
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+  const isMedium = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
 
   const menuItems: AppbarMenuItem[] = [
     {
@@ -68,7 +69,8 @@ export const Appbar = () => {
           display: "flex",
           flexDirection: "column",
           width: "100%",
-          alignItems: "center",
+          alignItems: isSmall ? "center" : "flex-start",
+          paddingX: isSmall ? 0 : "64px",
           paddingTop: "32px",
           gap: "16px",
         }}
@@ -95,7 +97,7 @@ export const Appbar = () => {
 
   return (
     <React.Fragment>
-      {isSmall && (
+      {isMedium && (
         <SidePanel open={sidePanelOpen} onClose={handleSidePanelClose}>
           {sidePanelMenu()}
         </SidePanel>
@@ -104,9 +106,9 @@ export const Appbar = () => {
         <Container maxWidth="xl" sx={sxAppbarContainer}>
           <Toolbar disableGutters>
             <Box
-              sx={isSmall ? sxAppbarLeftContainerSmall : sxAppbarLeftContainer}
+              sx={isMedium ? sxAppbarLeftContainerSmall : sxAppbarLeftContainer}
             >
-              {isSmall && (
+              {isMedium && (
                 <IconButton onClick={() => setSidePanelOpen(!sidePanelOpen)}>
                   <AnimatedBurgerIcon active={sidePanelOpen} />
                 </IconButton>
@@ -121,7 +123,7 @@ export const Appbar = () => {
               >
                 Portfolio
               </Typography>
-              {!isSmall &&
+              {!isMedium &&
                 menuItems.map((element, index) => {
                   return (
                     <Link
