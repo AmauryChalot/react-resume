@@ -23,6 +23,7 @@ import {
   sxAppbarRightContainer,
 } from "./Appbar.styles";
 import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
+import { SidePanel } from "../../components/SidePanel/SidePanel";
 
 export const Appbar = () => {
   const { currentTheme, setTheme } = React.useContext(ThemeContext);
@@ -54,51 +55,96 @@ export const Appbar = () => {
     },
   ];
 
-  return (
-    <AppBar sx={sxAppbar}>
-      <Container maxWidth="xl" sx={sxAppbarContainer}>
-        <Toolbar disableGutters>
-          <Box
-            sx={isSmall ? sxAppbarLeftContainerSmall : sxAppbarLeftContainer}
-          >
-            {isSmall && (
-              <IconButton>
-                <MenuIcon />
-              </IconButton>
-            )}
-            <Typography
-              component="h1"
-              sx={{
-                fontSize: theme.typography.h5.fontSize,
-                fontWeight: 800,
-                fontFamily: theme.typography.fontFamily,
-              }}
+  const [sidePanelOpen, setSidePanelOpen] = React.useState(false);
+
+  const handleSidePanelClose = () => {
+    setSidePanelOpen(false);
+  };
+
+  const sidePanelMenu = () => {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          alignItems: "center",
+          paddingTop: "32px",
+          gap: "16px",
+        }}
+      >
+        {menuItems.map((element, index) => {
+          return (
+            <Link
+              key={index}
+              color={"inherit"}
+              href={element.value}
+              underline={"none"}
+              sx={sxAppbarNavigationItem}
+              onClick={handleSidePanelClose}
             >
-              Portfolio
-            </Typography>
-            {!isSmall &&
-              menuItems.map((element, index) => {
-                return (
-                  <Link
-                    key={index}
-                    color={"inherit"}
-                    href={element.value}
-                    underline={"none"}
-                    sx={sxAppbarNavigationItem}
-                  >
-                    {currentLanguage === "french"
-                      ? element.frenchDisplayName
-                      : element.englishDisplayName}
-                  </Link>
-                );
-              })}
-          </Box>
-          <Box sx={sxAppbarRightContainer}>
-            <LanguageSelection />
-            <ThemeSwitch />
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+              {currentLanguage === "french"
+                ? element.frenchDisplayName
+                : element.englishDisplayName}
+            </Link>
+          );
+        })}
+      </Box>
+    );
+  };
+
+  return (
+    <React.Fragment>
+      {isSmall && (
+        <SidePanel open={sidePanelOpen} onClose={handleSidePanelClose}>
+          {sidePanelMenu()}
+        </SidePanel>
+      )}
+      <AppBar sx={sxAppbar}>
+        <Container maxWidth="xl" sx={sxAppbarContainer}>
+          <Toolbar disableGutters>
+            <Box
+              sx={isSmall ? sxAppbarLeftContainerSmall : sxAppbarLeftContainer}
+            >
+              {isSmall && (
+                <IconButton onClick={() => setSidePanelOpen(!sidePanelOpen)}>
+                  <MenuIcon />
+                </IconButton>
+              )}
+              <Typography
+                component="h1"
+                sx={{
+                  fontSize: theme.typography.h5.fontSize,
+                  fontWeight: 800,
+                  fontFamily: theme.typography.fontFamily,
+                }}
+              >
+                Portfolio
+              </Typography>
+              {!isSmall &&
+                menuItems.map((element, index) => {
+                  return (
+                    <Link
+                      key={index}
+                      color={"inherit"}
+                      href={element.value}
+                      underline={"none"}
+                      sx={sxAppbarNavigationItem}
+                    >
+                      {currentLanguage === "french"
+                        ? element.frenchDisplayName
+                        : element.englishDisplayName}
+                    </Link>
+                  );
+                })}
+            </Box>
+            <Box sx={sxAppbarRightContainer}>
+              <LanguageSelection />
+              <ThemeSwitch />
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </React.Fragment>
   );
 };

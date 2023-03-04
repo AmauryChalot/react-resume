@@ -27,8 +27,8 @@ export const sxCustomCardTitleHighlighted: SxProps<Theme> = {
 };
 
 export const sxCustomCardContent: SxProps<Theme> = {
-    marginTop: "18px",
-    paddingLeft: "18px",
+    marginTop: "16px",
+    paddingLeft: "16px",
     position: "relative",
     "&:after": {
         content: "''",
@@ -40,7 +40,7 @@ export const sxCustomCardContent: SxProps<Theme> = {
         left: 0,
         backgroundColor: (theme) => theme.palette.primary.main,
         transformOrigin: "top left",
-        transition: "transform 0.4s ease-out",
+        transition: "transform 0.8s ease-in-out",
       },
 }
 
@@ -56,6 +56,6 @@ export const sxCustomCardContentHighlighted: SxProps<Theme> = {
         left: 0,
         backgroundColor: (theme) => theme.palette.primary.main,
         transformOrigin: "top left",
-        transition: "transform 0.4s ease-out",
+        transition: "transform 0.8s ease-in-out",
       },
 }

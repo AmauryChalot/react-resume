@@ -35,9 +35,11 @@ export const sxAppContentLeftContainer: SxProps = {
     display: "flex",
     flexDirection: "column",
     gap: "16px",
+    flex: "3",
 };
 
 export const sxAppContentRightContainer: SxProps = {
+    flex: "1",
     display: "flex",
     flexDirection: "column",
     gap: "16px",

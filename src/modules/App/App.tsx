@@ -13,6 +13,7 @@ import {
   sxPageContainer,
 } from "./App.styles";
 import { useRef, useEffect, useState } from "react";
+import { SidePanel } from "../../components/SidePanel/SidePanel";
 
 function App() {
   const theme = useTheme();
@@ -54,7 +55,9 @@ function App() {
     <Box sx={sxPageContainer}>
       <Appbar />
       <Box sx={sxAppContainer}>
-        <ContactCard />
+        <section>
+          <ContactCard />
+        </section>
         <Box sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}>
           <Box sx={sxAppContentLeftContainer}>
             <section>
@@ -73,7 +76,9 @@ function App() {
             </section>
           </Box>
           <Box sx={sxAppContentRightContainer}>
-            <LinkCard />
+            <section>
+              <LinkCard />
+            </section>
           </Box>
         </Box>
       </Box>
