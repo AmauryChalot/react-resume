@@ -12,10 +12,45 @@ import {
   sxAppContentRightContainer,
   sxPageContainer,
 } from "./App.styles";
+import { useRef, useEffect, useState } from "react";
 
 function App() {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+
+  const myRef = useRef<HTMLDivElement | null>(null);
+  const [myRefIsVisible, setMyRefIsVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    myRef.current?.focus();
+    // const observer = new IntersectionObserver((entries) => {
+    //   const entry = entries[0];
+    //   setMyRefIsVisible(entry.isIntersecting);
+    //   console.log(entry);
+    // });
+    // if (myRef.current) observer.observe(myRef.current);
+    console.log(myRef.current?.offsetTop);
+    console.log(window.scrollY);
+    const handleScroll = (e: Event) => {
+      if (window.scrollY >= 0 && window.scrollY <= window.innerHeight / 4) {
+        // Set states for nav items here if the user is on the first section
+        setMyRefIsVisible(false);
+      } else if (
+        myRef.current &&
+        myRef.current.offsetTop - window.scrollY < window.innerHeight / 2
+      ) {
+        setMyRefIsVisible(true);
+      }
+    };
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [window.scrollY]);
+
+  // useEffect(() => {
+  //   console.log(myRefIsVisible);
+  // }, [myRefIsVisible]);
 
   return (
     <Box sx={sxPageContainer}>
@@ -24,12 +59,15 @@ function App() {
         <ContactCard />
         <Box sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}>
           <Box sx={sxAppContentLeftContainer}>
-            <CustomCard />
-            <CustomCard id={"skills"} />
-            <CustomCard />
-            <CustomCard />
-            <CustomCard />
-            <CustomCard id={"experiences"} />
+            <CustomCard id={"experiences"} title={"Experiences"} />
+            <section ref={myRef}>
+              <CustomCard
+                id={"skills"}
+                highlighted={myRefIsVisible}
+                title={"Skills"}
+              />
+            </section>
+            <CustomCard id={"projects"} title={"Projects"} />
           </Box>
           <Box sx={sxAppContentRightContainer}>
             <LinkCard />
