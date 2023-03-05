@@ -1,6 +1,8 @@
+import {ReactNode} from "react";
+
 export interface CustomCardProps {
-    title: string;
-    content: string;
+    title: ReactNode | string;
+    content: ReactNode | string;
     id?: string;
     highlighted?: boolean;
 }

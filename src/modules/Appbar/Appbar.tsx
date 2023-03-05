@@ -20,10 +20,13 @@ import {
   sxAppbarLeftContainerSmall,
   sxAppbarNavigationItem,
   sxAppbarRightContainer,
+  sxAppbarSideMenuList,
+  sxAppbarSideMenuListSmall,
 } from "./Appbar.styles";
 import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
 import { SidePanel } from "../../components/SidePanel/SidePanel";
 import { AnimatedBurgerIcon } from "../../components/AnimatedBurgerIcon/AnimatedBurgerIcon";
+import { DynamicText } from "../../components/DynamicText/DynamicText";
 
 export const Appbar = () => {
   const { currentTheme, setTheme } = React.useContext(ThemeContext);
@@ -35,23 +38,19 @@ export const Appbar = () => {
 
   const menuItems: AppbarMenuItem[] = [
     {
-      frenchDisplayName: "A propos de moi",
-      englishDisplayName: "About me",
+      id: "aboutMe",
       value: "#aboutme",
     },
     {
-      frenchDisplayName: "Compétences",
-      englishDisplayName: "Skills",
+      id: "skills",
       value: "#skills",
     },
     {
-      frenchDisplayName: "Expériences",
-      englishDisplayName: "Experiences",
+      id: "experiences",
       value: "#experiences",
     },
     {
-      frenchDisplayName: "Contact",
-      englishDisplayName: "Contact",
+      id: "contact",
       value: "#contact",
     },
   ];
@@ -64,17 +63,7 @@ export const Appbar = () => {
 
   const sidePanelMenu = () => {
     return (
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          alignItems: isSmall ? "center" : "flex-start",
-          paddingX: isSmall ? 0 : "64px",
-          paddingTop: "32px",
-          gap: "16px",
-        }}
-      >
+      <Box sx={isSmall ? sxAppbarSideMenuListSmall : sxAppbarSideMenuList}>
         {menuItems.map((element, index) => {
           return (
             <Link
@@ -85,9 +74,7 @@ export const Appbar = () => {
               sx={sxAppbarNavigationItem}
               onClick={handleSidePanelClose}
             >
-              {currentLanguage === "french"
-                ? element.frenchDisplayName
-                : element.englishDisplayName}
+              <DynamicText textId={element.id} />
             </Link>
           );
         })}
@@ -133,9 +120,7 @@ export const Appbar = () => {
                       underline={"none"}
                       sx={sxAppbarNavigationItem}
                     >
-                      {currentLanguage === "french"
-                        ? element.frenchDisplayName
-                        : element.englishDisplayName}
+                      <DynamicText textId={element.id} />
                     </Link>
                   );
                 })}

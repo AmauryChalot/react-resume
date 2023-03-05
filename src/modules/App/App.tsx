@@ -13,7 +13,7 @@ import {
   sxPageContainer,
 } from "./App.styles";
 import { useRef, useEffect, useState } from "react";
-import { SidePanel } from "../../components/SidePanel/SidePanel";
+import { DynamicText } from "../../components/DynamicText/DynamicText";
 
 function App() {
   const theme = useTheme();
@@ -96,7 +96,7 @@ function App() {
             >
               <CustomCard
                 id={"experiences"}
-                title={"Experiences"}
+                title={<DynamicText textId={"experiences"} />}
                 content={content[0]}
               />
             </section>
@@ -108,7 +108,11 @@ function App() {
                 opacity: skillIsVisible ? 1 : 0,
               }}
             >
-              <CustomCard id={"skills"} title={"Skills"} content={content[1]} />
+              <CustomCard
+                id={"skills"}
+                title={<DynamicText textId={"skills"} />}
+                content={content[1]}
+              />
             </section>
             <section
               ref={projectRef}
@@ -119,7 +123,7 @@ function App() {
             >
               <CustomCard
                 id={"projects"}
-                title={"Projects"}
+                title={<DynamicText textId={"projects"} />}
                 content={content[2]}
               />
             </section>

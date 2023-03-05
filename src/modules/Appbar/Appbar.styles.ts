@@ -61,3 +61,19 @@ export const sxAppbarRightContainer: SxProps = {
     alignItems: "center",
     gap: "16px",
 }
+
+export const sxAppbarSideMenuList: SxProps = {
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  alignItems: "flex-start",
+  paddingX: "64px",
+  paddingTop: "32px",
+  gap: "16px",
+};
+
+export const sxAppbarSideMenuListSmall: SxProps = {
+  ...sxAppbarSideMenuList,
+  alignItems: "center",
+  paddingX: 0,
+};
