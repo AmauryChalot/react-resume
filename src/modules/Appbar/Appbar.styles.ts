@@ -53,6 +53,18 @@ export const sxAppbarNavigationItem: SxProps<Theme> = {
       transform: "scaleX(1)",
       transformOrigin: "bottom left",
     },
+    '&:active': {
+      color: (theme) => theme.palette.primary.dark,
+    },
+
+    '&:active:after': {
+      backgroundColor: (theme) => theme.palette.primary.dark,
+    }
+}
+
+export const sxAppbarNavigationItemSelected: SxProps<Theme> = {
+  ...sxAppbarNavigationItem,
+  color: (theme) => theme.palette.primary.main,
 }
 
 export const sxAppbarRightContainer: SxProps = {

@@ -12,13 +12,14 @@ import {
 import Link from "@mui/material/Link";
 import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
 import { ThemeContext, LanguageContext } from "../../context";
-import { AppbarMenuItem } from "./Appbar.models";
+import { AppbarMenuItem, AppbarProps } from "./Appbar.models";
 import {
   sxAppbar,
   sxAppbarContainer,
   sxAppbarLeftContainer,
   sxAppbarLeftContainerSmall,
   sxAppbarNavigationItem,
+  sxAppbarNavigationItemSelected,
   sxAppbarRightContainer,
   sxAppbarSideMenuList,
   sxAppbarSideMenuListSmall,
@@ -28,9 +29,11 @@ import { SidePanel } from "../../components/SidePanel/SidePanel";
 import { AnimatedBurgerIcon } from "../../components/AnimatedBurgerIcon/AnimatedBurgerIcon";
 import { DynamicText } from "../../components/DynamicText/DynamicText";
 
-export const Appbar = () => {
+export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
   const { currentTheme, setTheme } = React.useContext(ThemeContext);
   const { currentLanguage, setLanguage } = React.useContext(LanguageContext);
+
+  const [scrolledSections, setScrolledSections] = scrolledSectionsState;
 
   const theme = useTheme();
   const isMedium = useMediaQuery(theme.breakpoints.down("md"));
@@ -42,16 +45,16 @@ export const Appbar = () => {
       value: "#aboutme",
     },
     {
-      id: "skills",
-      value: "#skills",
-    },
-    {
       id: "experiences",
       value: "#experiences",
     },
     {
-      id: "contact",
-      value: "#contact",
+      id: "skills",
+      value: "#skills",
+    },
+    {
+      id: "projects",
+      value: "#projects",
     },
   ];
 
@@ -71,7 +74,11 @@ export const Appbar = () => {
               color={"inherit"}
               href={element.value}
               underline={"none"}
-              sx={sxAppbarNavigationItem}
+              sx={
+                index === scrolledSections
+                  ? sxAppbarNavigationItemSelected
+                  : sxAppbarNavigationItem
+              }
               onClick={handleSidePanelClose}
             >
               <DynamicText textId={element.id} />
@@ -118,7 +125,11 @@ export const Appbar = () => {
                       color={"inherit"}
                       href={element.value}
                       underline={"none"}
-                      sx={sxAppbarNavigationItem}
+                      sx={
+                        index === scrolledSections
+                          ? sxAppbarNavigationItemSelected
+                          : sxAppbarNavigationItem
+                      }
                     >
                       <DynamicText textId={element.id} />
                     </Link>

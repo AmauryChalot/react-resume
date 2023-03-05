@@ -72,25 +72,30 @@ function App() {
     "Vestibulum rutrum sed arcu id dignissim. Nulla facilisi. Proin sed tristique velit, vitae placerat metus. Nulla facilisi. Phasellus quis bibendum odio. Etiam id accumsan risus. Suspendisse potenti. In lacinia eleifend elementum. Pellentesque non aliquam metus, gravida ultrices neque. Cras accumsan auctor gravida. Aenean vehicula quam finibus malesuada commodo. Quisque dignissim velit a nisl interdum, a rhoncus leo tempus. Morbi vehicula venenatis nibh, et consequat dolor lacinia vel. Suspendisse eget nulla sed leo efficitur facilisis sit amet non felis. Sed at leo nisl. Praesent ac purus sed ante venenatis tristique sed id ligula. Quisque felis libero, pellentesque ut pulvinar quis, ornare a nisi. Sed ullamcorper lorem quis consectetur tristique. Proin ligula lorem, feugiat at mi at, dignissim semper sem. Proin a fermentum neque. Donec ut ante lectus. Donec sed lacus non nisl rutrum eleifend vel nec turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras et eros imperdiet, consequat quam vel, tincidunt orci. Vivamus ut lobortis nisl, sed varius massa. Suspendisse faucibus lectus eu sapien faucibus posuere.",
   ];
 
+  const [scrolledSections, setScrolledSections] = useState<number>(0);
+
   return (
     <Box sx={sxPageContainer}>
-      <Appbar />
+      <Appbar scrolledSectionsState={[scrolledSections, setScrolledSections]} />
       <Box sx={sxAppContainer}>
         <section
           ref={aboutRef}
           style={{
-            transition: "opacity 0.2s ease-in-out",
+            transition: "opacity 0.3s ease-in-out",
             opacity: aboutIsVisible ? 1 : 0,
           }}
         >
-          <ContactCard />
+          <ContactCard
+            index={0}
+            scrolledSectionsState={[scrolledSections, setScrolledSections]}
+          />
         </section>
         <Box sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}>
           <Box sx={sxAppContentLeftContainer}>
             <section
               ref={experienceRef}
               style={{
-                transition: "opacity 0.2s ease-in-out 0.2s",
+                transition: "opacity 0.3s ease-in-out 0.2s",
                 opacity: experienceIsVisible ? 1 : 0,
               }}
             >
@@ -98,13 +103,15 @@ function App() {
                 id={"experiences"}
                 title={<DynamicText textId={"experiences"} />}
                 content={content[0]}
+                index={1}
+                scrolledSectionsState={[scrolledSections, setScrolledSections]}
               />
             </section>
 
             <section
               ref={skillRef}
               style={{
-                transition: "opacity 0.2s ease-in-out 0.3s",
+                transition: "opacity 0.3s ease-in-out 0.3s",
                 opacity: skillIsVisible ? 1 : 0,
               }}
             >
@@ -112,12 +119,14 @@ function App() {
                 id={"skills"}
                 title={<DynamicText textId={"skills"} />}
                 content={content[1]}
+                index={2}
+                scrolledSectionsState={[scrolledSections, setScrolledSections]}
               />
             </section>
             <section
               ref={projectRef}
               style={{
-                transition: "opacity 0.2s ease-in-out 0.4s",
+                transition: "opacity 0.3s ease-in-out 0.2s",
                 opacity: projectIsVisible ? 1 : 0,
               }}
             >
@@ -125,6 +134,8 @@ function App() {
                 id={"projects"}
                 title={<DynamicText textId={"projects"} />}
                 content={content[2]}
+                index={3}
+                scrolledSectionsState={[scrolledSections, setScrolledSections]}
               />
             </section>
           </Box>
@@ -132,7 +143,7 @@ function App() {
             <section
               ref={contactRef}
               style={{
-                transition: "opacity 0.2s ease-in-out 0.1s",
+                transition: "opacity 0.3s ease-in-out 0.1s",
                 opacity: contactIsVisible ? 1 : 0,
               }}
             >

@@ -12,6 +12,8 @@ import {
 } from "./CustomCard.styles";
 
 export const CustomCard = (props: CustomCardProps) => {
+  const [scrolledSections, setScrolledSections] = props.scrolledSectionsState;
+
   const myRef = React.useRef<HTMLDivElement | null>(null);
   const [myRefIsVisible, setMyRefIsVisible] = React.useState<boolean>(false);
 
@@ -22,8 +24,9 @@ export const CustomCard = (props: CustomCardProps) => {
         setMyRefIsVisible(false);
       } else if (
         myRef.current &&
-        myRef.current.offsetTop - window.scrollY < window.innerHeight / 1.55
+        myRef.current.offsetTop < window.scrollY + window.innerHeight / 3
       ) {
+        setScrolledSections(props.index);
         setMyRefIsVisible(true);
       } else {
         setMyRefIsVisible(false);
