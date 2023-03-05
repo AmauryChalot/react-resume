@@ -33,6 +33,7 @@ export const sxCustomCardContent: SxProps<Theme> = {
     "&:after": {
         content: "''",
         position: "absolute",
+        borderRadius: "1px",
         width: "2px",
         transform: "scaleY(0)",
         height: "100%",
@@ -50,6 +51,7 @@ export const sxCustomCardContentHighlighted: SxProps<Theme> = {
         content: "''",
         position: "absolute",
         width: "2px",
+        borderRadius: "1px",
         transform: "scaleY(1)",
         height: "100%",
         top: 0,
