@@ -1,22 +1,65 @@
+import { Card, Typography } from "@mui/material";
 import React from "react";
-import { Card } from "@mui/material";
-import { sxCustomCardContainer } from "./CustomCard.styles";
 import { CustomCardProps } from "./CustomCard.models";
+import {
+  sxCustomCardContainer,
+  sxCustomCardContent,
+  sxCustomCardContentHighlighted,
+  sxCustomCardTitle,
+  sxCustomCardTitleHighlighted,
+} from "./CustomCard.styles";
 
 export const CustomCard = (props: CustomCardProps) => {
+  const [scrolledSections, setScrolledSections] = props.scrolledSectionsState;
+
+  const myRef = React.useRef<HTMLDivElement | null>(null);
+  const [myRefIsVisible, setMyRefIsVisible] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    myRef.current?.focus();
+    const handleScroll = (e: Event) => {
+      if (
+        props.containerRef?.current &&
+        props.containerRef.current?.scrollTop >= 0 &&
+        props.containerRef.current?.scrollTop <=
+          props.containerRef.current?.scrollHeight / 64
+      ) {
+        setMyRefIsVisible(false);
+      } else if (
+        props.containerRef?.current &&
+        myRef.current &&
+        myRef.current.offsetTop <
+          props.containerRef.current?.scrollTop +
+            props.containerRef.current?.scrollHeight / 3
+      ) {
+        setScrolledSections(props.index);
+        setMyRefIsVisible(true);
+      } else {
+        setMyRefIsVisible(false);
+      }
+    };
+    if (props.containerRef?.current)
+      props.containerRef.current.addEventListener("scroll", handleScroll);
+    return () => {
+      if (props.containerRef?.current)
+        props.containerRef.current.removeEventListener("scroll", handleScroll);
+    };
+  }, [props.containerRef]);
+
   return (
-    <Card sx={sxCustomCardContainer} id={props.id}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras elementum
-      sit amet quam vitae congue. Morbi vitae odio rutrum, eleifend nulla nec,
-      commodo erat. Pellentesque eu lacus at mauris sollicitudin lobortis.
-      Mauris id lorem euismod, malesuada ipsum vel, faucibus nulla. Donec
-      tincidunt ut tellus ac aliquam. Phasellus blandit non dui non fermentum.
-      Praesent eget sodales diam. Aliquam erat volutpat. Sed tempus risus
-      turpis. Fusce placerat mauris nec tristique facilisis. Aenean quis aliquam
-      nisi, sit amet condimentum dui. Pellentesque habitant morbi tristique
-      senectus et netus et malesuada fames ac turpis egestas. Maecenas bibendum
-      lacus eu est malesuada, id pharetra est finibus. Praesent tincidunt
-      porttitor enim, eu tempor dui facilisis nec. Fusce vehicula tempus mattis.
+    <Card sx={sxCustomCardContainer} id={props.id} ref={myRef}>
+      <Typography
+        sx={myRefIsVisible ? sxCustomCardTitleHighlighted : sxCustomCardTitle}
+      >
+        {props.title}
+      </Typography>
+      <Typography
+        sx={
+          myRefIsVisible ? sxCustomCardContentHighlighted : sxCustomCardContent
+        }
+      >
+        {props.content}
+      </Typography>
     </Card>
   );
 };

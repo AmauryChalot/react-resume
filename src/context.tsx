@@ -1,5 +1,6 @@
+import { createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
-import { ThemeProvider, createTheme, useTheme } from "@mui/material";
+import { LanguageDictionary } from "./modules/Languages";
 
 const darkTheme = createTheme({
   palette: {
@@ -52,11 +53,13 @@ export const ThemeContext = React.createContext<ThemeContextType>({
 
 export type LanguageContextType = {
   currentLanguage: "french" | "english";
+  dictionary: { [index: string]: string };
   setLanguage: (language: "french" | "english") => void;
 };
 
 export const LanguageContext = React.createContext<LanguageContextType>({
   currentLanguage: "french",
+  dictionary: LanguageDictionary.french,
   setLanguage: () => null,
 });
 
@@ -65,6 +68,7 @@ export interface ContextsProvidersProps {
 }
 
 export const ContextsProviders = (props: ContextsProvidersProps) => {
+  //Theme
   const currentTheme: "light" | "dark" =
     (localStorage.getItem(localStorageThemeItem) as "light" | "dark") ||
     "light";
@@ -74,6 +78,7 @@ export const ContextsProviders = (props: ContextsProvidersProps) => {
     setThemeMode(theme);
   };
 
+  //Language
   const currentLanguage: "french" | "english" =
     (localStorage.getItem(localStorageLanguageItem) as "french" | "english") ||
     "french";
@@ -85,7 +90,11 @@ export const ContextsProviders = (props: ContextsProvidersProps) => {
 
   return (
     <LanguageContext.Provider
-      value={{ currentLanguage: languageMode, setLanguage }}
+      value={{
+        currentLanguage: languageMode,
+        dictionary: LanguageDictionary[languageMode],
+        setLanguage,
+      }}
     >
       <ThemeContext.Provider value={{ currentTheme: themeMode, setTheme }}>
         <ThemeProvider theme={themeMode === "light" ? lightTheme : darkTheme}>

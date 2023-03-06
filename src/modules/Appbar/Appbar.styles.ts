@@ -59,6 +59,18 @@ export const sxAppbarNavigationItem: SxProps<Theme> = {
       transform: "scaleX(1)",
       transformOrigin: "bottom left",
     },
+    '&:active': {
+      color: (theme) => theme.palette.primary.dark,
+    },
+
+    '&:active:after': {
+      backgroundColor: (theme) => theme.palette.primary.dark,
+    }
+}
+
+export const sxAppbarNavigationItemSelected: SxProps<Theme> = {
+  ...sxAppbarNavigationItem,
+  color: (theme) => theme.palette.primary.main,
 }
 
 export const sxAppbarRightContainer: SxProps = {
@@ -67,3 +79,19 @@ export const sxAppbarRightContainer: SxProps = {
     alignItems: "center",
     gap: "16px",
 }
+
+export const sxAppbarSideMenuList: SxProps = {
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  alignItems: "flex-start",
+  paddingX: "64px",
+  paddingTop: "32px",
+  gap: "16px",
+};
+
+export const sxAppbarSideMenuListSmall: SxProps = {
+  ...sxAppbarSideMenuList,
+  alignItems: "center",
+  paddingX: 2,
+};

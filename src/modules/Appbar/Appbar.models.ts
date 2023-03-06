@@ -1,5 +1,10 @@
+import React from "react";
+
 export interface AppbarMenuItem {
-    frenchDisplayName?: string;
-    englishDisplayName?: string;
+    id: string;
     value: string;
+}
+
+export interface AppbarProps {
+    scrolledSectionsState: [number, React.Dispatch<React.SetStateAction<number>>];
 }

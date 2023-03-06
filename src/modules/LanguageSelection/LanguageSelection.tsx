@@ -5,6 +5,8 @@ import {
   ListItemText,
   Menu,
   MenuItem,
+  Box,
+  Badge,
 } from "@mui/material";
 import TranslateIcon from "@mui/icons-material/Translate";
 import { LanguageContext } from "../../context";
@@ -25,25 +27,74 @@ export const LanguageSelection = () => {
   return (
     <React.Fragment>
       <IconButton onClick={handleClick}>
-        <TranslateIcon />
+        <Badge
+          badgeContent={
+            currentLanguage === "french" ? (
+              <img
+                loading="lazy"
+                width="15"
+                style={{ flexShrink: 0 }}
+                src={`https://flagcdn.com/w20/fr.png`}
+                srcSet={`https://flagcdn.com/w40/fr.png 2x`}
+                alt=""
+              />
+            ) : currentLanguage === "english" ? (
+              <img
+                loading="lazy"
+                width="15"
+                style={{ flexShrink: 0 }}
+                src={`https://flagcdn.com/w20/gb.png`}
+                srcSet={`https://flagcdn.com/w40/gb.png 2x`}
+                alt=""
+              />
+            ) : (
+              <></>
+            )
+          }
+        >
+          <TranslateIcon />
+        </Badge>
       </IconButton>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose} disableScrollLock>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        disableScrollLock
+      >
         <MenuItem
           onClick={() => {
             setLanguage("french");
             handleClose();
           }}
         >
-          {currentLanguage === "french" ? (
-            <React.Fragment>
-              <ListItemIcon>
-                <Check />
-              </ListItemIcon>
+          <React.Fragment>
+            <ListItemIcon
+              sx={{
+                visibility: currentLanguage === "french" ? "visible" : "hidden",
+              }}
+            >
+              <Check />
+            </ListItemIcon>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
               Français
-            </React.Fragment>
-          ) : (
-            <ListItemText inset>Français</ListItemText>
-          )}
+              <img
+                loading="lazy"
+                width="25"
+                style={{ flexShrink: 0 }}
+                src={`https://flagcdn.com/w20/fr.png`}
+                srcSet={`https://flagcdn.com/w40/fr.png 2x`}
+                alt=""
+              />
+            </Box>
+          </React.Fragment>
         </MenuItem>
         <MenuItem
           onClick={() => {
@@ -51,16 +102,35 @@ export const LanguageSelection = () => {
             handleClose();
           }}
         >
-          {currentLanguage === "english" ? (
-            <React.Fragment>
-              <ListItemIcon>
-                <Check />
-              </ListItemIcon>
+          <React.Fragment>
+            <ListItemIcon>
+              <Check
+                sx={{
+                  visibility:
+                    currentLanguage === "english" ? "visible" : "hidden",
+                }}
+              />
+            </ListItemIcon>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
               English
-            </React.Fragment>
-          ) : (
-            <ListItemText inset>English</ListItemText>
-          )}
+              <img
+                loading="lazy"
+                width="25"
+                style={{ flexShrink: 0 }}
+                src={`https://flagcdn.com/w20/gb.png`}
+                srcSet={`https://flagcdn.com/w40/gb.png 2x`}
+                alt=""
+              />
+            </Box>
+          </React.Fragment>
         </MenuItem>
       </Menu>
     </React.Fragment>

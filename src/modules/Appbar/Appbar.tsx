@@ -1,4 +1,3 @@
-import React from "react";
 import {
   AppBar,
   Box,
@@ -10,95 +9,140 @@ import {
   useTheme,
 } from "@mui/material";
 import Link from "@mui/material/Link";
+import React from "react";
+import { AnimatedBurgerIcon } from "../../components/AnimatedBurgerIcon/AnimatedBurgerIcon";
+import { DynamicText } from "../../components/DynamicText/DynamicText";
+import { SidePanel } from "../../components/SidePanel/SidePanel";
+import { LanguageContext, ThemeContext } from "../../context";
+import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
 import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
-import { ThemeContext, LanguageContext } from "../../context";
-import { AppbarMenuItem } from "./Appbar.models";
-import MenuIcon from "@mui/icons-material/Menu";
+import { AppbarMenuItem, AppbarProps } from "./Appbar.models";
 import {
   sxAppbar,
   sxAppbarContainer,
   sxAppbarLeftContainer,
   sxAppbarLeftContainerSmall,
   sxAppbarNavigationItem,
+  sxAppbarNavigationItemSelected,
   sxAppbarRightContainer,
+  sxAppbarSideMenuList,
+  sxAppbarSideMenuListSmall,
 } from "./Appbar.styles";
-import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
 
-export const Appbar = () => {
+export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
   const { currentTheme, setTheme } = React.useContext(ThemeContext);
   const { currentLanguage, setLanguage } = React.useContext(LanguageContext);
 
+  const [scrolledSections, setScrolledSections] = scrolledSectionsState;
+
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+  const isMedium = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
 
   const menuItems: AppbarMenuItem[] = [
     {
-      frenchDisplayName: "A propos de moi",
-      englishDisplayName: "About me",
+      id: "aboutMe",
       value: "#aboutme",
     },
     {
-      frenchDisplayName: "Compétences",
-      englishDisplayName: "Skills",
-      value: "#skills",
-    },
-    {
-      frenchDisplayName: "Expériences",
-      englishDisplayName: "Experiences",
+      id: "experiences",
       value: "#experiences",
     },
     {
-      frenchDisplayName: "Contact",
-      englishDisplayName: "Contact",
-      value: "#contact",
+      id: "skills",
+      value: "#skills",
+    },
+    {
+      id: "projects",
+      value: "#projects",
     },
   ];
 
-  return (
-    <AppBar sx={sxAppbar}>
-      <Box maxWidth="xl" sx={sxAppbarContainer}>
-        <Toolbar disableGutters>
-          <Box
-            sx={isSmall ? sxAppbarLeftContainerSmall : sxAppbarLeftContainer}
-          >
-            {isSmall && (
-              <IconButton>
-                <MenuIcon />
-              </IconButton>
-            )}
-            <Typography
-              component="h1"
-              sx={{
-                fontSize: theme.typography.h5.fontSize,
-                fontWeight: 800,
-                fontFamily: theme.typography.fontFamily,
-              }}
+  const [sidePanelOpen, setSidePanelOpen] = React.useState(false);
+
+  const handleSidePanelClose = () => {
+    setSidePanelOpen(false);
+  };
+
+  const sidePanelMenu = () => {
+    return (
+      <Box sx={isMedium ? sxAppbarSideMenuListSmall : sxAppbarSideMenuList}>
+        {menuItems.map((element, index) => {
+          return (
+            <Link
+              key={index}
+              color={"inherit"}
+              href={element.value}
+              underline={"none"}
+              sx={
+                index === scrolledSections
+                  ? sxAppbarNavigationItemSelected
+                  : sxAppbarNavigationItem
+              }
+              onClick={handleSidePanelClose}
             >
-              Portfolio
-            </Typography>
-            {!isSmall &&
-              menuItems.map((element, index) => {
-                return (
-                  <Link
-                    key={index}
-                    color={"inherit"}
-                    href={element.value}
-                    underline={"none"}
-                    sx={sxAppbarNavigationItem}
-                  >
-                    {currentLanguage === "french"
-                      ? element.frenchDisplayName
-                      : element.englishDisplayName}
-                  </Link>
-                );
-              })}
-          </Box>
-          <Box sx={sxAppbarRightContainer}>
-            <LanguageSelection />
-            <ThemeSwitch />
-          </Box>
-        </Toolbar>
+              <DynamicText textId={element.id} />
+            </Link>
+          );
+        })}
       </Box>
-    </AppBar>
+    );
+  };
+
+  return (
+    <React.Fragment>
+      {isMedium && (
+        <SidePanel open={sidePanelOpen} onClose={handleSidePanelClose}>
+          {sidePanelMenu()}
+        </SidePanel>
+      )}
+      <AppBar sx={sxAppbar}>
+        <Container maxWidth="xl" sx={sxAppbarContainer}>
+          <Toolbar disableGutters>
+            <Box
+              sx={isMedium ? sxAppbarLeftContainerSmall : sxAppbarLeftContainer}
+            >
+              {isMedium && (
+                <IconButton onClick={() => setSidePanelOpen(!sidePanelOpen)}>
+                  <AnimatedBurgerIcon active={sidePanelOpen} />
+                </IconButton>
+              )}
+              <Typography
+                component="h1"
+                sx={{
+                  fontSize: theme.typography.h5.fontSize,
+                  fontWeight: 800,
+                  fontFamily: theme.typography.fontFamily,
+                }}
+              >
+                Portfolio
+              </Typography>
+              {!isMedium &&
+                menuItems.map((element, index) => {
+                  return (
+                    <Link
+                      key={index}
+                      color={"inherit"}
+                      href={element.value}
+                      underline={"none"}
+                      sx={
+                        index === scrolledSections
+                          ? sxAppbarNavigationItemSelected
+                          : sxAppbarNavigationItem
+                      }
+                    >
+                      <DynamicText textId={element.id} />
+                    </Link>
+                  );
+                })}
+            </Box>
+            <Box sx={sxAppbarRightContainer}>
+              <LanguageSelection />
+              <ThemeSwitch />
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </React.Fragment>
   );
 };
