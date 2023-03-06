@@ -13,13 +13,19 @@ export const sxAppbar: SxProps = {
 
 export const sxAppbarContainer: SxProps = {
     backgroundColor: "transparent",
+    marginX: "auto",
+    paddingX: "32px",
+    display: "block",
+    boxSizing: "border-box",
+    width: "100%",
 }
 
 export const sxAppbarLeftContainer: SxProps = {
     flexGrow: "1",
     display: "flex",
     alignItems: "center",
-    gap: "64px",
+    width: "100%",
+    gap: "4vw",
 }
 
 export const sxAppbarLeftContainerSmall: SxProps = {
@@ -87,5 +93,5 @@ export const sxAppbarSideMenuList: SxProps = {
 export const sxAppbarSideMenuListSmall: SxProps = {
   ...sxAppbarSideMenuList,
   alignItems: "center",
-  paddingX: 0,
+  paddingX: 2,
 };

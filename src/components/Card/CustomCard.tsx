@@ -1,12 +1,10 @@
-import React from "react";
 import { Card, Typography } from "@mui/material";
+import React from "react";
+import { CustomCardProps } from "./CustomCard.models";
 import {
   sxCustomCardContainer,
   sxCustomCardContent,
   sxCustomCardContentHighlighted,
-} from "./CustomCard.styles";
-import { CustomCardProps } from "./CustomCard.models";
-import {
   sxCustomCardTitle,
   sxCustomCardTitleHighlighted,
 } from "./CustomCard.styles";
@@ -20,11 +18,19 @@ export const CustomCard = (props: CustomCardProps) => {
   React.useEffect(() => {
     myRef.current?.focus();
     const handleScroll = (e: Event) => {
-      if (window.scrollY >= 0 && window.scrollY <= window.innerHeight / 64) {
+      if (
+        props.containerRef?.current &&
+        props.containerRef.current?.scrollTop >= 0 &&
+        props.containerRef.current?.scrollTop <=
+          props.containerRef.current?.scrollHeight / 64
+      ) {
         setMyRefIsVisible(false);
       } else if (
+        props.containerRef?.current &&
         myRef.current &&
-        myRef.current.offsetTop < window.scrollY + window.innerHeight / 3
+        myRef.current.offsetTop <
+          props.containerRef.current?.scrollTop +
+            props.containerRef.current?.scrollHeight / 3
       ) {
         setScrolledSections(props.index);
         setMyRefIsVisible(true);
@@ -32,11 +38,13 @@ export const CustomCard = (props: CustomCardProps) => {
         setMyRefIsVisible(false);
       }
     };
-    document.addEventListener("scroll", handleScroll);
+    if (props.containerRef?.current)
+      props.containerRef.current.addEventListener("scroll", handleScroll);
     return () => {
-      document.removeEventListener("scroll", handleScroll);
+      if (props.containerRef?.current)
+        props.containerRef.current.removeEventListener("scroll", handleScroll);
     };
-  }, [window.scrollY]);
+  }, [props.containerRef]);
 
   return (
     <Card sx={sxCustomCardContainer} id={props.id} ref={myRef}>

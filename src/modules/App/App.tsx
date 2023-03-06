@@ -1,7 +1,9 @@
 import { useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
+import React, { useEffect, useRef, useState } from "react";
 import { CustomCard } from "../../components/Card/CustomCard";
 import { ContactCard } from "../../components/ContactCard/ContactCard";
+import { DynamicText } from "../../components/DynamicText/DynamicText";
 import { LinkCard } from "../../components/LinkCard/LinkCard";
 import { Appbar } from "../Appbar/Appbar";
 import {
@@ -11,15 +13,16 @@ import {
   sxAppContentLeftContainer,
   sxAppContentRightContainer,
   sxPageContainer,
+  sxPageContainerLarge,
 } from "./App.styles";
-import { useRef, useEffect, useState } from "react";
-import { DynamicText } from "../../components/DynamicText/DynamicText";
 
 function App() {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+  const isLarge = useMediaQuery(theme.breakpoints.up("md"));
 
   //all refs
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const aboutRef = useRef<HTMLDivElement | null>(null);
   const [aboutIsVisible, setAboutIsVisible] = useState<boolean>(false);
   const experienceRef = useRef<HTMLDivElement | null>(null);
@@ -33,6 +36,7 @@ function App() {
   const [contactIsVisible, setContactIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
+    containerRef.current?.focus();
     aboutRef.current?.focus();
     const aboutObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
@@ -75,84 +79,106 @@ function App() {
   const [scrolledSections, setScrolledSections] = useState<number>(0);
 
   return (
-    <Box sx={sxPageContainer}>
-      <Appbar scrolledSectionsState={[scrolledSections, setScrolledSections]} />
-      <Box sx={sxAppContainer}>
-        <section
-          ref={aboutRef}
-          style={{
-            transition: "opacity 0.3s ease-in-out",
-            opacity: aboutIsVisible ? 1 : 0,
-          }}
-        >
-          <ContactCard
-            index={0}
-            scrolledSectionsState={[scrolledSections, setScrolledSections]}
-          />
-        </section>
-        <Box sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}>
-          <Box sx={sxAppContentLeftContainer}>
-            <section
-              ref={experienceRef}
-              style={{
-                transition: "opacity 0.3s ease-in-out 0.2s",
-                opacity: experienceIsVisible ? 1 : 0,
-              }}
-            >
-              <CustomCard
-                id={"experiences"}
-                title={<DynamicText textId={"experiences"} />}
-                content={content[0]}
-                index={1}
-                scrolledSectionsState={[scrolledSections, setScrolledSections]}
-              />
-            </section>
+    <React.Fragment>
+      <Box
+        sx={isLarge ? sxPageContainerLarge : sxPageContainer}
+        ref={containerRef}
+      >
+        <Appbar
+          scrolledSectionsState={[scrolledSections, setScrolledSections]}
+        />
+        <Box sx={sxAppContainer} maxWidth={isSmall ? "sm" : "xl"}>
+          <section
+            ref={aboutRef}
+            style={{
+              transition: "opacity 0.3s ease-in-out",
+              opacity: aboutIsVisible ? 1 : 0,
+            }}
+          >
+            <ContactCard
+              index={0}
+              containerRef={containerRef}
+              scrolledSectionsState={[scrolledSections, setScrolledSections]}
+            />
+          </section>
+          <Box
+            sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}
+          >
+            <Box sx={sxAppContentLeftContainer}>
+              <section
+                ref={experienceRef}
+                style={{
+                  transition: "opacity 0.3s ease-in-out 0.2s",
+                  opacity: experienceIsVisible ? 1 : 0,
+                }}
+              >
+                <CustomCard
+                  id={"experiences"}
+                  title={<DynamicText textId={"experiences"} />}
+                  content={content[0]}
+                  index={1}
+                  containerRef={containerRef}
+                  scrolledSectionsState={[
+                    scrolledSections,
+                    setScrolledSections,
+                  ]}
+                />
+              </section>
 
-            <section
-              ref={skillRef}
-              style={{
-                transition: "opacity 0.3s ease-in-out 0.3s",
-                opacity: skillIsVisible ? 1 : 0,
-              }}
-            >
-              <CustomCard
-                id={"skills"}
-                title={<DynamicText textId={"skills"} />}
-                content={content[1]}
-                index={2}
-                scrolledSectionsState={[scrolledSections, setScrolledSections]}
-              />
-            </section>
-            <section
-              ref={projectRef}
-              style={{
-                transition: "opacity 0.3s ease-in-out 0.2s",
-                opacity: projectIsVisible ? 1 : 0,
-              }}
-            >
-              <CustomCard
-                id={"projects"}
-                title={<DynamicText textId={"projects"} />}
-                content={content[2]}
-                index={3}
-                scrolledSectionsState={[scrolledSections, setScrolledSections]}
-              />
-            </section>
-          </Box>
-          <Box sx={sxAppContentRightContainer}>
-            <section
-              ref={contactRef}
-              style={{
-                transition: "opacity 0.3s ease-in-out 0.1s",
-                opacity: contactIsVisible ? 1 : 0,
-              }}
-            >
-              <LinkCard />
-            </section>
+              <section
+                ref={skillRef}
+                style={{
+                  transition: "opacity 0.3s ease-in-out 0.3s",
+                  opacity: skillIsVisible ? 1 : 0,
+                }}
+              >
+                <CustomCard
+                  id={"skills"}
+                  title={<DynamicText textId={"skills"} />}
+                  content={content[1]}
+                  index={2}
+                  containerRef={containerRef}
+                  scrolledSectionsState={[
+                    scrolledSections,
+                    setScrolledSections,
+                  ]}
+                />
+              </section>
+              <section
+                ref={projectRef}
+                style={{
+                  transition: "opacity 0.3s ease-in-out 0.2s",
+                  opacity: projectIsVisible ? 1 : 0,
+                }}
+              >
+                <CustomCard
+                  id={"projects"}
+                  title={<DynamicText textId={"projects"} />}
+                  content={content[2]}
+                  index={3}
+                  containerRef={containerRef}
+                  scrolledSectionsState={[
+                    scrolledSections,
+                    setScrolledSections,
+                  ]}
+                />
+              </section>
+            </Box>
+            <Box sx={sxAppContentRightContainer}>
+              <section
+                ref={contactRef}
+                style={{
+                  transition: "opacity 0.3s ease-in-out 0.1s",
+                  opacity: contactIsVisible ? 1 : 0,
+                }}
+              >
+                <LinkCard />
+              </section>
+            </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
+    </React.Fragment>
   );
 }
 

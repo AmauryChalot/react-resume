@@ -1,4 +1,7 @@
+import React from "react";
+
 export interface ContactCardProps {
-    index: number;
-    scrolledSectionsState: [number, React.Dispatch<React.SetStateAction<number>>];
+  containerRef: React.MutableRefObject<HTMLDivElement | null>;
+  index: number;
+  scrolledSectionsState: [number, React.Dispatch<React.SetStateAction<number>>];
 }

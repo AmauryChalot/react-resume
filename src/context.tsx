@@ -1,5 +1,5 @@
+import { createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
-import { ThemeProvider, createTheme, useTheme } from "@mui/material";
 import { LanguageDictionary } from "./modules/Languages";
 
 const darkTheme = createTheme({

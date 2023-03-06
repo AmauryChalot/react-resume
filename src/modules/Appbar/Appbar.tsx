@@ -1,4 +1,3 @@
-import React from "react";
 import {
   AppBar,
   Box,
@@ -10,8 +9,13 @@ import {
   useTheme,
 } from "@mui/material";
 import Link from "@mui/material/Link";
+import React from "react";
+import { AnimatedBurgerIcon } from "../../components/AnimatedBurgerIcon/AnimatedBurgerIcon";
+import { DynamicText } from "../../components/DynamicText/DynamicText";
+import { SidePanel } from "../../components/SidePanel/SidePanel";
+import { LanguageContext, ThemeContext } from "../../context";
+import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
 import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
-import { ThemeContext, LanguageContext } from "../../context";
 import { AppbarMenuItem, AppbarProps } from "./Appbar.models";
 import {
   sxAppbar,
@@ -24,10 +28,6 @@ import {
   sxAppbarSideMenuList,
   sxAppbarSideMenuListSmall,
 } from "./Appbar.styles";
-import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
-import { SidePanel } from "../../components/SidePanel/SidePanel";
-import { AnimatedBurgerIcon } from "../../components/AnimatedBurgerIcon/AnimatedBurgerIcon";
-import { DynamicText } from "../../components/DynamicText/DynamicText";
 
 export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
   const { currentTheme, setTheme } = React.useContext(ThemeContext);
@@ -66,7 +66,7 @@ export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
 
   const sidePanelMenu = () => {
     return (
-      <Box sx={isSmall ? sxAppbarSideMenuListSmall : sxAppbarSideMenuList}>
+      <Box sx={isMedium ? sxAppbarSideMenuListSmall : sxAppbarSideMenuList}>
         {menuItems.map((element, index) => {
           return (
             <Link

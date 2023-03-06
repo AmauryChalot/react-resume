@@ -1,4 +1,4 @@
-import { SxProps, Theme } from "@mui/material";
+import {SxProps, Theme} from "@mui/material";
 
 export const sxContactCardContainer: SxProps<Theme> = {
     display: "flex",
@@ -13,6 +13,12 @@ export const sxContactCardContainer: SxProps<Theme> = {
     gap: "32px",
     scrollMarginTop: "96px",
     boxShadow: "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
+};
+
+export const sxContactCardContainerMedium: SxProps<Theme> = {
+    ...sxContactCardContainer,
+    flexDirection: "column",
+    gap: "8px",
 };
 
 export const sxContactCardContainerSmall: SxProps<Theme> = {
@@ -32,13 +38,27 @@ export const sxContactCardPictureContainer: SxProps = {
     flexShrink: 0,
 };
 
+export const sxContactCardPictureContainerMedium: SxProps = {
+    ...sxContactCardPictureContainer,
+    width: "100%",
+    display: "flex",
+    gap: "32px",
+}
+
+export const sxContactCardPictureTextContainer: SxProps = {
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+    justifyContent: "center",
+}
+
 export const sxContactCardInfoContainer: SxProps = {
     flexGrow: 1,
     marginTop: 0,
     height: "100%",
     display: "flex",
     alignItems: "flex-start",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     flexDirection: "column",
     boxSizing: "border-box",
 };
