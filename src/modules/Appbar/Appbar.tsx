@@ -56,7 +56,7 @@ export const Appbar = () => {
 
   return (
     <AppBar sx={sxAppbar}>
-      <Container maxWidth="xl" sx={sxAppbarContainer}>
+      <Box maxWidth="xl" sx={sxAppbarContainer}>
         <Toolbar disableGutters>
           <Box
             sx={isSmall ? sxAppbarLeftContainerSmall : sxAppbarLeftContainer}
@@ -98,7 +98,7 @@ export const Appbar = () => {
             <ThemeSwitch />
           </Box>
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 };

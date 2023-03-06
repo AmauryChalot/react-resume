@@ -10,17 +10,18 @@ import {
   sxAppContentContainerSmall,
   sxAppContentLeftContainer,
   sxAppContentRightContainer,
-  sxPageContainer,
+  sxPageContainer, sxPageContainerLarge,
 } from "./App.styles";
 
 function App() {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+  const isLarge = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
-    <Box sx={sxPageContainer}>
+    <Box sx={isLarge ? sxPageContainerLarge : sxPageContainer}>
       <Appbar />
-      <Box sx={sxAppContainer}>
+      <Box sx={sxAppContainer} maxWidth={isSmall ? "sm" : "xl"}>
         <ContactCard />
         <Box sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}>
           <Box sx={sxAppContentLeftContainer}>

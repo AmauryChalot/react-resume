@@ -2,12 +2,49 @@ import {SxProps, Theme} from "@mui/material";
 
 export const sxPageContainer: SxProps<Theme> = {
     backgroundColor: (theme) => theme.palette.background.default,
-    height: "100%",
+    height: "100vh",
+    overflowY: "visible",
+    overflowX: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    scrollBehavior: "smooth",
+
+    "::-webkit-scrollbar": {
+        display: "none",
+    },
 };
+
+export const sxPageContainerLarge: SxProps<Theme> = {
+    ...sxPageContainer,
+    "::-webkit-scrollbar": {
+        backgroundColor: (theme) => theme.palette.background.default,
+        width: "14px",
+    },
+
+    "::-webkit-scrollbar-track": {
+        backgroundColor: (theme) => theme.palette.background.default,
+    },
+
+    "::-webkit-scrollbar-thumb": {
+        backgroundColor: "rgba(125, 125, 125, 0.6)",
+        borderRadius: "10px",
+        backgroundClip: "padding-box",
+        border: (theme) => "3px solid " + theme.palette.background.default,
+    },
+
+    "::-webkit-scrollbar-button": {
+        display: "none",
+    },
+
+    "::-webkit-scrollbar-thumb:hover": {
+        backgroundColor: "rgba(100, 100, 100, 0.6)",
+    },
+}
 
 export const sxAppContainer: SxProps<Theme> = {
     top: 0,
     boxSizing: "border-box",
+    marginX: "auto",
     height: "fit-content",
     display: "flex",
     alignItems: "flex-start",
