@@ -9,6 +9,9 @@ export const sxAppbar: SxProps = {
   backgroundColor: "transparent",
   backdropFilter: "blur(8px)",
   height: "64px",
+  boxShadow:
+    "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%)",
+  //    "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
 };
 
 export const sxAppbarContainer: SxProps = {
@@ -18,6 +21,8 @@ export const sxAppbarContainer: SxProps = {
   display: "block",
   boxSizing: "border-box",
   width: "100%",
+  //boxShadow:
+  //  "0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
 };
 
 export const sxAppbarLeftContainer: SxProps = {
