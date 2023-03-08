@@ -30,7 +30,7 @@ export const CustomCard = (props: CustomCardProps) => {
         myRef.current &&
         myRef.current.offsetTop <
           props.containerRef.current?.scrollTop +
-            props.containerRef.current?.scrollHeight / 3
+            props.containerRef?.current?.clientHeight / 3
       ) {
         setScrolledSections(props.index);
         setMyRefIsVisible(true);

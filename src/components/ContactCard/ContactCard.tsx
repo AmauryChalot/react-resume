@@ -29,12 +29,13 @@ export const ContactCard = (props: ContactCardProps) => {
   React.useEffect(() => {
     myRef.current?.focus();
     const handleScroll = (e: Event) => {
+      console.log();
       if (
         myRef.current &&
         props.containerRef.current &&
         myRef.current.offsetTop <
           props.containerRef.current?.scrollTop +
-            props.containerRef.current?.scrollHeight / 3
+            props.containerRef?.current?.clientHeight / 3
       ) {
         setScrolledSections(props.index);
         setMyRefIsVisible(true);
