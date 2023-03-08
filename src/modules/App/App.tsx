@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { CustomCard } from "../../components/Card/CustomCard";
 import { ContactCard } from "../../components/ContactCard/ContactCard";
 import { DynamicText } from "../../components/DynamicText/DynamicText";
+import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { LinkCard } from "../../components/LinkCard/LinkCard";
 import { Appbar } from "../Appbar/Appbar";
 import {
@@ -34,6 +35,8 @@ function App() {
   const [projectIsVisible, setProjectIsVisible] = useState<boolean>(false);
   const contactRef = useRef<HTMLDivElement | null>(null);
   const [contactIsVisible, setContactIsVisible] = useState<boolean>(false);
+  const infoRef = useRef<HTMLDivElement | null>(null);
+  const [infoIsVisible, setInfoIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
     containerRef.current?.focus();
@@ -68,6 +71,12 @@ function App() {
       setContactIsVisible(entry.isIntersecting);
     });
     if (contactRef.current) contactObserver.observe(contactRef.current);
+    infoRef.current?.focus();
+    const infoObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setInfoIsVisible(entry.isIntersecting);
+    });
+    if (infoRef.current) infoObserver.observe(infoRef.current);
   }, []);
 
   const content: string[] = [
@@ -173,6 +182,15 @@ function App() {
                 }}
               >
                 <LinkCard />
+              </section>
+              <section
+                ref={infoRef}
+                style={{
+                  transition: "opacity 0.3s ease-in-out 0.2s",
+                  opacity: infoIsVisible ? 1 : 0,
+                }}
+              >
+                <InfoCard />
               </section>
             </Box>
           </Box>

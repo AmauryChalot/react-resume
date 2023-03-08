@@ -24,6 +24,8 @@ import {
   sxAppbarLeftContainerSmall,
   sxAppbarNavigationItem,
   sxAppbarNavigationItemSelected,
+  sxAppbarNavigationItemSmall,
+  sxAppbarNavigationItemSmallSelected,
   sxAppbarRightContainer,
   sxAppbarSideMenuList,
   sxAppbarSideMenuListSmall,
@@ -66,7 +68,7 @@ export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
 
   const sidePanelMenu = () => {
     return (
-      <Box sx={isMedium ? sxAppbarSideMenuListSmall : sxAppbarSideMenuList}>
+      <Box sx={isSmall ? sxAppbarSideMenuListSmall : sxAppbarSideMenuList}>
         {menuItems.map((element, index) => {
           return (
             <Link
@@ -76,8 +78,8 @@ export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
               underline={"none"}
               sx={
                 index === scrolledSections
-                  ? sxAppbarNavigationItemSelected
-                  : sxAppbarNavigationItem
+                  ? sxAppbarNavigationItemSmallSelected
+                  : sxAppbarNavigationItemSmall
               }
               onClick={handleSidePanelClose}
             >
