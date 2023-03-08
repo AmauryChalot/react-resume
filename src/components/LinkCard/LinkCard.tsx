@@ -8,6 +8,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
+import { DynamicText } from "../DynamicText/DynamicText";
 import {
   sxLinkCardContainer,
   sxLinkCardContainerSmall,
@@ -25,7 +26,9 @@ export const LinkCard = () => {
       sx={isSmall ? sxLinkCardContainerSmall : sxLinkCardContainer}
       id={"contact"}
     >
-      <Typography sx={sxLinkCardTitle}>Contact</Typography>
+      <Typography sx={sxLinkCardTitle}>
+        <DynamicText textId={"contact"} />
+      </Typography>
       <Box sx={sxLinkCardItemContainer}>
         <PhoneIcon color="primary" />
         <Link sx={sxLinkCardItemTypography} href="tel:+33652064425">

@@ -3,5 +3,15 @@
   "skills": "Compétences",
   "experiences": "Expériences",
   "contact": "Contact",
-  "projects": "Projets"
+  "projects": "Projets",
+  "education": "Formation",
+  "education-1-title": "Diplôme d'Ingénieur en Informatique",
+  "education-1-location": "Paris (75), France",
+  "education-1-date": "EPITA, 2022",
+  "education-2-title": "Classes Préparatoires PCSI-PC*",
+  "education-2-location": "Amiens (80), France",
+  "education-2-date": "Lycée Louis Thuillier, 2019",
+  "education-3-title": "Baccalauréat Général Filière S",
+  "education-3-location": "La-Celle-Saint-Cloud (78), France",
+  "education-3-date": "Lycée Pierre Corneille, 2017"
 }

@@ -21,3 +21,38 @@ export const sxInfoCardContainerSmall: SxProps<Theme> = {
   ...sxInfoCardContainer,
   gap: "12px",
 };
+
+export const sxInfoCardContainerTitle: SxProps<Theme> = {
+  color: (theme) => theme.palette.text.primary,
+  fontSize: (theme) => theme.typography.h6.fontSize,
+  fontWeight: 800,
+  fontFamily: (theme) => theme.typography.fontFamily,
+};
+
+export const sxInfoCardItemContainer: SxProps<Theme> = {
+  display: "flex",
+  flexDirection: "column",
+};
+
+export const sxInfoCardItemTitle: SxProps<Theme> = {
+  color: (theme) => theme.palette.primary.main,
+  fontSize: (theme) => theme.typography.body1.fontSize,
+  fontWeight: 700,
+  fontFamily: (theme) => theme.typography.fontFamily,
+};
+
+export const sxInfoCardItemSubtitle: SxProps<Theme> = {
+  color: (theme) => theme.palette.text.secondary,
+  fontSize: (theme) => theme.typography.body2.fontSize,
+  fontWeight: 600,
+  fontFamily: (theme) => theme.typography.fontFamily,
+  fontStyle: "italic",
+};
+
+export const sxInfoCardItemInfo: SxProps<Theme> = {
+  color: (theme) => theme.palette.text.secondary,
+  fontSize: (theme) => theme.typography.body2.fontSize,
+  fontWeight: 500,
+  fontFamily: (theme) => theme.typography.fontFamily,
+  fontStyle: "italic",
+};

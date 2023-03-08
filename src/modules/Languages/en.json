@@ -1,7 +1,17 @@
 {
-    "aboutMe": "About me",
-    "skills": "Skills",
-    "experiences": "Experiences",
-    "contact": "Contact",
-    "projects": "Projects"
+  "aboutMe": "About me",
+  "skills": "Skills",
+  "experiences": "Experiences",
+  "contact": "Contact",
+  "projects": "Projects",
+  "education": "Education",
+  "education-1-title": "Engineer's degree in Computer Science",
+  "education-1-location": "Paris (75), France",
+  "education-1-date": "EPITA, 2022",
+  "education-2-title": "French \"Classes Préparatoires\"",
+  "education-2-location": "Amiens (80), France",
+  "education-2-date": "Lycée Louis Thuillier, 2019",
+  "education-3-title": "French Hight School diploma, Science major",
+  "education-3-location": "La-Celle-Saint-Cloud (78), France",
+  "education-3-date": "Lycée Pierre Corneille, 2017"
 }
