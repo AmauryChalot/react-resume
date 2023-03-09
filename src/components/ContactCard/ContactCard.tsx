@@ -35,7 +35,7 @@ export const ContactCard = (props: ContactCardProps) => {
         props.containerRef.current &&
         myRef.current.offsetTop <
           props.containerRef.current?.scrollTop +
-            props.containerRef?.current?.clientHeight / 3
+            props.containerRef?.current?.clientHeight / 2.5
       ) {
         setScrolledSections(props.index);
         setMyRefIsVisible(true);

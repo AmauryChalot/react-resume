@@ -1,16 +1,15 @@
-import React from "react";
+import { Check } from "@mui/icons-material";
+import TranslateIcon from "@mui/icons-material/Translate";
 import {
+  Badge,
+  Box,
   IconButton,
   ListItemIcon,
-  ListItemText,
   Menu,
   MenuItem,
-  Box,
-  Badge,
 } from "@mui/material";
-import TranslateIcon from "@mui/icons-material/Translate";
+import React from "react";
 import { LanguageContext } from "../../context";
-import { Check } from "@mui/icons-material";
 
 export const LanguageSelection = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -79,9 +78,9 @@ export const LanguageSelection = () => {
               sx={{
                 width: "100%",
                 display: "flex",
-                justifyContent: "flex-end",
+                justifyContent: "space-between",
                 alignItems: "center",
-                gap: "8px",
+                gap: "12px",
               }}
             >
               Français
@@ -115,9 +114,9 @@ export const LanguageSelection = () => {
               sx={{
                 width: "100%",
                 display: "flex",
-                justifyContent: "flex-end",
+                justifyContent: "space-between",
                 alignItems: "center",
-                gap: "8px",
+                gap: "12px",
               }}
             >
               English

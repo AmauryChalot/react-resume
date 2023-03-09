@@ -6,8 +6,8 @@ export const sxAppbar: SxProps = {
   boxSizing: "border-box",
   flexShrink: 0,
   position: "sticky",
-  backgroundColor: "transparent",
-  backdropFilter: "blur(8px)",
+  background: "none",
+  backdropFilter: "blur(7px)",
   height: "64px",
   boxShadow:
     "0px 15px 20px -30px rgb(0 0 0 / 100%), 0px 15px 20px -30px rgb(0 0 0 / 100%), 0px 15px 20px -30px rgb(0 0 0 / 100%)",
