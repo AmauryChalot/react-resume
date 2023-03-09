@@ -30,10 +30,10 @@ export const InfoCard = (props: InfoCardProps) => {
           <DynamicText textId="education-1-title" />
         </Typography>
         <Typography sx={sxInfoCardItemSubtitle}>
-          <DynamicText textId="education-1-location" />
+          <DynamicText textId="education-1-date" />
         </Typography>
         <Typography sx={sxInfoCardItemInfo}>
-          <DynamicText textId="education-1-date" />
+          <DynamicText textId="education-1-location" />
         </Typography>
       </Box>
       <Box sx={sxInfoCardItemContainer}>
@@ -41,10 +41,10 @@ export const InfoCard = (props: InfoCardProps) => {
           <DynamicText textId="education-2-title" />
         </Typography>
         <Typography sx={sxInfoCardItemSubtitle}>
-          <DynamicText textId="education-2-location" />
+          <DynamicText textId="education-2-date" />
         </Typography>
         <Typography sx={sxInfoCardItemInfo}>
-          <DynamicText textId="education-2-date" />
+          <DynamicText textId="education-2-location" />
         </Typography>
       </Box>
       <Box sx={sxInfoCardItemContainer}>
@@ -52,10 +52,10 @@ export const InfoCard = (props: InfoCardProps) => {
           <DynamicText textId="education-3-title" />
         </Typography>
         <Typography sx={sxInfoCardItemSubtitle}>
-          <DynamicText textId="education-3-location" />
+          <DynamicText textId="education-3-date" />
         </Typography>
         <Typography sx={sxInfoCardItemInfo}>
-          <DynamicText textId="education-3-date" />
+          <DynamicText textId="education-3-location" />
         </Typography>
       </Box>
     </Box>

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { LanguageContext } from "../../context";
+import { sxLanguageSelectionItemBox } from "./LanguageSelection.styles";
 
 export const LanguageSelection = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -74,15 +75,7 @@ export const LanguageSelection = () => {
             >
               <Check />
             </ListItemIcon>
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: "12px",
-              }}
-            >
+            <Box sx={sxLanguageSelectionItemBox}>
               Français
               <img
                 loading="lazy"
@@ -110,15 +103,7 @@ export const LanguageSelection = () => {
                 }}
               />
             </ListItemIcon>
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                gap: "12px",
-              }}
-            >
+            <Box sx={sxLanguageSelectionItemBox}>
               English
               <img
                 loading="lazy"
