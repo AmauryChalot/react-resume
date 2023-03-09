@@ -105,5 +105,5 @@ export const sxAppbarSideMenuListSmall: SxProps = {
   ...sxAppbarSideMenuList,
   alignItems: "center",
   width: "100%",
-  paddingX: 2,
+  paddingX: 0,
 };

@@ -54,6 +54,7 @@ export const CustomCard = (props: CustomCardProps) => {
         {props.title}
       </Typography>
       <Typography
+        component="div"
         sx={
           myRefIsVisible ? sxCustomCardContentHighlighted : sxCustomCardContent
         }

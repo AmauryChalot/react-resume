@@ -7,6 +7,7 @@ import { DynamicText } from "../../components/DynamicText/DynamicText";
 import { ExperienceContent } from "../../components/ExperienceContent/ExperienceContent";
 import { ExperienceItem } from "../../components/ExperienceContent/ExperienceContent.models";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
+import { LanguageCard } from "../../components/LanguageCard/LanguageCard";
 import { LinkCard } from "../../components/LinkCard/LinkCard";
 import { Appbar } from "../Appbar/Appbar";
 import {
@@ -39,6 +40,8 @@ function App() {
   const [contactIsVisible, setContactIsVisible] = useState<boolean>(false);
   const infoRef = useRef<HTMLDivElement | null>(null);
   const [infoIsVisible, setInfoIsVisible] = useState<boolean>(false);
+  const languageRef = useRef<HTMLDivElement | null>(null);
+  const [languageIsVisible, setLanguageIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
     containerRef.current?.focus();
@@ -79,6 +82,12 @@ function App() {
       setInfoIsVisible(entry.isIntersecting);
     });
     if (infoRef.current) infoObserver.observe(infoRef.current);
+    languageRef.current?.focus();
+    const languageObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      setLanguageIsVisible(entry.isIntersecting);
+    });
+    if (languageRef.current) languageObserver.observe(languageRef.current);
   }, []);
 
   const content: string[] = [
@@ -166,7 +175,7 @@ function App() {
                 <CustomCard
                   id={"skills"}
                   title={<DynamicText textId={"skills"} />}
-                  content={content[1]}
+                  content={content[0]}
                   index={2}
                   containerRef={containerRef}
                   scrolledSectionsState={[
@@ -185,7 +194,7 @@ function App() {
                 <CustomCard
                   id={"projects"}
                   title={<DynamicText textId={"projects"} />}
-                  content={content[2]}
+                  content={content[1]}
                   index={3}
                   containerRef={containerRef}
                   scrolledSectionsState={[
@@ -213,6 +222,15 @@ function App() {
                 }}
               >
                 <InfoCard />
+              </section>
+              <section
+                ref={languageRef}
+                style={{
+                  transition: "opacity 0.3s ease-in-out 0.2s",
+                  opacity: languageIsVisible ? 1 : 0,
+                }}
+              >
+                <LanguageCard />
               </section>
             </Box>
           </Box>

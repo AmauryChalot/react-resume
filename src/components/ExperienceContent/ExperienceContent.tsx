@@ -8,9 +8,11 @@ import {
   sxExperienceContentItemContentContainer,
   sxExperienceContentItemInfo,
   sxExperienceContentItemInfoContainer,
+  sxExperienceContentItemInfoContainerIsMedium,
   sxExperienceContentItemSubTitle,
   sxExperienceContentItemTitle,
   sxExperienceContentItemTitleContainer,
+  sxExperienceContentItemTitleContainerMedium,
 } from "./ExperienceContent.styles";
 
 export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
@@ -23,21 +25,36 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
       {experiences.map((element, index) => {
         return (
           <Box key={index} sx={sxExperienceContentItemContainer}>
-            <Box sx={sxExperienceContentItemTitleContainer}>
-              <Typography sx={sxExperienceContentItemTitle}>
+            <Box
+              sx={
+                isMedium
+                  ? sxExperienceContentItemTitleContainerMedium
+                  : sxExperienceContentItemTitleContainer
+              }
+            >
+              <Typography component="div" sx={sxExperienceContentItemTitle}>
                 <DynamicText textId={element.title ?? ""} />
               </Typography>
-              <Box sx={sxExperienceContentItemInfoContainer}>
-                <Typography sx={sxExperienceContentItemSubTitle}>
+              <Box
+                sx={
+                  isMedium
+                    ? sxExperienceContentItemInfoContainerIsMedium
+                    : sxExperienceContentItemInfoContainer
+                }
+              >
+                <Typography
+                  component="div"
+                  sx={sxExperienceContentItemSubTitle}
+                >
                   <DynamicText textId={element.subTitle ?? ""} />
                 </Typography>
-                <Typography sx={sxExperienceContentItemInfo}>
+                <Typography component="div" sx={sxExperienceContentItemInfo}>
                   <DynamicText textId={element.info ?? ""} />
                 </Typography>
               </Box>
             </Box>
             <Box sx={sxExperienceContentItemContentContainer}>
-              <Typography sx={sxExperienceContentItemContent}>
+              <Typography component="div" sx={sxExperienceContentItemContent}>
                 <DynamicText textId={element.content ?? ""} />
               </Typography>
             </Box>

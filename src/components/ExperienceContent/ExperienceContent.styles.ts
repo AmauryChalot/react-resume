@@ -11,7 +11,7 @@ export const sxExperienceContentItemContainer: SxProps = {
   display: "flex",
   flexDirection: "column",
   gap: "24px",
-  paddingLeft: "16px",
+  paddingX: "12px",
 };
 
 export const sxExperienceContentItemTitleContainer: SxProps = {
@@ -19,7 +19,13 @@ export const sxExperienceContentItemTitleContainer: SxProps = {
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
-  //paddingLeft: "24px",
+};
+
+export const sxExperienceContentItemTitleContainerMedium: SxProps = {
+  ...sxExperienceContentItemTitleContainer,
+  flexDirection: "column",
+  alignItems: "flex-start",
+  gap: "8px",
 };
 
 export const sxExperienceContentItemTitle: SxProps<Theme> = {
@@ -33,6 +39,13 @@ export const sxExperienceContentItemInfoContainer: SxProps = {
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-end",
+  textAlign: "right",
+};
+
+export const sxExperienceContentItemInfoContainerIsMedium: SxProps = {
+  ...sxExperienceContentItemInfoContainer,
+  textAlign: "left",
+  alignItems: "flex-start",
 };
 
 export const sxExperienceContentItemSubTitle: SxProps<Theme> = {
@@ -41,7 +54,6 @@ export const sxExperienceContentItemSubTitle: SxProps<Theme> = {
   fontWeight: 600,
   fontStyle: "italic",
   fontFamily: (theme) => theme.typography.fontFamily,
-  textAlign: "right",
 };
 
 export const sxExperienceContentItemInfo: SxProps<Theme> = {
@@ -50,7 +62,6 @@ export const sxExperienceContentItemInfo: SxProps<Theme> = {
   fontWeight: 500,
   fontStyle: "italic",
   fontFamily: (theme) => theme.typography.fontFamily,
-  textAlign: "right",
 };
 
 export const sxExperienceContentItemContentContainer: SxProps = {
