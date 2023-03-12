@@ -16,10 +16,7 @@ export const LanguageCard = () => {
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box
-      sx={isSmall ? sxLanguageCardContainerSmall : sxLanguageCardContainer}
-      id={"contact"}
-    >
+    <Box sx={isSmall ? sxLanguageCardContainerSmall : sxLanguageCardContainer}>
       <Typography sx={sxLanguageCardContainerTitle}>
         <DynamicText textId={"languages"} />
       </Typography>

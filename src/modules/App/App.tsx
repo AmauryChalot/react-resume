@@ -9,6 +9,8 @@ import { ExperienceItem } from "../../components/ExperienceContent/ExperienceCon
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { LanguageCard } from "../../components/LanguageCard/LanguageCard";
 import { LinkCard } from "../../components/LinkCard/LinkCard";
+import { SkillCard } from "../../components/SkillCard/SkillCard";
+import { SkillSection } from "../../components/SkillCard/SkillCard.models";
 import { Appbar } from "../Appbar/Appbar";
 import {
   sxAppContainer,
@@ -116,6 +118,31 @@ function App() {
     },
   ];
 
+  const skills: SkillSection[] = [
+    {
+      title: "skill-1-title",
+      content: [
+        "skill-1-content-1",
+        "skill-1-content-2",
+        "skill-1-content-3",
+        "skill-1-content-4",
+      ],
+    },
+    {
+      title: "skill-2-title",
+      content: [
+        "skill-2-content-1",
+        "skill-2-content-2",
+        "skill-2-content-3",
+        "skill-2-content-4",
+      ],
+    },
+    {
+      title: "skill-3-title",
+      content: ["skill-3-content", "skill-3-content-2", "skill-3-content-3"],
+    },
+  ];
+
   const [scrolledSections, setScrolledSections] = useState<number>(0);
 
   return (
@@ -164,8 +191,7 @@ function App() {
                   ]}
                 />
               </section>
-
-              <section
+              {/*<section
                 ref={skillRef}
                 style={{
                   transition: "opacity 0.3s ease-in-out 0.3s",
@@ -183,7 +209,7 @@ function App() {
                     setScrolledSections,
                   ]}
                 />
-              </section>
+                </section>*/}
               <section
                 ref={projectRef}
                 style={{
@@ -222,6 +248,15 @@ function App() {
                 }}
               >
                 <InfoCard />
+              </section>
+              <section
+                ref={skillRef}
+                style={{
+                  transition: "opacity 0.3s ease-in-out 0.2s",
+                  opacity: skillIsVisible ? 1 : 0,
+                }}
+              >
+                <SkillCard skills={skills} />
               </section>
               <section
                 ref={languageRef}
