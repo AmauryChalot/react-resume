@@ -135,11 +135,37 @@ function App() {
         "skill-2-content-2",
         "skill-2-content-3",
         "skill-2-content-4",
+        "skill-2-content-5",
       ],
     },
     {
       title: "skill-3-title",
-      content: ["skill-3-content", "skill-3-content-2", "skill-3-content-3"],
+      content: [
+        "skill-3-content-1",
+        "skill-3-content-2",
+        "skill-3-content-3",
+        "skill-3-content-4",
+        "skill-3-content-5",
+        "skill-3-content-6",
+      ],
+    },
+    {
+      title: "skill-4-title",
+      content: [
+        "skill-4-content-1",
+        "skill-4-content-2",
+        "skill-4-content-3",
+        "skill-4-content-4",
+      ],
+    },
+    {
+      title: "skill-5-title",
+      content: [
+        "skill-5-content-1",
+        "skill-5-content-2",
+        "skill-5-content-3",
+        "skill-5-content-4",
+      ],
     },
   ];
 
