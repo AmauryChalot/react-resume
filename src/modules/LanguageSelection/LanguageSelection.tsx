@@ -26,7 +26,7 @@ export const LanguageSelection = () => {
 
   return (
     <React.Fragment>
-      <IconButton onClick={handleClick}>
+      <IconButton aria-label="language-button" onClick={handleClick}>
         <Badge
           badgeContent={
             currentLanguage === "french" ? (

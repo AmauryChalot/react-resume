@@ -66,8 +66,9 @@ export const ContactCard = (props: ContactCardProps) => {
       <Box sx={isMedium ? sxContactCardPictureContainerMedium : {}}>
         <Box sx={sxContactCardPictureContainer}>
           <img
+            alt="image"
             style={{ width: "115%", marginTop: "-10px", userSelect: "none" }}
-            src="/images/pp.png"
+            src="/images/pp.webp"
           />
         </Box>
         {isMedium && (
