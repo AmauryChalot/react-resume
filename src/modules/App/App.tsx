@@ -247,7 +247,7 @@ function App() {
                   id={"projects"}
                   title={<DynamicText textId={"projects"} />}
                   content={content[1]}
-                  index={3}
+                  index={2}
                   containerRef={containerRef}
                   scrolledSectionsState={[
                     scrolledSections,
@@ -282,7 +282,7 @@ function App() {
                   opacity: skillIsVisible ? 1 : 0,
                 }}
               >
-                <SkillCard skills={skills} />
+                <SkillCard skills={skills} id={"skills"} />
               </section>
               <section
                 ref={languageRef}

@@ -50,10 +50,10 @@ export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
       id: "experiences",
       value: "#experiences",
     },
-    {
+    /*{
       id: "skills",
       value: "#skills",
-    },
+    },*/
     {
       id: "projects",
       value: "#projects",

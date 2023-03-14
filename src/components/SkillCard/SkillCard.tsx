@@ -1,26 +1,25 @@
 import { useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import {
-  sxSkillCardContainerSmall,
-  sxSkillCardContainer,
-  sxSkillCardContainerTitle,
-  sxSkillCardItemContainer,
-  sxSkillCardItemTitle,
-  sxSkillCardItemContent,
-  sxSkillCardItemContentText,
-} from "./SkillCard.styles";
-import React from "react";
 import { DynamicText } from "../DynamicText/DynamicText";
 import { SkillCardProps } from "./SkillCard.models";
+import {
+  sxSkillCardContainer,
+  sxSkillCardContainerSmall,
+  sxSkillCardContainerTitle,
+  sxSkillCardItemContainer,
+  sxSkillCardItemContent,
+  sxSkillCardItemContentText,
+  sxSkillCardItemTitle,
+} from "./SkillCard.styles";
 
-export const SkillCard = ({ skills }: SkillCardProps) => {
+export const SkillCard = ({ skills, id }: SkillCardProps) => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
-      id={"skills"}
+      id={id}
       sx={isSmall ? sxSkillCardContainerSmall : sxSkillCardContainer}
     >
       <Typography sx={sxSkillCardContainerTitle}>

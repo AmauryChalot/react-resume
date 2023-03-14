@@ -1,8 +1,9 @@
 export interface SkillSection {
-    title: string;
-    content: string[];
+  title: string;
+  content: string[];
 }
 
 export interface SkillCardProps {
-    skills: SkillSection[];
+  skills: SkillSection[];
+  id?: string;
 }
