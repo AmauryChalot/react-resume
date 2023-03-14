@@ -9,6 +9,8 @@ import { ExperienceItem } from "../../components/ExperienceContent/ExperienceCon
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { LanguageCard } from "../../components/LanguageCard/LanguageCard";
 import { LinkCard } from "../../components/LinkCard/LinkCard";
+import { ProjectContent } from "../../components/ProjectContent/ProjectContent";
+import { ProjectItem } from "../../components/ProjectContent/ProjectContent.models";
 import { SkillCard } from "../../components/SkillCard/SkillCard";
 import { SkillSection } from "../../components/SkillCard/SkillCard.models";
 import { Appbar } from "../Appbar/Appbar";
@@ -146,7 +148,6 @@ function App() {
         "skill-3-content-3",
         "skill-3-content-4",
         "skill-3-content-5",
-        "skill-3-content-6",
       ],
     },
     {
@@ -166,6 +167,14 @@ function App() {
         "skill-5-content-3",
         "skill-5-content-4",
       ],
+    },
+  ];
+
+  const projects: ProjectItem[] = [
+    {
+      title: "project-1-title",
+      info: "project-1-info",
+      content: "project-1-content",
     },
   ];
 
@@ -217,25 +226,6 @@ function App() {
                   ]}
                 />
               </section>
-              {/*<section
-                ref={skillRef}
-                style={{
-                  transition: "opacity 0.3s ease-in-out 0.3s",
-                  opacity: skillIsVisible ? 1 : 0,
-                }}
-              >
-                <CustomCard
-                  id={"skills"}
-                  title={<DynamicText textId={"skills"} />}
-                  content={content[0]}
-                  index={2}
-                  containerRef={containerRef}
-                  scrolledSectionsState={[
-                    scrolledSections,
-                    setScrolledSections,
-                  ]}
-                />
-                </section>*/}
               <section
                 ref={projectRef}
                 style={{
@@ -246,7 +236,7 @@ function App() {
                 <CustomCard
                   id={"projects"}
                   title={<DynamicText textId={"projects"} />}
-                  content={content[1]}
+                  content={<ProjectContent projects={projects} />}
                   index={2}
                   containerRef={containerRef}
                   scrolledSectionsState={[
