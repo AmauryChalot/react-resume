@@ -115,6 +115,7 @@ export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
                   fontSize: theme.typography.h5.fontSize,
                   fontWeight: 800,
                   fontFamily: theme.typography.fontFamily,
+                  color: theme.palette.text.primary,
                 }}
               >
                 Portfolio

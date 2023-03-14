@@ -38,6 +38,7 @@ export const sxAppbarLeftContainerSmall: SxProps = {
 export const sxAppbarNavigationItem: SxProps<Theme> = {
   display: "inline-block",
   position: "relative",
+  color: (theme) => theme.palette.text.primary,
   fontSize: (theme) => theme.typography.body1.fontSize,
   fontWeight: 600,
   fontFamily: (theme) => theme.typography.fontFamily,
