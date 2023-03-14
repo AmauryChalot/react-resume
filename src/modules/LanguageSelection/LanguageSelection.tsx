@@ -33,6 +33,7 @@ export const LanguageSelection = () => {
               <img
                 loading="lazy"
                 width="15"
+                height="9.75"
                 style={{ flexShrink: 0 }}
                 src={`https://flagcdn.com/w20/fr.png`}
                 srcSet={`https://flagcdn.com/w40/fr.png 2x`}
@@ -42,6 +43,7 @@ export const LanguageSelection = () => {
               <img
                 loading="lazy"
                 width="15"
+                height="7.5"
                 style={{ flexShrink: 0 }}
                 src={`https://flagcdn.com/w20/gb.png`}
                 srcSet={`https://flagcdn.com/w40/gb.png 2x`}

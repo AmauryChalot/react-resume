@@ -68,6 +68,8 @@ export const ContactCard = (props: ContactCardProps) => {
           <img
             alt="image"
             style={{ width: "115%", marginTop: "-10px", userSelect: "none" }}
+            height="300"
+            width="230"
             src="/images/pp.webp"
           />
         </Box>
