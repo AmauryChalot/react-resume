@@ -21,7 +21,7 @@ import {
   sxAppContentLeftContainer,
   sxAppContentRightContainer,
   sxPageContainer,
-  sxPageContainerLarge,
+  sxPageContainerLarge
 } from "./App.styles";
 
 function App() {
@@ -175,6 +175,16 @@ function App() {
       title: "project-1-title",
       info: "project-1-info",
       content: "project-1-content",
+    },
+    {
+      title: "project-2-title",
+      info: "project-2-info",
+      content: "project-2-content",
+    },
+    {
+      title: "project-3-title",
+      info: "project-3-info",
+      content: "project-3-content",
     },
   ];
 
