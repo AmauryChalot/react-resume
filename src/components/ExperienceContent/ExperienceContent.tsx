@@ -21,6 +21,8 @@ import {
   sxExperienceContentItemInfo,
   sxExperienceContentItemInfoContainer,
   sxExperienceContentItemInfoContainerIsMedium,
+  sxExperienceContentItemList,
+  sxExperienceContentItemListItem,
   sxExperienceContentItemSubTitle,
   sxExperienceContentItemTitle,
   sxExperienceContentItemTitleContainer,
@@ -96,9 +98,15 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
                     isContentList(contentItem.content, contentItem.type)
                   ) {
                     return (
-                      <List key={contentItemIndex}>
+                      <List
+                        key={contentItemIndex}
+                        sx={sxExperienceContentItemList}
+                      >
                         {contentItem.content.map((listItem, index) => (
-                          <ListItem key={index}>
+                          <ListItem
+                            key={index}
+                            sx={sxExperienceContentItemListItem}
+                          >
                             <DynamicText textId={listItem ?? ""} />
                           </ListItem>
                         ))}
