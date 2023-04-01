@@ -124,7 +124,15 @@ function App() {
       subTitle: "experience-3-subTitle",
       info: "experience-3-info",
       content: [
-        { type: ExperienceContentType.TEXT, content: "experience-3-content" },
+        { type: ExperienceContentType.TEXT, content: "experience-3-content-1" },
+        {
+          type: ExperienceContentType.LIST,
+          content: ["experience-3-content-2", "experience-3-content-3"],
+        },
+        {
+          type: ExperienceContentType.TEXT,
+          content: ["experience-3-content-4"],
+        },
       ],
     },
   ];

@@ -80,32 +80,35 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
               </Box>
             </Box>
             <Box sx={sxExperienceContentItemContentContainer}>
-              <Typography component="div" sx={sxExperienceContentItemContent}>
-                {element?.content?.map(
-                  (contentItem: ExperienceItemContent, contentItemIndex) => {
-                    if (isContentText(contentItem.content, contentItem.type)) {
-                      return (
-                        <DynamicText
-                          key={contentItemIndex}
-                          textId={contentItem.content ?? ""}
-                        />
-                      );
-                    } else if (
-                      isContentList(contentItem.content, contentItem.type)
-                    ) {
-                      return (
-                        <List key={contentItemIndex}>
-                          {contentItem.content.map((listItem, index) => (
-                            <ListItem key={index}>{listItem}</ListItem>
-                          ))}
-                        </List>
-                      );
-                    } else {
-                      return <></>;
-                    }
+              {element?.content?.map(
+                (contentItem: ExperienceItemContent, contentItemIndex) => {
+                  if (isContentText(contentItem.content, contentItem.type)) {
+                    return (
+                      <Typography
+                        key={contentItemIndex}
+                        component="p"
+                        sx={sxExperienceContentItemContent}
+                      >
+                        <DynamicText textId={contentItem.content ?? ""} />
+                      </Typography>
+                    );
+                  } else if (
+                    isContentList(contentItem.content, contentItem.type)
+                  ) {
+                    return (
+                      <List key={contentItemIndex}>
+                        {contentItem.content.map((listItem, index) => (
+                          <ListItem key={index}>
+                            <DynamicText textId={listItem ?? ""} />
+                          </ListItem>
+                        ))}
+                      </List>
+                    );
+                  } else {
+                    return <></>;
                   }
-                )}
-              </Typography>
+                }
+              )}
             </Box>
           </Box>
         );
