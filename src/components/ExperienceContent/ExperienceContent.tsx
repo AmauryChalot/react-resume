@@ -1,6 +1,18 @@
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItem,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { DynamicText } from "../DynamicText/DynamicText";
-import { ExperienceContentProps } from "./ExperienceContent.models";
+import {
+  ExperienceItemTypes,
+  ExperienceContentProps,
+  ExperienceItemContent,
+  ExperienceContentType,
+} from "./ExperienceContent.models";
 import {
   sxExperienceContentContainer,
   sxExperienceContentItemContainer,
@@ -14,6 +26,20 @@ import {
   sxExperienceContentItemTitleContainer,
   sxExperienceContentItemTitleContainerMedium,
 } from "./ExperienceContent.styles";
+
+const isContentText = (
+  content: ExperienceItemTypes,
+  type: ExperienceContentType
+): content is string => {
+  return type === ExperienceContentType.TEXT;
+};
+
+const isContentList = (
+  content: ExperienceItemTypes,
+  type: ExperienceContentType
+): content is string[] => {
+  return type === ExperienceContentType.LIST;
+};
 
 export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
   const theme = useTheme();
@@ -55,7 +81,30 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
             </Box>
             <Box sx={sxExperienceContentItemContentContainer}>
               <Typography component="div" sx={sxExperienceContentItemContent}>
-                <DynamicText textId={element.content ?? ""} />
+                {element?.content?.map(
+                  (contentItem: ExperienceItemContent, contentItemIndex) => {
+                    if (isContentText(contentItem.content, contentItem.type)) {
+                      return (
+                        <DynamicText
+                          key={contentItemIndex}
+                          textId={contentItem.content ?? ""}
+                        />
+                      );
+                    } else if (
+                      isContentList(contentItem.content, contentItem.type)
+                    ) {
+                      return (
+                        <List key={contentItemIndex}>
+                          {contentItem.content.map((listItem, index) => (
+                            <ListItem key={index}>{listItem}</ListItem>
+                          ))}
+                        </List>
+                      );
+                    } else {
+                      return <></>;
+                    }
+                  }
+                )}
               </Typography>
             </Box>
           </Box>
