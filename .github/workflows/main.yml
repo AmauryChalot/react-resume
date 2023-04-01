@@ -27,3 +27,4 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE }}
+          FIREBASE_PROJECT: amaurychalot-portfolio
