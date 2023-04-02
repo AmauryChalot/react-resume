@@ -116,7 +116,13 @@ function App() {
       subTitle: "experience-2-subTitle",
       info: "experience-2-info",
       content: [
-        { type: ExperienceContentType.TEXT, content: "experience-2-content" },
+        { type: ExperienceContentType.TEXT, content: "experience-2-content-1" },
+        { type: ExperienceContentType.TEXT, content: "experience-2-content-2" },
+        {
+          type: ExperienceContentType.LIST,
+          content: ["experience-2-content-3", "experience-2-content-4"],
+        },
+        { type: ExperienceContentType.TEXT, content: "experience-2-content-5" },
       ],
     },
     {
