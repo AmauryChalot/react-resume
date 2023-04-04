@@ -66,6 +66,9 @@ export const sxExperienceContentItemInfo: SxProps<Theme> = {
 
 export const sxExperienceContentItemContentContainer: SxProps = {
   paddingLeft: "0px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "8px",
 };
 
 export const sxExperienceContentItemContent: SxProps<Theme> = {
@@ -74,3 +77,13 @@ export const sxExperienceContentItemContent: SxProps<Theme> = {
   fontWeight: 500,
   fontFamily: (theme) => theme.typography.fontFamily,
 };
+
+export const sxExperienceContentItemList: SxProps = {
+  listStyleType: "'-'",
+  padding: "revert",
+  paddingInlineStart: "16px",
+}
+
+export const sxExperienceContentItemListItem: SxProps = {
+  display: "list-item",
+}

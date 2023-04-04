@@ -5,7 +5,10 @@ import { CustomCard } from "../../components/Card/CustomCard";
 import { ContactCard } from "../../components/ContactCard/ContactCard";
 import { DynamicText } from "../../components/DynamicText/DynamicText";
 import { ExperienceContent } from "../../components/ExperienceContent/ExperienceContent";
-import { ExperienceItem } from "../../components/ExperienceContent/ExperienceContent.models";
+import {
+  ExperienceContentType,
+  ExperienceItem,
+} from "../../components/ExperienceContent/ExperienceContent.models";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { LanguageCard } from "../../components/LanguageCard/LanguageCard";
 import { LinkCard } from "../../components/LinkCard/LinkCard";
@@ -21,7 +24,7 @@ import {
   sxAppContentLeftContainer,
   sxAppContentRightContainer,
   sxPageContainer,
-  sxPageContainerLarge
+  sxPageContainerLarge,
 } from "./App.styles";
 
 function App() {
@@ -104,19 +107,47 @@ function App() {
       title: "experience-1-title",
       subTitle: "experience-1-subTitle",
       info: "experience-1-info",
-      content: "experience-1-content",
+      content: [
+        { type: ExperienceContentType.TEXT, content: "experience-1-content-1" },
+        {
+          type: ExperienceContentType.LIST,
+          content: [
+            "experience-1-content-2",
+            "experience-1-content-3",
+            "experience-1-content-4",
+          ],
+        },
+        { type: ExperienceContentType.TEXT, content: "experience-1-content-5" },
+      ],
     },
     {
       title: "experience-2-title",
       subTitle: "experience-2-subTitle",
       info: "experience-2-info",
-      content: "experience-2-content",
+      content: [
+        { type: ExperienceContentType.TEXT, content: "experience-2-content-1" },
+        {
+          type: ExperienceContentType.LIST,
+          content: ["experience-2-content-2", "experience-2-content-3"],
+        },
+        { type: ExperienceContentType.TEXT, content: "experience-2-content-4" },
+      ],
     },
     {
       title: "experience-3-title",
       subTitle: "experience-3-subTitle",
       info: "experience-3-info",
-      content: "experience-3-content",
+      content: [
+        { type: ExperienceContentType.TEXT, content: "experience-3-content-1" },
+        {
+          type: ExperienceContentType.LIST,
+          content: ["experience-3-content-2", "experience-3-content-3"],
+        },
+        {
+          type: ExperienceContentType.TEXT,
+          content: ["experience-3-content-4"],
+        },
+      ],
     },
   ];
 
@@ -205,6 +236,7 @@ function App() {
             style={{
               transition: "opacity 0.3s ease-in-out",
               opacity: aboutIsVisible ? 1 : 0,
+              width: "100%",
             }}
           >
             <ContactCard

@@ -2,6 +2,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import React from "react";
+import { DynamicText } from "../DynamicText/DynamicText";
 import { ContactCardProps } from "./ContactCard.models";
 import {
   sxContactCardBody,
@@ -96,10 +97,7 @@ export const ContactCard = (props: ContactCardProps) => {
           </React.Fragment>
         )}
         <Typography sx={sxContactCardBody}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-          elementum maximus nunc a ultrices. Maecenas laoreet vehicula felis eu
-          sollicitudin. Pellentesque sed est rhoncus, semper lorem consectetur,
-          suscipit purus. Fusce accumsan tortor nec tortor maximus lacinia.
+          <DynamicText textId="about-me-content" />
         </Typography>
       </Box>
     </Box>
