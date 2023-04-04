@@ -236,6 +236,7 @@ function App() {
             style={{
               transition: "opacity 0.3s ease-in-out",
               opacity: aboutIsVisible ? 1 : 0,
+              width: "100%",
             }}
           >
             <ContactCard
