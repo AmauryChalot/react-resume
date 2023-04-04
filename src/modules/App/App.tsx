@@ -108,7 +108,16 @@ function App() {
       subTitle: "experience-1-subTitle",
       info: "experience-1-info",
       content: [
-        { type: ExperienceContentType.TEXT, content: "experience-1-content" },
+        { type: ExperienceContentType.TEXT, content: "experience-1-content-1" },
+        {
+          type: ExperienceContentType.LIST,
+          content: [
+            "experience-1-content-2",
+            "experience-1-content-3",
+            "experience-1-content-4",
+          ],
+        },
+        { type: ExperienceContentType.TEXT, content: "experience-1-content-5" },
       ],
     },
     {
@@ -117,12 +126,11 @@ function App() {
       info: "experience-2-info",
       content: [
         { type: ExperienceContentType.TEXT, content: "experience-2-content-1" },
-        { type: ExperienceContentType.TEXT, content: "experience-2-content-2" },
         {
           type: ExperienceContentType.LIST,
-          content: ["experience-2-content-3", "experience-2-content-4"],
+          content: ["experience-2-content-2", "experience-2-content-3"],
         },
-        { type: ExperienceContentType.TEXT, content: "experience-2-content-5" },
+        { type: ExperienceContentType.TEXT, content: "experience-2-content-4" },
       ],
     },
     {
