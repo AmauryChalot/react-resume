@@ -1,6 +1,18 @@
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItem,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { DynamicText } from "../DynamicText/DynamicText";
-import { ExperienceContentProps } from "./ExperienceContent.models";
+import {
+  ExperienceItemTypes,
+  ExperienceContentProps,
+  ExperienceItemContent,
+  ExperienceContentType,
+} from "./ExperienceContent.models";
 import {
   sxExperienceContentContainer,
   sxExperienceContentItemContainer,
@@ -9,11 +21,27 @@ import {
   sxExperienceContentItemInfo,
   sxExperienceContentItemInfoContainer,
   sxExperienceContentItemInfoContainerIsMedium,
+  sxExperienceContentItemList,
+  sxExperienceContentItemListItem,
   sxExperienceContentItemSubTitle,
   sxExperienceContentItemTitle,
   sxExperienceContentItemTitleContainer,
   sxExperienceContentItemTitleContainerMedium,
 } from "./ExperienceContent.styles";
+
+const isContentText = (
+  content: ExperienceItemTypes,
+  type: ExperienceContentType
+): content is string => {
+  return type === ExperienceContentType.TEXT;
+};
+
+const isContentList = (
+  content: ExperienceItemTypes,
+  type: ExperienceContentType
+): content is string[] => {
+  return type === ExperienceContentType.LIST;
+};
 
 export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
   const theme = useTheme();
@@ -54,9 +82,41 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
               </Box>
             </Box>
             <Box sx={sxExperienceContentItemContentContainer}>
-              <Typography component="div" sx={sxExperienceContentItemContent}>
-                <DynamicText textId={element.content ?? ""} />
-              </Typography>
+              {element?.content?.map(
+                (contentItem: ExperienceItemContent, contentItemIndex) => {
+                  if (isContentText(contentItem.content, contentItem.type)) {
+                    return (
+                      <Typography
+                        key={contentItemIndex}
+                        component="p"
+                        sx={sxExperienceContentItemContent}
+                      >
+                        <DynamicText textId={contentItem.content ?? ""} />
+                      </Typography>
+                    );
+                  } else if (
+                    isContentList(contentItem.content, contentItem.type)
+                  ) {
+                    return (
+                      <List
+                        key={contentItemIndex}
+                        sx={sxExperienceContentItemList}
+                      >
+                        {contentItem.content.map((listItem, index) => (
+                          <ListItem
+                            key={index}
+                            sx={sxExperienceContentItemListItem}
+                          >
+                            <DynamicText textId={listItem ?? ""} />
+                          </ListItem>
+                        ))}
+                      </List>
+                    );
+                  } else {
+                    return <></>;
+                  }
+                }
+              )}
             </Box>
           </Box>
         );
