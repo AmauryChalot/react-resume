@@ -203,22 +203,18 @@ function App() {
             title: "project-1-title",
             info: "project-1-info",
             content: [
-                {type: ContentType.TEXT, content: "project-1-content-1"},
-                {
-                    type: ContentType.TEXT,
-                    content: "project-1-content-2",
-                },
-                {
-                    type: ContentType.TEXT,
-                    content: "project-1-content-3",
-                },
+                { type: ContentType.TEXT, content: "project-1-content-1" },
+                { type: ContentType.TEXT, content: "project-1-content-2" },
+                { type: ContentType.TEXT, content: "project-1-content-3" },
             ],
         },
         {
             title: "project-2-title",
             info: "project-2-info",
             content: [
-                {type: ContentType.TEXT, content: "project-2-content-1"},
+                { type: ContentType.TEXT, content: "project-2-content-1" },
+                { type: ContentType.TEXT, content: "project-2-content-2" },
+                { type: ContentType.TEXT, content: "project-2-content-3" },
             ],
         },
         {
