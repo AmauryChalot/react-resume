@@ -68,7 +68,7 @@ export const ContactCard = (props: ContactCardProps) => {
         <Box sx={sxContactCardPictureContainer}>
           <img
             alt="image"
-            style={{ width: "115%", marginTop: "-10px", userSelect: "none" }}
+            style={{ width: "115%", marginTop: "-10px", userSelect: "none", objectFit: "cover" }}
             height="300"
             width="230"
             src="/images/pp.webp"
