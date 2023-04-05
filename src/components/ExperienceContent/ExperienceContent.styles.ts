@@ -68,7 +68,7 @@ export const sxExperienceContentItemContentContainer: SxProps = {
   paddingLeft: "0px",
   display: "flex",
   flexDirection: "column",
-  gap: "8px",
+  gap: "12px",
 };
 
 export const sxExperienceContentItemContent: SxProps<Theme> = {
