@@ -221,7 +221,9 @@ function App() {
             title: "project-3-title",
             info: "project-3-info",
             content: [
-                {type: ContentType.TEXT, content: "project-3-content-1"},
+                { type: ContentType.TEXT, content: "project-3-content-1" },
+                { type: ContentType.TEXT, content: "project-3-content-2" },
+                { type: ContentType.TEXT, content: "project-3-content-3" },
             ],
         },
     ];
