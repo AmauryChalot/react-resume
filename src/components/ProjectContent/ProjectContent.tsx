@@ -1,7 +1,17 @@
-import { useMediaQuery, useTheme } from "@mui/material";
+import { List, ListItem, useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { DynamicText } from "../DynamicText/DynamicText";
+import {
+  isContentList,
+  isContentText,
+} from "../ExperienceContent/ExperienceContent";
+import { ItemContent } from "../ExperienceContent/ExperienceContent.models";
+import {
+  sxExperienceContentItemContent,
+  sxExperienceContentItemList,
+  sxExperienceContentItemListItem,
+} from "../ExperienceContent/ExperienceContent.styles";
 import { ProjectContentProps } from "./ProjectContent.models";
 import {
   sxProjectContentContainer,
@@ -39,9 +49,41 @@ export const ProjectContent = ({ projects }: ProjectContentProps) => {
               </Typography>
             </Box>
             <Box sx={sxProjectContentItemContentContainer}>
-              <Typography component="div" sx={sxProjectContentItemContent}>
-                <DynamicText textId={element.content ?? ""} />
-              </Typography>
+                {element?.content?.map(
+                  (contentItem: ItemContent, contentItemIndex) => {
+                    if (isContentText(contentItem.content, contentItem.type)) {
+                      return (
+                        <Typography
+                          key={contentItemIndex}
+                          component="p"
+                          sx={sxExperienceContentItemContent}
+                        >
+                          <DynamicText textId={contentItem.content ?? ""} />
+                        </Typography>
+                      );
+                    } else if (
+                      isContentList(contentItem.content, contentItem.type)
+                    ) {
+                      return (
+                        <List
+                          key={contentItemIndex}
+                          sx={sxExperienceContentItemList}
+                        >
+                          {contentItem.content.map((listItem, index) => (
+                            <ListItem
+                              key={index}
+                              sx={sxExperienceContentItemListItem}
+                            >
+                              <DynamicText textId={listItem ?? ""} />
+                            </ListItem>
+                          ))}
+                        </List>
+                      );
+                    } else {
+                      return <></>;
+                    }
+                  }
+                )}
             </Box>
           </Box>
         );

@@ -1,7 +1,9 @@
+import { ItemContent } from "../ExperienceContent/ExperienceContent.models";
+
 export interface ProjectItem {
   title?: string;
   info?: string;
-  content?: string;
+  content?: ItemContent[];
 }
 
 export interface ProjectContentProps {

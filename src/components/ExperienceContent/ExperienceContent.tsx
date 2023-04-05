@@ -8,10 +8,10 @@ import {
 } from "@mui/material";
 import { DynamicText } from "../DynamicText/DynamicText";
 import {
-  ExperienceItemTypes,
+  ContentType,
   ExperienceContentProps,
-  ExperienceItemContent,
-  ExperienceContentType,
+  ItemContent,
+  ItemTypes,
 } from "./ExperienceContent.models";
 import {
   sxExperienceContentContainer,
@@ -29,18 +29,18 @@ import {
   sxExperienceContentItemTitleContainerMedium,
 } from "./ExperienceContent.styles";
 
-const isContentText = (
-  content: ExperienceItemTypes,
-  type: ExperienceContentType
+export const isContentText = (
+  content: ItemTypes,
+  type: ContentType
 ): content is string => {
-  return type === ExperienceContentType.TEXT;
+  return type === ContentType.TEXT;
 };
 
-const isContentList = (
-  content: ExperienceItemTypes,
-  type: ExperienceContentType
+export const isContentList = (
+  content: ItemTypes,
+  type: ContentType
 ): content is string[] => {
-  return type === ExperienceContentType.LIST;
+  return type === ContentType.LIST;
 };
 
 export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
@@ -83,7 +83,7 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
             </Box>
             <Box sx={sxExperienceContentItemContentContainer}>
               {element?.content?.map(
-                (contentItem: ExperienceItemContent, contentItemIndex) => {
+                (contentItem: ItemContent, contentItemIndex) => {
                   if (isContentText(contentItem.content, contentItem.type)) {
                     return (
                       <Typography

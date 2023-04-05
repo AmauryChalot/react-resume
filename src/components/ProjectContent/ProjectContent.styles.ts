@@ -45,6 +45,9 @@ export const sxProjectContentItemSubTitle: SxProps<Theme> = {
 
 export const sxProjectContentItemContentContainer: SxProps = {
   paddingLeft: "0px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "12px",
 };
 
 export const sxProjectContentItemContent: SxProps<Theme> = {
