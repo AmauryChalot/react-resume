@@ -8,10 +8,13 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
+import { AnimatedIconPrimaryButton } from "../AnimatedIconPrimaryButton/AnimatedIconPrimaryButton";
 import { DynamicText } from "../DynamicText/DynamicText";
+import { DownloadIcon } from "../Icons/DownloadIcon/DownloadIcon";
 import {
   sxLinkCardContainer,
   sxLinkCardContainerSmall,
+  sxLinkCardDownloadContainer,
   sxLinkCardItemContainer,
   sxLinkCardItemTypography,
   sxLinkCardTitle,
@@ -82,6 +85,18 @@ export const LinkCard = () => {
         >
           Paris, France
         </Link>
+      </Box>
+      <Box sx={sxLinkCardDownloadContainer}>
+        <AnimatedIconPrimaryButton
+          text={"download-cv-text"}
+          icon={
+            <DownloadIcon
+              width="14"
+              height="14"
+              color={theme.palette.primary.main}
+            />
+          }
+        />
       </Box>
     </Box>
   );

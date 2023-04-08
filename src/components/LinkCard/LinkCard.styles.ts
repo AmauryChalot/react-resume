@@ -48,3 +48,10 @@ export const sxLinkCardItemTypography: SxProps<Theme> = {
     color: (theme) => theme.palette.text.primary,
   },
 };
+
+export const sxLinkCardDownloadContainer: SxProps = {
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}
