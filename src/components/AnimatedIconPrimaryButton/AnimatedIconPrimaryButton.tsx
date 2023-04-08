@@ -7,15 +7,26 @@ import {
 } from "./AnimatedIconPrimaryButton.styles";
 import { AnimatedIconPrimaryButtonProps } from "./AnimatedIconPrimaryButton.models";
 import FrenchPDF from "../../assets/documents/Amaury-Chalot-CV-FR.pdf";
+import EnglishPDF from "../../assets/documents/Amaury-Chalot-CV-EN.pdf";
+import { LanguageContext } from "../../context";
 
 export const AnimatedIconPrimaryButton = (
   props: AnimatedIconPrimaryButtonProps
 ) => {
   const { text, icon } = props;
 
+  const context = React.useContext(LanguageContext);
+
+  React.useEffect(() => {
+    console.log(context);
+  }, [context]);
+
   return (
     <Button component="button" sx={sxDownloadButton}>
-      <a href={FrenchPDF} download="Amaury Chalot CV.pdf">
+      <a
+        href={context.currentLanguage === "english" ? EnglishPDF : FrenchPDF}
+        download="Amaury Chalot CV.pdf"
+      >
         {icon && (
           <Box>
             {icon}
