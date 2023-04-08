@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import React, { useEffect, useRef, useState } from "react";
 import { CustomCard } from "../../components/Card/CustomCard";
 import { ContactCard } from "../../components/ContactCard/ContactCard";
-import { DownloadCard } from "../../components/DownloadCard/DownloadCard";
 import { DynamicText } from "../../components/DynamicText/DynamicText";
 import { ExperienceContent } from "../../components/ExperienceContent/ExperienceContent";
 import {
