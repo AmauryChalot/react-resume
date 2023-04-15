@@ -19,15 +19,16 @@ import {
 } from './ContactCard.styles';
 
 export const ContactCard = (props: ContactCardProps) => {
+  const { containerRef, index, scrolledSectionsState } = props;
+  const [_, setScrolledSections] = scrolledSectionsState;
+
   const theme = useTheme();
   const isMedium = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const isSmall = useMediaQuery(theme.breakpoints.down('md'));
 
-  const [_, setScrolledSections] = props.scrolledSectionsState;
-
   const { ref } = useScrollableRef(
-    props.containerRef,
-    props.index,
+    containerRef,
+    index,
     setScrolledSections,
     true,
   );

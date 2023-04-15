@@ -7,5 +7,4 @@ export interface CustomCardProps {
   index: number;
   scrolledSectionsState: [number, React.Dispatch<React.SetStateAction<number>>];
   id?: string;
-  highlighted?: boolean;
 }

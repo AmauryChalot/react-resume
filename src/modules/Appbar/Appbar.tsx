@@ -15,7 +15,6 @@ import { DynamicText } from '../../components/DynamicText/DynamicText';
 import { LanguageSelection } from '../../components/LanguageSelection/LanguageSelection';
 import { SidePanel } from '../../components/SidePanel/SidePanel';
 import { ThemeSwitch } from '../../components/ThemeSwitch/ThemeSwitch';
-import { LanguageContext, ThemeContext } from '../../context';
 import { AppbarMenuItem, AppbarProps } from './Appbar.models';
 import {
   sxAppbar,
@@ -31,11 +30,9 @@ import {
   sxAppbarSideMenuListSmall,
 } from './Appbar.styles';
 
-export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
-  const { currentTheme, setTheme } = React.useContext(ThemeContext);
-  const { currentLanguage, setLanguage } = React.useContext(LanguageContext);
-
-  const [scrolledSections, setScrolledSections] = scrolledSectionsState;
+export const Appbar = (props: AppbarProps) => {
+  const { scrolledSectionsState } = props;
+  const [scrolledSections, _] = scrolledSectionsState;
 
   const theme = useTheme();
   const isMedium = useMediaQuery(theme.breakpoints.down('md'));
@@ -50,10 +47,6 @@ export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
       id: 'experiences',
       value: '#experiences',
     },
-    /*{
-      id: "skills",
-      value: "#skills",
-    },*/
     {
       id: 'projects',
       value: '#projects',

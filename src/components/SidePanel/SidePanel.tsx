@@ -7,17 +7,18 @@ import {
 } from './SidePanel.styles';
 
 export const SidePanel = (props: SidePanelProps) => {
+  const { open, onClose, children } = props;
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Drawer
-      open={props.open}
-      onClose={props.onClose}
+      open={open}
+      onClose={onClose}
       sx={isSmall ? sxSidePanelContainerSmall : sxSidePanelContainer}
       disableScrollLock
     >
-      {props.children}
+      {children ?? <></>}
     </Drawer>
   );
 };

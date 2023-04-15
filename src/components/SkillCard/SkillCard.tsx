@@ -13,7 +13,9 @@ import {
   sxSkillCardItemTitle,
 } from './SkillCard.styles';
 
-export const SkillCard = ({ skills, id }: SkillCardProps) => {
+export const SkillCard = (props: SkillCardProps) => {
+  const { skills, id } = props;
+
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 

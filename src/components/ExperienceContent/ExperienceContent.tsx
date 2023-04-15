@@ -43,7 +43,9 @@ export const isContentList = (
   return type === ContentType.LIST;
 };
 
-export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
+export const ExperienceContent = (props: ExperienceContentProps) => {
+  const { experiences } = props;
+
   const theme = useTheme();
   const isMedium = useMediaQuery(theme.breakpoints.down('md'));
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));

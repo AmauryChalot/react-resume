@@ -23,7 +23,9 @@ import {
   sxProjectContentItemTitleContainerMedium,
 } from './ProjectContent.styles';
 
-export const ProjectContent = ({ projects }: ProjectContentProps) => {
+export const ProjectContent = (props: ProjectContentProps) => {
+  const { projects } = props;
+
   const theme = useTheme();
   const isMedium = useMediaQuery(theme.breakpoints.down('md'));
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));

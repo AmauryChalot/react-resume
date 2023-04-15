@@ -11,26 +11,28 @@ import {
 } from './CustomCard.styles';
 
 export const CustomCard = (props: CustomCardProps) => {
-  const [_, setScrolledSections] = props.scrolledSectionsState;
+  const { containerRef, title, content, index, scrolledSectionsState, id } =
+    props;
+  const [_, setScrolledSections] = scrolledSectionsState;
 
   const { ref, refIsVisible } = useScrollableRef(
-    props.containerRef,
-    props.index,
+    containerRef,
+    index,
     setScrolledSections,
   );
 
   return (
-    <Card sx={sxCustomCardContainer} id={props.id} ref={ref}>
+    <Card sx={sxCustomCardContainer} id={id} ref={ref}>
       <Typography
         sx={refIsVisible ? sxCustomCardTitleHighlighted : sxCustomCardTitle}
       >
-        {props.title}
+        {title}
       </Typography>
       <Typography
         component="div"
         sx={refIsVisible ? sxCustomCardContentHighlighted : sxCustomCardContent}
       >
-        {props.content}
+        {content}
       </Typography>
     </Card>
   );

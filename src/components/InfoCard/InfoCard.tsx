@@ -2,7 +2,6 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { DynamicText } from '../DynamicText/DynamicText';
-import { InfoCardProps } from './InfoCard.models';
 import {
   sxInfoCardContainer,
   sxInfoCardContainerSmall,
@@ -13,7 +12,7 @@ import {
   sxInfoCardItemTitle,
 } from './InfoCard.styles';
 
-export const InfoCard = (props: InfoCardProps) => {
+export const InfoCard = () => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
