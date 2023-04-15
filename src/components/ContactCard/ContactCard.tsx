@@ -2,6 +2,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import React from 'react';
+import { useScrollableRef } from '../Card/CustomCard.hook';
 import { DynamicText } from '../DynamicText/DynamicText';
 import { ContactCardProps } from './ContactCard.models';
 import {
@@ -22,34 +23,14 @@ export const ContactCard = (props: ContactCardProps) => {
   const isMedium = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const isSmall = useMediaQuery(theme.breakpoints.down('md'));
 
-  const [scrolledSections, setScrolledSections] = props.scrolledSectionsState;
+  const [_, setScrolledSections] = props.scrolledSectionsState;
 
-  const myRef = React.useRef<HTMLDivElement | null>(null);
-  const [myRefIsVisible, setMyRefIsVisible] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    myRef.current?.focus();
-    const handleScroll = (e: Event) => {
-      if (
-        myRef.current &&
-        props.containerRef.current &&
-        myRef.current.offsetTop <
-          props.containerRef.current?.scrollTop +
-            props.containerRef?.current?.clientHeight / 2.5
-      ) {
-        setScrolledSections(props.index);
-        setMyRefIsVisible(true);
-      } else {
-        setMyRefIsVisible(false);
-      }
-    };
-    if (props.containerRef?.current)
-      props.containerRef.current.addEventListener('scroll', handleScroll);
-    return () => {
-      if (props.containerRef?.current)
-        props.containerRef.current.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const { ref } = useScrollableRef(
+    props.containerRef,
+    props.index,
+    setScrolledSections,
+    true,
+  );
 
   return (
     <Box
@@ -61,7 +42,7 @@ export const ContactCard = (props: ContactCardProps) => {
           : sxContactCardContainer
       }
       id={'aboutme'}
-      ref={myRef}
+      ref={ref}
     >
       <Box sx={isMedium ? sxContactCardPictureContainerMedium : {}}>
         <Box sx={sxContactCardPictureContainer}>
