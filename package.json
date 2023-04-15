@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.1.5",
   "type": "module",
+  "author": "Amaury Chalot <amaurychalot@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
