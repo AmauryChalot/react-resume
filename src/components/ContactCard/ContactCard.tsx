@@ -1,9 +1,9 @@
-import { useMediaQuery, useTheme } from "@mui/material";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import React from "react";
-import { DynamicText } from "../DynamicText/DynamicText";
-import { ContactCardProps } from "./ContactCard.models";
+import { useMediaQuery, useTheme } from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import React from 'react';
+import { DynamicText } from '../DynamicText/DynamicText';
+import { ContactCardProps } from './ContactCard.models';
 import {
   sxContactCardBody,
   sxContactCardContainer,
@@ -15,12 +15,12 @@ import {
   sxContactCardPictureTextContainer,
   sxContactCardSubtitle,
   sxContactCardTitle,
-} from "./ContactCard.styles";
+} from './ContactCard.styles';
 
 export const ContactCard = (props: ContactCardProps) => {
   const theme = useTheme();
-  const isMedium = useMediaQuery(theme.breakpoints.between("sm", "md"));
-  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+  const isMedium = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
 
   const [scrolledSections, setScrolledSections] = props.scrolledSectionsState;
 
@@ -45,10 +45,10 @@ export const ContactCard = (props: ContactCardProps) => {
       }
     };
     if (props.containerRef?.current)
-      props.containerRef.current.addEventListener("scroll", handleScroll);
+      props.containerRef.current.addEventListener('scroll', handleScroll);
     return () => {
       if (props.containerRef?.current)
-        props.containerRef.current.removeEventListener("scroll", handleScroll);
+        props.containerRef.current.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -61,14 +61,19 @@ export const ContactCard = (props: ContactCardProps) => {
           ? sxContactCardContainerMedium
           : sxContactCardContainer
       }
-      id={"aboutme"}
+      id={'aboutme'}
       ref={myRef}
     >
       <Box sx={isMedium ? sxContactCardPictureContainerMedium : {}}>
         <Box sx={sxContactCardPictureContainer}>
           <img
             alt="image"
-            style={{ width: "115%", marginTop: "-10px", userSelect: "none", objectFit: "cover" }}
+            style={{
+              width: '115%',
+              marginTop: '-10px',
+              userSelect: 'none',
+              objectFit: 'cover',
+            }}
             height="300"
             width="230"
             src="/images/pp.webp"
