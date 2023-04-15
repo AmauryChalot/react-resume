@@ -1,10 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 
-interface useScrollableRefProps {
-  containerRef: React.MutableRefObject<HTMLDivElement | null>;
-  index: number;
-}
-
 export const useScrollableRef = (
   containerRef: React.MutableRefObject<HTMLDivElement | null>,
   index: number,
