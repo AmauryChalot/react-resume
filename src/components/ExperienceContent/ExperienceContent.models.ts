@@ -1,6 +1,6 @@
 export enum ContentType {
-  TEXT = "TEXT",
-  LIST = "LIST",
+  TEXT = 'TEXT',
+  LIST = 'LIST',
 }
 
 export type ItemTypes = string | string[];

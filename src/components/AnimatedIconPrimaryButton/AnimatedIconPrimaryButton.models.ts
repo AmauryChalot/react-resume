@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
 export interface AnimatedIconPrimaryButtonProps {
-    text: string;
-    icon?: React.ReactNode;
+  text: string;
+  icon?: React.ReactNode;
 }

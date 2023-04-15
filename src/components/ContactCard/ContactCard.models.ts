@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export interface ContactCardProps {
   containerRef: React.MutableRefObject<HTMLDivElement | null>;

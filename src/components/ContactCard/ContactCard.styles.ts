@@ -1,67 +1,67 @@
-import { SxProps, Theme } from "@mui/material";
+import { SxProps, Theme } from '@mui/material';
 
 export const sxContactCardContainer: SxProps<Theme> = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   backgroundColor: (theme) => theme.palette.background.paper,
-  borderRadius: "10px",
-  padding: "16px",
-  width: "100%",
-  height: "fit-content",
-  boxSizing: "border-box",
-  gap: "32px",
-  scrollMarginTop: "96px",
+  borderRadius: '10px',
+  padding: '16px',
+  width: '100%',
+  height: 'fit-content',
+  boxSizing: 'border-box',
+  gap: '32px',
+  scrollMarginTop: '96px',
   boxShadow:
-    "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
+    '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
 };
 
 export const sxContactCardContainerMedium: SxProps<Theme> = {
   ...sxContactCardContainer,
-  flexDirection: "column",
-  gap: "8px",
+  flexDirection: 'column',
+  gap: '8px',
 };
 
 export const sxContactCardContainerSmall: SxProps<Theme> = {
   ...sxContactCardContainer,
-  flexDirection: "column",
+  flexDirection: 'column',
 };
 
 export const sxContactCardPictureContainer: SxProps = {
-  width: "200px",
-  height: "250px",
-  overflow: "hidden",
-  borderRadius: "10px",
-  boxSizing: "border-box",
-  display: "flex",
-  alignItems: "flex-start",
-  justifyContent: "center",
+  width: '200px',
+  height: '250px',
+  overflow: 'hidden',
+  borderRadius: '10px',
+  boxSizing: 'border-box',
+  display: 'flex',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
   flexShrink: 0,
 };
 
 export const sxContactCardPictureContainerMedium: SxProps = {
   ...sxContactCardPictureContainer,
-  width: "100%",
-  display: "flex",
-  gap: "32px",
+  width: '100%',
+  display: 'flex',
+  gap: '32px',
 };
 
 export const sxContactCardPictureTextContainer: SxProps = {
-  display: "flex",
-  flexDirection: "column",
-  height: "100%",
-  justifyContent: "center",
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100%',
+  justifyContent: 'center',
 };
 
 export const sxContactCardInfoContainer: SxProps = {
   flexGrow: 1,
   marginTop: 0,
-  height: "100%",
-  display: "flex",
-  alignItems: "flex-start",
-  justifyContent: "center",
-  flexDirection: "column",
-  boxSizing: "border-box",
+  height: '100%',
+  display: 'flex',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  boxSizing: 'border-box',
 };
 
 export const sxContactCardTitle: SxProps<Theme> = {
@@ -72,7 +72,7 @@ export const sxContactCardTitle: SxProps<Theme> = {
 };
 
 export const sxContactCardSubtitle: SxProps<Theme> = {
-  marginTop: "4px",
+  marginTop: '4px',
   color: (theme) => theme.palette.primary.main,
   fontSize: (theme) => theme.typography.h5.fontSize,
   fontWeight: 800,
@@ -80,7 +80,7 @@ export const sxContactCardSubtitle: SxProps<Theme> = {
 };
 
 export const sxContactCardBody: SxProps<Theme> = {
-  marginTop: "16px",
+  marginTop: '16px',
   color: (theme) => theme.palette.text.primary,
   fontSize: (theme) => theme.typography.body1.fontSize,
   fontWeight: 500,
@@ -88,12 +88,12 @@ export const sxContactCardBody: SxProps<Theme> = {
 };
 
 export const sxContactCardDivider: SxProps = {
-  marginTop: "16px",
-  width: "100%",
+  marginTop: '16px',
+  width: '100%',
 };
 
 export const sxContactCardLinkContainer: SxProps = {
-  marginTop: "16px",
-  display: "flex",
-  alignItems: "center",
+  marginTop: '16px',
+  display: 'flex',
+  alignItems: 'center',
 };

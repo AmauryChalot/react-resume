@@ -1,8 +1,8 @@
-import { useMediaQuery, useTheme } from "@mui/material";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { DynamicText } from "../DynamicText/DynamicText";
-import { InfoCardProps } from "./InfoCard.models";
+import { useMediaQuery, useTheme } from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { DynamicText } from '../DynamicText/DynamicText';
+import { InfoCardProps } from './InfoCard.models';
 import {
   sxInfoCardContainer,
   sxInfoCardContainerSmall,
@@ -11,19 +11,19 @@ import {
   sxInfoCardItemInfo,
   sxInfoCardItemSubtitle,
   sxInfoCardItemTitle,
-} from "./InfoCard.styles";
+} from './InfoCard.styles';
 
 export const InfoCard = (props: InfoCardProps) => {
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Box
       sx={isSmall ? sxInfoCardContainerSmall : sxInfoCardContainer}
-      id={"contact"}
+      id={'contact'}
     >
       <Typography sx={sxInfoCardContainerTitle}>
-        <DynamicText textId={"education"} />
+        <DynamicText textId={'education'} />
       </Typography>
       <Box sx={sxInfoCardItemContainer}>
         <Typography sx={sxInfoCardItemTitle}>

@@ -1,6 +1,6 @@
-import { useContext, Fragment } from "react";
-import { DynamicTextProps } from "./DynamicText.models";
-import { LanguageContext } from "../../context";
+import { Fragment, useContext } from 'react';
+import { LanguageContext } from '../../context';
+import { DynamicTextProps } from './DynamicText.models';
 
 export const DynamicText = ({ textId }: DynamicTextProps) => {
   const context = useContext(LanguageContext);

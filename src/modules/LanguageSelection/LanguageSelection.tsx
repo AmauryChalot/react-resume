@@ -1,5 +1,5 @@
-import { Check } from "@mui/icons-material";
-import TranslateIcon from "@mui/icons-material/Translate";
+import { Check } from '@mui/icons-material';
+import TranslateIcon from '@mui/icons-material/Translate';
 import {
   Badge,
   Box,
@@ -7,10 +7,10 @@ import {
   ListItemIcon,
   Menu,
   MenuItem,
-} from "@mui/material";
-import React from "react";
-import { LanguageContext } from "../../context";
-import { sxLanguageSelectionItemBox } from "./LanguageSelection.styles";
+} from '@mui/material';
+import React from 'react';
+import { LanguageContext } from '../../context';
+import { sxLanguageSelectionItemBox } from './LanguageSelection.styles';
 
 export const LanguageSelection = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -29,7 +29,7 @@ export const LanguageSelection = () => {
       <IconButton aria-label="language-button" onClick={handleClick}>
         <Badge
           badgeContent={
-            currentLanguage === "french" ? (
+            currentLanguage === 'french' ? (
               <img
                 loading="lazy"
                 width="15"
@@ -39,7 +39,7 @@ export const LanguageSelection = () => {
                 srcSet={`https://flagcdn.com/w40/fr.png 2x`}
                 alt=""
               />
-            ) : currentLanguage === "english" ? (
+            ) : currentLanguage === 'english' ? (
               <img
                 loading="lazy"
                 width="15"
@@ -65,14 +65,14 @@ export const LanguageSelection = () => {
       >
         <MenuItem
           onClick={() => {
-            setLanguage("french");
+            setLanguage('french');
             handleClose();
           }}
         >
           <React.Fragment>
             <ListItemIcon
               sx={{
-                visibility: currentLanguage === "french" ? "visible" : "hidden",
+                visibility: currentLanguage === 'french' ? 'visible' : 'hidden',
               }}
             >
               <Check />
@@ -92,7 +92,7 @@ export const LanguageSelection = () => {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            setLanguage("english");
+            setLanguage('english');
             handleClose();
           }}
         >
@@ -101,7 +101,7 @@ export const LanguageSelection = () => {
               <Check
                 sx={{
                   visibility:
-                    currentLanguage === "english" ? "visible" : "hidden",
+                    currentLanguage === 'english' ? 'visible' : 'hidden',
                 }}
               />
             </ListItemIcon>

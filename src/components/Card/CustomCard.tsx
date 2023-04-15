@@ -1,13 +1,13 @@
-import { Card, Typography } from "@mui/material";
-import React from "react";
-import { CustomCardProps } from "./CustomCard.models";
+import { Card, Typography } from '@mui/material';
+import React from 'react';
+import { CustomCardProps } from './CustomCard.models';
 import {
   sxCustomCardContainer,
   sxCustomCardContent,
   sxCustomCardContentHighlighted,
   sxCustomCardTitle,
   sxCustomCardTitleHighlighted,
-} from "./CustomCard.styles";
+} from './CustomCard.styles';
 
 export const CustomCard = (props: CustomCardProps) => {
   const [scrolledSections, setScrolledSections] = props.scrolledSectionsState;
@@ -39,10 +39,10 @@ export const CustomCard = (props: CustomCardProps) => {
       }
     };
     if (props.containerRef?.current)
-      props.containerRef.current.addEventListener("scroll", handleScroll);
+      props.containerRef.current.addEventListener('scroll', handleScroll);
     return () => {
       if (props.containerRef?.current)
-        props.containerRef.current.removeEventListener("scroll", handleScroll);
+        props.containerRef.current.removeEventListener('scroll', handleScroll);
     };
   }, [props.containerRef]);
 

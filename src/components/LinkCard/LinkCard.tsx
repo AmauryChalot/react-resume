@@ -1,16 +1,16 @@
-import EmailIcon from "@mui/icons-material/Email";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import PhoneIcon from "@mui/icons-material/Phone";
-import { useMediaQuery, useTheme } from "@mui/material";
-import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
-import { AnimatedIconPrimaryButton } from "../AnimatedIconPrimaryButton/AnimatedIconPrimaryButton";
-import { DynamicText } from "../DynamicText/DynamicText";
-import { DownloadIcon } from "../Icons/DownloadIcon/DownloadIcon";
+import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
+import { useMediaQuery, useTheme } from '@mui/material';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+import { AnimatedIconPrimaryButton } from '../AnimatedIconPrimaryButton/AnimatedIconPrimaryButton';
+import { DynamicText } from '../DynamicText/DynamicText';
+import { DownloadIcon } from '../Icons/DownloadIcon/DownloadIcon';
 import {
   sxLinkCardContainer,
   sxLinkCardContainerSmall,
@@ -18,19 +18,19 @@ import {
   sxLinkCardItemContainer,
   sxLinkCardItemTypography,
   sxLinkCardTitle,
-} from "./LinkCard.styles";
+} from './LinkCard.styles';
 
 export const LinkCard = () => {
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Box
       sx={isSmall ? sxLinkCardContainerSmall : sxLinkCardContainer}
-      id={"contact"}
+      id={'contact'}
     >
       <Typography sx={sxLinkCardTitle}>
-        <DynamicText textId={"contact"} />
+        <DynamicText textId={'contact'} />
       </Typography>
       <Box sx={sxLinkCardItemContainer}>
         <PhoneIcon color="primary" />
@@ -88,7 +88,7 @@ export const LinkCard = () => {
       </Box>
       <Box sx={sxLinkCardDownloadContainer}>
         <AnimatedIconPrimaryButton
-          text={"download-cv-text"}
+          text={'download-cv-text'}
           icon={
             <DownloadIcon
               width="14"

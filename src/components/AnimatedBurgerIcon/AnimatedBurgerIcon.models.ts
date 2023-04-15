@@ -1,3 +1,3 @@
 export interface AnimatedBurgerIconProps {
-    active: boolean;
+  active: boolean;
 }
