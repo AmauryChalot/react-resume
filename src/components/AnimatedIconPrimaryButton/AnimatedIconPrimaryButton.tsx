@@ -1,30 +1,26 @@
-import { Box, Button, Typography } from "@mui/material";
-import React from "react";
-import { DynamicText } from "../DynamicText/DynamicText";
+import { Box, Button, Typography } from '@mui/material';
+import React from 'react';
+import EnglishPDF from '../../assets/documents/Amaury-Chalot-CV-EN.pdf';
+import FrenchPDF from '../../assets/documents/Amaury-Chalot-CV-FR.pdf';
+import { LanguageContext } from '../../context';
+import { DynamicText } from '../DynamicText/DynamicText';
+import { AnimatedIconPrimaryButtonProps } from './AnimatedIconPrimaryButton.models';
 import {
   sxDownloadBottomIcon,
   sxDownloadButton,
-} from "./AnimatedIconPrimaryButton.styles";
-import { AnimatedIconPrimaryButtonProps } from "./AnimatedIconPrimaryButton.models";
-import FrenchPDF from "../../assets/documents/Amaury-Chalot-CV-FR.pdf";
-import EnglishPDF from "../../assets/documents/Amaury-Chalot-CV-EN.pdf";
-import { LanguageContext } from "../../context";
+} from './AnimatedIconPrimaryButton.styles';
 
 export const AnimatedIconPrimaryButton = (
-  props: AnimatedIconPrimaryButtonProps
+  props: AnimatedIconPrimaryButtonProps,
 ) => {
   const { text, icon } = props;
 
   const context = React.useContext(LanguageContext);
 
-  React.useEffect(() => {
-    console.log(context);
-  }, [context]);
-
   return (
     <Button component="button" sx={sxDownloadButton}>
       <a
-        href={context.currentLanguage === "english" ? EnglishPDF : FrenchPDF}
+        href={context.currentLanguage === 'english' ? EnglishPDF : FrenchPDF}
         download="Amaury Chalot CV.pdf"
       >
         {icon && (

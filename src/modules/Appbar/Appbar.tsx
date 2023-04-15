@@ -5,18 +5,16 @@ import {
   IconButton,
   Toolbar,
   Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import Link from "@mui/material/Link";
-import React from "react";
-import { AnimatedBurgerIcon } from "../../components/AnimatedBurgerIcon/AnimatedBurgerIcon";
-import { DynamicText } from "../../components/DynamicText/DynamicText";
-import { SidePanel } from "../../components/SidePanel/SidePanel";
-import { LanguageContext, ThemeContext } from "../../context";
-import { LanguageSelection } from "../LanguageSelection/LanguageSelection";
-import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
-import { AppbarMenuItem, AppbarProps } from "./Appbar.models";
+} from '@mui/material';
+import Link from '@mui/material/Link';
+import React from 'react';
+import { AnimatedBurgerIcon } from '../../components/AnimatedBurgerIcon/AnimatedBurgerIcon';
+import { DynamicText } from '../../components/DynamicText/DynamicText';
+import { LanguageSelection } from '../../components/LanguageSelection/LanguageSelection';
+import { SidePanel } from '../../components/SidePanel/SidePanel';
+import { ThemeSwitch } from '../../components/ThemeSwitch/ThemeSwitch';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
+import { AppbarMenuItem, AppbarProps } from './Appbar.models';
 import {
   sxAppbar,
   sxAppbarContainer,
@@ -29,34 +27,27 @@ import {
   sxAppbarRightContainer,
   sxAppbarSideMenuList,
   sxAppbarSideMenuListSmall,
-} from "./Appbar.styles";
+  sxAppBarTitle,
+} from './Appbar.styles';
 
-export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
-  const { currentTheme, setTheme } = React.useContext(ThemeContext);
-  const { currentLanguage, setLanguage } = React.useContext(LanguageContext);
+export const Appbar = (props: AppbarProps) => {
+  const { scrolledSectionsState } = props;
+  const [scrolledSections, _] = scrolledSectionsState;
 
-  const [scrolledSections, setScrolledSections] = scrolledSectionsState;
-
-  const theme = useTheme();
-  const isMedium = useMediaQuery(theme.breakpoints.down("md"));
-  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isSmall, isMedium, isLarge } = useThemeMediaQuery();
 
   const menuItems: AppbarMenuItem[] = [
     {
-      id: "aboutMe",
-      value: "#aboutme",
+      id: 'aboutMe',
+      value: '#aboutme',
     },
     {
-      id: "experiences",
-      value: "#experiences",
+      id: 'experiences',
+      value: '#experiences',
     },
-    /*{
-      id: "skills",
-      value: "#skills",
-    },*/
     {
-      id: "projects",
-      value: "#projects",
+      id: 'projects',
+      value: '#projects',
     },
   ];
 
@@ -73,9 +64,9 @@ export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
           return (
             <Link
               key={index}
-              color={"inherit"}
+              color={'inherit'}
               href={element.value}
-              underline={"none"}
+              underline={'none'}
               sx={
                 index === scrolledSections
                   ? sxAppbarNavigationItemSmallSelected
@@ -93,7 +84,7 @@ export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
 
   return (
     <React.Fragment>
-      {isMedium && (
+      {(isSmall || isMedium) && (
         <SidePanel open={sidePanelOpen} onClose={handleSidePanelClose}>
           {sidePanelMenu()}
         </SidePanel>
@@ -102,32 +93,28 @@ export const Appbar = ({ scrolledSectionsState }: AppbarProps) => {
         <Container maxWidth="xl" sx={sxAppbarContainer}>
           <Toolbar disableGutters>
             <Box
-              sx={isMedium ? sxAppbarLeftContainerSmall : sxAppbarLeftContainer}
+              sx={
+                isSmall || isMedium
+                  ? sxAppbarLeftContainerSmall
+                  : sxAppbarLeftContainer
+              }
             >
-              {isMedium && (
+              {(isSmall || isMedium) && (
                 <IconButton onClick={() => setSidePanelOpen(!sidePanelOpen)}>
                   <AnimatedBurgerIcon active={sidePanelOpen} />
                 </IconButton>
               )}
-              <Typography
-                component="h1"
-                sx={{
-                  fontSize: theme.typography.h5.fontSize,
-                  fontWeight: 800,
-                  fontFamily: theme.typography.fontFamily,
-                  color: theme.palette.text.primary,
-                }}
-              >
+              <Typography component="h1" sx={sxAppBarTitle}>
                 Portfolio
               </Typography>
-              {!isMedium &&
+              {isLarge &&
                 menuItems.map((element, index) => {
                   return (
                     <Link
                       key={index}
-                      color={"inherit"}
+                      color={'inherit'}
                       href={element.value}
-                      underline={"none"}
+                      underline={'none'}
                       sx={
                         index === scrolledSections
                           ? sxAppbarNavigationItemSelected

@@ -1,9 +1,9 @@
-import french from "./fr.json";
-import english from "./en.json";
+import english from '../../assets/languages/en.json';
+import french from '../../assets/languages/fr.json';
 
 export const LanguageDictionary = { french, english };
 
 export const languageOptions = {
-  french: "French",
-  english: "English",
+  french: 'French',
+  english: 'English',
 };

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
 export interface CustomCardProps {
   containerRef: React.MutableRefObject<HTMLDivElement | null>;
@@ -7,5 +7,4 @@ export interface CustomCardProps {
   index: number;
   scrolledSectionsState: [number, React.Dispatch<React.SetStateAction<number>>];
   id?: string;
-  highlighted?: boolean;
 }

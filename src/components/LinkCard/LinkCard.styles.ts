@@ -1,25 +1,25 @@
-import { SxProps, Theme } from "@mui/material";
+import { SxProps, Theme } from '@mui/material';
 
 export const sxLinkCardContainer: SxProps<Theme> = {
-  display: "flex",
-  alignItems: "flex-start",
-  flexDirection: "column",
-  justifyContent: "center",
+  display: 'flex',
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  justifyContent: 'center',
   backgroundColor: (theme) => theme.palette.background.paper,
-  borderRadius: "10px",
-  padding: "16px",
-  width: "100%",
-  height: "fit-content",
-  boxSizing: "border-box",
-  gap: "16px",
-  scrollMarginTop: "96px",
+  borderRadius: '10px',
+  padding: '16px',
+  width: '100%',
+  height: 'fit-content',
+  boxSizing: 'border-box',
+  gap: '16px',
+  scrollMarginTop: '96px',
   boxShadow:
-    "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
+    '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
 };
 
 export const sxLinkCardContainerSmall: SxProps<Theme> = {
   ...sxLinkCardContainer,
-  gap: "12px",
+  gap: '12px',
 };
 
 export const sxLinkCardTitle: SxProps<Theme> = {
@@ -30,11 +30,11 @@ export const sxLinkCardTitle: SxProps<Theme> = {
 };
 
 export const sxLinkCardItemContainer: SxProps = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-start",
-  flexDirection: "row",
-  gap: "8px",
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+  flexDirection: 'row',
+  gap: '8px',
 };
 
 export const sxLinkCardItemTypography: SxProps<Theme> = {
@@ -42,16 +42,16 @@ export const sxLinkCardItemTypography: SxProps<Theme> = {
   fontSize: (theme) => theme.typography.caption.fontSize,
   fontWeight: 700,
   fontFamily: (theme) => theme.typography.fontFamily,
-  textDecoration: "none",
+  textDecoration: 'none',
 
-  "&:hover": {
+  '&:hover': {
     color: (theme) => theme.palette.text.primary,
   },
 };
 
 export const sxLinkCardDownloadContainer: SxProps = {
-  width: "100%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};

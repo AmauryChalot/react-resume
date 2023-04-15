@@ -1,65 +1,38 @@
-import { Card, Typography } from "@mui/material";
-import React from "react";
-import { CustomCardProps } from "./CustomCard.models";
+import { Card, Typography } from '@mui/material';
+import React from 'react';
+import { useScrollableRef } from './CustomCard.hook';
+import { CustomCardProps } from './CustomCard.models';
 import {
   sxCustomCardContainer,
   sxCustomCardContent,
   sxCustomCardContentHighlighted,
   sxCustomCardTitle,
   sxCustomCardTitleHighlighted,
-} from "./CustomCard.styles";
+} from './CustomCard.styles';
 
 export const CustomCard = (props: CustomCardProps) => {
-  const [scrolledSections, setScrolledSections] = props.scrolledSectionsState;
+  const { containerRef, title, content, index, scrolledSectionsState, id } =
+    props;
+  const [_, setScrolledSections] = scrolledSectionsState;
 
-  const myRef = React.useRef<HTMLDivElement | null>(null);
-  const [myRefIsVisible, setMyRefIsVisible] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    myRef.current?.focus();
-    const handleScroll = (e: Event) => {
-      if (
-        props.containerRef?.current &&
-        props.containerRef.current?.scrollTop >= 0 &&
-        props.containerRef.current?.scrollTop <=
-          props.containerRef.current?.scrollHeight / 64
-      ) {
-        setMyRefIsVisible(false);
-      } else if (
-        props.containerRef?.current &&
-        myRef.current &&
-        myRef.current.offsetTop <
-          props.containerRef.current?.scrollTop +
-            props.containerRef?.current?.clientHeight / 2.5
-      ) {
-        setScrolledSections(props.index);
-        setMyRefIsVisible(true);
-      } else {
-        setMyRefIsVisible(false);
-      }
-    };
-    if (props.containerRef?.current)
-      props.containerRef.current.addEventListener("scroll", handleScroll);
-    return () => {
-      if (props.containerRef?.current)
-        props.containerRef.current.removeEventListener("scroll", handleScroll);
-    };
-  }, [props.containerRef]);
+  const { ref, refIsVisible } = useScrollableRef(
+    containerRef,
+    index,
+    setScrolledSections,
+  );
 
   return (
-    <Card sx={sxCustomCardContainer} id={props.id} ref={myRef}>
+    <Card sx={sxCustomCardContainer} id={id} ref={ref}>
       <Typography
-        sx={myRefIsVisible ? sxCustomCardTitleHighlighted : sxCustomCardTitle}
+        sx={refIsVisible ? sxCustomCardTitleHighlighted : sxCustomCardTitle}
       >
-        {props.title}
+        {title}
       </Typography>
       <Typography
         component="div"
-        sx={
-          myRefIsVisible ? sxCustomCardContentHighlighted : sxCustomCardContent
-        }
+        sx={refIsVisible ? sxCustomCardContentHighlighted : sxCustomCardContent}
       >
-        {props.content}
+        {content}
       </Typography>
     </Card>
   );

@@ -1,18 +1,12 @@
-import {
-  Box,
-  List,
-  ListItem,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { DynamicText } from "../DynamicText/DynamicText";
+import { Box, List, ListItem, Typography } from '@mui/material';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
+import { DynamicText } from '../DynamicText/DynamicText';
 import {
   ContentType,
   ExperienceContentProps,
   ItemContent,
   ItemTypes,
-} from "./ExperienceContent.models";
+} from './ExperienceContent.models';
 import {
   sxExperienceContentContainer,
   sxExperienceContentItemContainer,
@@ -27,26 +21,26 @@ import {
   sxExperienceContentItemTitle,
   sxExperienceContentItemTitleContainer,
   sxExperienceContentItemTitleContainerMedium,
-} from "./ExperienceContent.styles";
+} from './ExperienceContent.styles';
 
 export const isContentText = (
   content: ItemTypes,
-  type: ContentType
+  type: ContentType,
 ): content is string => {
   return type === ContentType.TEXT;
 };
 
 export const isContentList = (
   content: ItemTypes,
-  type: ContentType
+  type: ContentType,
 ): content is string[] => {
   return type === ContentType.LIST;
 };
 
-export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
-  const theme = useTheme();
-  const isMedium = useMediaQuery(theme.breakpoints.down("md"));
-  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+export const ExperienceContent = (props: ExperienceContentProps) => {
+  const { experiences } = props;
+
+  const { isSmall, isMedium } = useThemeMediaQuery();
 
   return (
     <Box sx={sxExperienceContentContainer}>
@@ -55,17 +49,17 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
           <Box key={index} sx={sxExperienceContentItemContainer}>
             <Box
               sx={
-                isMedium
+                isSmall || isMedium
                   ? sxExperienceContentItemTitleContainerMedium
                   : sxExperienceContentItemTitleContainer
               }
             >
               <Typography component="div" sx={sxExperienceContentItemTitle}>
-                <DynamicText textId={element.title ?? ""} />
+                <DynamicText textId={element.title ?? ''} />
               </Typography>
               <Box
                 sx={
-                  isMedium
+                  isSmall || isMedium
                     ? sxExperienceContentItemInfoContainerIsMedium
                     : sxExperienceContentItemInfoContainer
                 }
@@ -74,10 +68,10 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
                   component="div"
                   sx={sxExperienceContentItemSubTitle}
                 >
-                  <DynamicText textId={element.subTitle ?? ""} />
+                  <DynamicText textId={element.subTitle ?? ''} />
                 </Typography>
                 <Typography component="div" sx={sxExperienceContentItemInfo}>
-                  <DynamicText textId={element.info ?? ""} />
+                  <DynamicText textId={element.info ?? ''} />
                 </Typography>
               </Box>
             </Box>
@@ -91,7 +85,7 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
                         component="p"
                         sx={sxExperienceContentItemContent}
                       >
-                        <DynamicText textId={contentItem.content ?? ""} />
+                        <DynamicText textId={contentItem.content ?? ''} />
                       </Typography>
                     );
                   } else if (
@@ -107,7 +101,7 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
                             key={index}
                             sx={sxExperienceContentItemListItem}
                           >
-                            <DynamicText textId={listItem ?? ""} />
+                            <DynamicText textId={listItem ?? ''} />
                           </ListItem>
                         ))}
                       </List>
@@ -115,7 +109,7 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
                   } else {
                     return <></>;
                   }
-                }
+                },
               )}
             </Box>
           </Box>
