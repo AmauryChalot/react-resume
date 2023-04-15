@@ -12,10 +12,10 @@ import Link from '@mui/material/Link';
 import React from 'react';
 import { AnimatedBurgerIcon } from '../../components/AnimatedBurgerIcon/AnimatedBurgerIcon';
 import { DynamicText } from '../../components/DynamicText/DynamicText';
+import { LanguageSelection } from '../../components/LanguageSelection/LanguageSelection';
 import { SidePanel } from '../../components/SidePanel/SidePanel';
+import { ThemeSwitch } from '../../components/ThemeSwitch/ThemeSwitch';
 import { LanguageContext, ThemeContext } from '../../context';
-import { LanguageSelection } from '../LanguageSelection/LanguageSelection';
-import { ThemeSwitch } from '../ThemeSwitch/ThemeSwitch';
 import { AppbarMenuItem, AppbarProps } from './Appbar.models';
 import {
   sxAppbar,

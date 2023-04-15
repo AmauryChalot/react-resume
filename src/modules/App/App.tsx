@@ -105,11 +105,6 @@ function App() {
     if (downloadRef.current) downloadObserver.observe(downloadRef.current);
   }, []);
 
-  const content: string[] = [
-    'Donec tincidunt sapien vitae risus gravida dapibus. Curabitur quis euismod arcu. Nulla non arcu tempus felis aliquet hendrerit. Quisque dictum diam libero, vitae vulputate lacus maximus vitae. Aliquam id libero velit. Morbi risus nisi, maximus sed lacinia et, porta ac nisl. Phasellus mi massa, sagittis quis faucibus eu, dapibus at ex. In eget metus ligula. Curabitur enim elit, ultrices nec sem ac, gravida varius eros. Donec posuere id arcu a tristique. In sagittis maximus odio, eget tincidunt mauris volutpat pharetra. Donec nec lobortis ante. Sed leo sapien, commodo at viverra in, vehicula sit amet nisl. Nulla a velit nec ipsum hendrerit ultrices ut at orci.',
-    'Vestibulum rutrum sed arcu id dignissim. Nulla facilisi. Proin sed tristique velit, vitae placerat metus. Nulla facilisi. Phasellus quis bibendum odio. Etiam id accumsan risus. Suspendisse potenti. In lacinia eleifend elementum. Pellentesque non aliquam metus, gravida ultrices neque. Cras accumsan auctor gravida. Aenean vehicula quam finibus malesuada commodo. Quisque dignissim velit a nisl interdum, a rhoncus leo tempus. Morbi vehicula venenatis nibh, et consequat dolor lacinia vel. Suspendisse eget nulla sed leo efficitur facilisis sit amet non felis. Sed at leo nisl. Praesent ac purus sed ante venenatis tristique sed id ligula. Quisque felis libero, pellentesque ut pulvinar quis, ornare a nisi. Sed ullamcorper lorem quis consectetur tristique. Proin ligula lorem, feugiat at mi at, dignissim semper sem. Proin a fermentum neque. Donec ut ante lectus. Donec sed lacus non nisl rutrum eleifend vel nec turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras et eros imperdiet, consequat quam vel, tincidunt orci. Vivamus ut lobortis nisl, sed varius massa. Suspendisse faucibus lectus eu sapien faucibus posuere.',
-  ];
-
   const experiences: ExperienceItem[] = [
     {
       title: 'experience-1-title',
