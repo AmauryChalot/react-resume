@@ -5,8 +5,6 @@ import {
   IconButton,
   Toolbar,
   Typography,
-  useMediaQuery,
-  useTheme,
 } from '@mui/material';
 import Link from '@mui/material/Link';
 import React from 'react';
@@ -15,6 +13,7 @@ import { DynamicText } from '../../components/DynamicText/DynamicText';
 import { LanguageSelection } from '../../components/LanguageSelection/LanguageSelection';
 import { SidePanel } from '../../components/SidePanel/SidePanel';
 import { ThemeSwitch } from '../../components/ThemeSwitch/ThemeSwitch';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { AppbarMenuItem, AppbarProps } from './Appbar.models';
 import {
   sxAppbar,
@@ -28,15 +27,14 @@ import {
   sxAppbarRightContainer,
   sxAppbarSideMenuList,
   sxAppbarSideMenuListSmall,
+  sxAppBarTitle,
 } from './Appbar.styles';
 
 export const Appbar = (props: AppbarProps) => {
   const { scrolledSectionsState } = props;
   const [scrolledSections, _] = scrolledSectionsState;
 
-  const theme = useTheme();
-  const isMedium = useMediaQuery(theme.breakpoints.down('md'));
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  const { isSmall, isMedium, isLarge } = useThemeMediaQuery();
 
   const menuItems: AppbarMenuItem[] = [
     {
@@ -86,7 +84,7 @@ export const Appbar = (props: AppbarProps) => {
 
   return (
     <React.Fragment>
-      {isMedium && (
+      {(isSmall || isMedium) && (
         <SidePanel open={sidePanelOpen} onClose={handleSidePanelClose}>
           {sidePanelMenu()}
         </SidePanel>
@@ -95,25 +93,21 @@ export const Appbar = (props: AppbarProps) => {
         <Container maxWidth="xl" sx={sxAppbarContainer}>
           <Toolbar disableGutters>
             <Box
-              sx={isMedium ? sxAppbarLeftContainerSmall : sxAppbarLeftContainer}
+              sx={
+                isSmall || isMedium
+                  ? sxAppbarLeftContainerSmall
+                  : sxAppbarLeftContainer
+              }
             >
-              {isMedium && (
+              {(isSmall || isMedium) && (
                 <IconButton onClick={() => setSidePanelOpen(!sidePanelOpen)}>
                   <AnimatedBurgerIcon active={sidePanelOpen} />
                 </IconButton>
               )}
-              <Typography
-                component="h1"
-                sx={{
-                  fontSize: theme.typography.h5.fontSize,
-                  fontWeight: 800,
-                  fontFamily: theme.typography.fontFamily,
-                  color: theme.palette.text.primary,
-                }}
-              >
+              <Typography component="h1" sx={sxAppBarTitle}>
                 Portfolio
               </Typography>
-              {!isMedium &&
+              {isLarge &&
                 menuItems.map((element, index) => {
                   return (
                     <Link

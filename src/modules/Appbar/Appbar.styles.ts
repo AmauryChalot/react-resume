@@ -1,5 +1,12 @@
 import { SxProps, Theme } from '@mui/material';
 
+export const sxAppBarTitle: SxProps<Theme> = {
+  fontSize: (theme) => theme.typography.h5.fontSize,
+  fontWeight: 800,
+  fontFamily: (theme) => theme.typography.fontFamily,
+  color: (theme) => theme.palette.text.primary,
+};
+
 export const sxAppbar: SxProps = {
   top: 0,
   backgroundImage: 'none',

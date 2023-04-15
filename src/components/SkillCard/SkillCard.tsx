@@ -1,6 +1,6 @@
-import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { DynamicText } from '../DynamicText/DynamicText';
 import { SkillCardProps } from './SkillCard.models';
 import {
@@ -16,8 +16,7 @@ import {
 export const SkillCard = (props: SkillCardProps) => {
   const { skills, id } = props;
 
-  const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  const { isSmall } = useThemeMediaQuery();
 
   return (
     <Box

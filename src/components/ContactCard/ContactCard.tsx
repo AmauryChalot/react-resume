@@ -1,7 +1,7 @@
-import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import React from 'react';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { useScrollableRef } from '../Card/CustomCard.hook';
 import { DynamicText } from '../DynamicText/DynamicText';
 import { ContactCardProps } from './ContactCard.models';
@@ -22,9 +22,7 @@ export const ContactCard = (props: ContactCardProps) => {
   const { containerRef, index, scrolledSectionsState } = props;
   const [_, setScrolledSections] = scrolledSectionsState;
 
-  const theme = useTheme();
-  const isMedium = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
+  const { isSmall, isMedium } = useThemeMediaQuery();
 
   const { ref } = useScrollableRef(
     containerRef,

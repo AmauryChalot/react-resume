@@ -1,4 +1,3 @@
-import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import React, { useEffect, useRef, useState } from 'react';
 import { CustomCard } from '../../components/Card/CustomCard';
@@ -16,6 +15,7 @@ import { ProjectContent } from '../../components/ProjectContent/ProjectContent';
 import { ProjectItem } from '../../components/ProjectContent/ProjectContent.models';
 import { SkillCard } from '../../components/SkillCard/SkillCard';
 import { SkillSection } from '../../components/SkillCard/SkillCard.models';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { Appbar } from '../Appbar/Appbar';
 import { useVisibility } from './App.hooks';
 import {
@@ -29,9 +29,7 @@ import {
 } from './App.styles';
 
 function App() {
-  const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
-  const isLarge = useMediaQuery(theme.breakpoints.up('md'));
+  const { isSmall, isMedium, isLarge } = useThemeMediaQuery();
 
   //all refs
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -188,7 +186,7 @@ function App() {
         <Appbar
           scrolledSectionsState={[scrolledSections, setScrolledSections]}
         />
-        <Box sx={sxAppContainer} maxWidth={isSmall ? 'sm' : 'xl'}>
+        <Box sx={sxAppContainer} maxWidth={isSmall || isMedium ? 'sm' : 'xl'}>
           <section
             ref={aboutRef}
             style={{
@@ -204,7 +202,11 @@ function App() {
             />
           </section>
           <Box
-            sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}
+            sx={
+              isSmall || isMedium
+                ? sxAppContentContainerSmall
+                : sxAppContentContainer
+            }
           >
             <Box sx={sxAppContentLeftContainer}>
               <section
