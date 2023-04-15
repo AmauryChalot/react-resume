@@ -11,40 +11,39 @@ interface UISwitchProps extends SwitchProps {
 }
 
 const MaterialUISwitch = styled((props: UISwitchProps) => {
+  const { className, customOnClick, checked } = props;
+
   return (
     <Box
-      className={props.className}
+      className={className}
       onClick={(e) => {
-        props.customOnClick();
+        customOnClick();
       }}
     >
       <LightModeIcon
         className={
           'CustomSwitch-lightIcon' +
-          (!props.checked ? ' CustomSwitch-hiddenIcon' : '')
+          (!checked ? ' CustomSwitch-hiddenIcon' : '')
         }
       />
       <DarkModeIcon
         className={
-          'CustomSwitch-lightIcon' +
-          (props.checked ? ' CustomSwitch-hiddenIcon' : '')
+          'CustomSwitch-lightIcon' + (checked ? ' CustomSwitch-hiddenIcon' : '')
         }
       />
       <Box
         className={
-          'CustomSwitch-thumb' + (props.checked ? ' CustomSwitch-checked' : '')
+          'CustomSwitch-thumb' + (checked ? ' CustomSwitch-checked' : '')
         }
       >
         <LightModeIcon
           className={
-            'CustomSwitch-icon' +
-            (props.checked ? ' CustomSwitch-hiddenIcon' : '')
+            'CustomSwitch-icon' + (checked ? ' CustomSwitch-hiddenIcon' : '')
           }
         />
         <DarkModeIcon
           className={
-            'CustomSwitch-icon' +
-            (!props.checked ? ' CustomSwitch-hiddenIcon' : '')
+            'CustomSwitch-icon' + (!checked ? ' CustomSwitch-hiddenIcon' : '')
           }
         />
       </Box>

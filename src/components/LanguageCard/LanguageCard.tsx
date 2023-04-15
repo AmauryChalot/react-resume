@@ -1,6 +1,6 @@
-import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { DynamicText } from '../DynamicText/DynamicText';
 import {
   sxLanguageCardContainer,
@@ -12,8 +12,7 @@ import {
 } from './LanguageCard.styles';
 
 export const LanguageCard = () => {
-  const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  const { isSmall } = useThemeMediaQuery();
 
   return (
     <Box sx={isSmall ? sxLanguageCardContainerSmall : sxLanguageCardContainer}>

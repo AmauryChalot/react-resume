@@ -4,10 +4,11 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
-import { useMediaQuery, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { AnimatedIconPrimaryButton } from '../AnimatedIconPrimaryButton/AnimatedIconPrimaryButton';
 import { DynamicText } from '../DynamicText/DynamicText';
 import { DownloadIcon } from '../Icons/DownloadIcon/DownloadIcon';
@@ -22,11 +23,11 @@ import {
 
 export const LinkCard = () => {
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
+  const { isSmall, isMedium } = useThemeMediaQuery();
 
   return (
     <Box
-      sx={isSmall ? sxLinkCardContainerSmall : sxLinkCardContainer}
+      sx={isSmall || isMedium ? sxLinkCardContainerSmall : sxLinkCardContainer}
       id={'contact'}
     >
       <Typography sx={sxLinkCardTitle}>

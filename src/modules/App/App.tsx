@@ -1,4 +1,3 @@
-import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import React, { useEffect, useRef, useState } from 'react';
 import { CustomCard } from '../../components/Card/CustomCard';
@@ -16,7 +15,9 @@ import { ProjectContent } from '../../components/ProjectContent/ProjectContent';
 import { ProjectItem } from '../../components/ProjectContent/ProjectContent.models';
 import { SkillCard } from '../../components/SkillCard/SkillCard';
 import { SkillSection } from '../../components/SkillCard/SkillCard.models';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { Appbar } from '../Appbar/Appbar';
+import { useVisibility } from './App.hooks';
 import {
   sxAppContainer,
   sxAppContentContainer,
@@ -28,87 +29,22 @@ import {
 } from './App.styles';
 
 function App() {
-  const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
-  const isLarge = useMediaQuery(theme.breakpoints.up('md'));
+  const { isSmall, isMedium, isLarge } = useThemeMediaQuery();
 
   //all refs
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const aboutRef = useRef<HTMLDivElement | null>(null);
-  const [aboutIsVisible, setAboutIsVisible] = useState<boolean>(false);
-  const downloadRef = useRef<HTMLDivElement | null>(null);
-  const [downloadIsVisible, setDownloadIsVisible] = useState<boolean>(false);
-  const experienceRef = useRef<HTMLDivElement | null>(null);
-  const [experienceIsVisible, setExperienceIsVisible] =
-    useState<boolean>(false);
-  const skillRef = useRef<HTMLDivElement | null>(null);
-  const [skillIsVisible, setSkillIsVisible] = useState<boolean>(false);
-  const projectRef = useRef<HTMLDivElement | null>(null);
-  const [projectIsVisible, setProjectIsVisible] = useState<boolean>(false);
-  const contactRef = useRef<HTMLDivElement | null>(null);
-  const [contactIsVisible, setContactIsVisible] = useState<boolean>(false);
-  const infoRef = useRef<HTMLDivElement | null>(null);
-  const [infoIsVisible, setInfoIsVisible] = useState<boolean>(false);
-  const languageRef = useRef<HTMLDivElement | null>(null);
-  const [languageIsVisible, setLanguageIsVisible] = useState<boolean>(false);
+  const { ref: aboutRef, refIsVisible: aboutIsVisible } = useVisibility();
+  const { ref: experienceRef, refIsVisible: experienceIsVisible } =
+    useVisibility();
+  const { ref: skillRef, refIsVisible: skillIsVisible } = useVisibility();
+  const { ref: projectRef, refIsVisible: projectIsVisible } = useVisibility();
+  const { ref: contactRef, refIsVisible: contactIsVisible } = useVisibility();
+  const { ref: infoRef, refIsVisible: infoIsVisible } = useVisibility();
+  const { ref: languageRef, refIsVisible: languageIsVisible } = useVisibility();
 
   useEffect(() => {
     containerRef.current?.focus();
-    aboutRef.current?.focus();
-    const aboutObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setAboutIsVisible(entry.isIntersecting);
-    });
-    if (aboutRef.current) aboutObserver.observe(aboutRef.current);
-    experienceRef.current?.focus();
-    const experienceObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setExperienceIsVisible(entry.isIntersecting);
-    });
-    if (experienceRef.current)
-      experienceObserver.observe(experienceRef.current);
-    skillRef.current?.focus();
-    const skillObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setSkillIsVisible(entry.isIntersecting);
-    });
-    if (skillRef.current) skillObserver.observe(skillRef.current);
-    projectRef.current?.focus();
-    const projectObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setProjectIsVisible(entry.isIntersecting);
-    });
-    if (projectRef.current) projectObserver.observe(projectRef.current);
-    contactRef.current?.focus();
-    const contactObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setContactIsVisible(entry.isIntersecting);
-    });
-    if (contactRef.current) contactObserver.observe(contactRef.current);
-    infoRef.current?.focus();
-    const infoObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setInfoIsVisible(entry.isIntersecting);
-    });
-    if (infoRef.current) infoObserver.observe(infoRef.current);
-    languageRef.current?.focus();
-    const languageObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setLanguageIsVisible(entry.isIntersecting);
-    });
-    if (languageRef.current) languageObserver.observe(languageRef.current);
-    downloadRef.current?.focus();
-    const downloadObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setLanguageIsVisible(entry.isIntersecting);
-    });
-    if (downloadRef.current) downloadObserver.observe(downloadRef.current);
   }, []);
-
-  const content: string[] = [
-    'Donec tincidunt sapien vitae risus gravida dapibus. Curabitur quis euismod arcu. Nulla non arcu tempus felis aliquet hendrerit. Quisque dictum diam libero, vitae vulputate lacus maximus vitae. Aliquam id libero velit. Morbi risus nisi, maximus sed lacinia et, porta ac nisl. Phasellus mi massa, sagittis quis faucibus eu, dapibus at ex. In eget metus ligula. Curabitur enim elit, ultrices nec sem ac, gravida varius eros. Donec posuere id arcu a tristique. In sagittis maximus odio, eget tincidunt mauris volutpat pharetra. Donec nec lobortis ante. Sed leo sapien, commodo at viverra in, vehicula sit amet nisl. Nulla a velit nec ipsum hendrerit ultrices ut at orci.',
-    'Vestibulum rutrum sed arcu id dignissim. Nulla facilisi. Proin sed tristique velit, vitae placerat metus. Nulla facilisi. Phasellus quis bibendum odio. Etiam id accumsan risus. Suspendisse potenti. In lacinia eleifend elementum. Pellentesque non aliquam metus, gravida ultrices neque. Cras accumsan auctor gravida. Aenean vehicula quam finibus malesuada commodo. Quisque dignissim velit a nisl interdum, a rhoncus leo tempus. Morbi vehicula venenatis nibh, et consequat dolor lacinia vel. Suspendisse eget nulla sed leo efficitur facilisis sit amet non felis. Sed at leo nisl. Praesent ac purus sed ante venenatis tristique sed id ligula. Quisque felis libero, pellentesque ut pulvinar quis, ornare a nisi. Sed ullamcorper lorem quis consectetur tristique. Proin ligula lorem, feugiat at mi at, dignissim semper sem. Proin a fermentum neque. Donec ut ante lectus. Donec sed lacus non nisl rutrum eleifend vel nec turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras et eros imperdiet, consequat quam vel, tincidunt orci. Vivamus ut lobortis nisl, sed varius massa. Suspendisse faucibus lectus eu sapien faucibus posuere.',
-  ];
 
   const experiences: ExperienceItem[] = [
     {
@@ -250,7 +186,7 @@ function App() {
         <Appbar
           scrolledSectionsState={[scrolledSections, setScrolledSections]}
         />
-        <Box sx={sxAppContainer} maxWidth={isSmall ? 'sm' : 'xl'}>
+        <Box sx={sxAppContainer} maxWidth={isSmall || isMedium ? 'sm' : 'xl'}>
           <section
             ref={aboutRef}
             style={{
@@ -266,7 +202,11 @@ function App() {
             />
           </section>
           <Box
-            sx={isSmall ? sxAppContentContainerSmall : sxAppContentContainer}
+            sx={
+              isSmall || isMedium
+                ? sxAppContentContainerSmall
+                : sxAppContentContainer
+            }
           >
             <Box sx={sxAppContentLeftContainer}>
               <section

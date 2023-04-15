@@ -1,11 +1,5 @@
-import {
-  Box,
-  List,
-  ListItem,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
+import { Box, List, ListItem, Typography } from '@mui/material';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { DynamicText } from '../DynamicText/DynamicText';
 import {
   ContentType,
@@ -43,10 +37,10 @@ export const isContentList = (
   return type === ContentType.LIST;
 };
 
-export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
-  const theme = useTheme();
-  const isMedium = useMediaQuery(theme.breakpoints.down('md'));
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+export const ExperienceContent = (props: ExperienceContentProps) => {
+  const { experiences } = props;
+
+  const { isSmall, isMedium } = useThemeMediaQuery();
 
   return (
     <Box sx={sxExperienceContentContainer}>
@@ -55,7 +49,7 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
           <Box key={index} sx={sxExperienceContentItemContainer}>
             <Box
               sx={
-                isMedium
+                isSmall || isMedium
                   ? sxExperienceContentItemTitleContainerMedium
                   : sxExperienceContentItemTitleContainer
               }
@@ -65,7 +59,7 @@ export const ExperienceContent = ({ experiences }: ExperienceContentProps) => {
               </Typography>
               <Box
                 sx={
-                  isMedium
+                  isSmall || isMedium
                     ? sxExperienceContentItemInfoContainerIsMedium
                     : sxExperienceContentItemInfoContainer
                 }

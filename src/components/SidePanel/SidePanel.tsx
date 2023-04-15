@@ -1,5 +1,6 @@
-import { Drawer, useMediaQuery, useTheme } from '@mui/material';
+import { Drawer } from '@mui/material';
 import React from 'react';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { SidePanelProps } from './SidePanel.models';
 import {
   sxSidePanelContainer,
@@ -7,17 +8,18 @@ import {
 } from './SidePanel.styles';
 
 export const SidePanel = (props: SidePanelProps) => {
-  const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  const { open, onClose, children } = props;
+
+  const { isSmall } = useThemeMediaQuery();
 
   return (
     <Drawer
-      open={props.open}
-      onClose={props.onClose}
+      open={open}
+      onClose={onClose}
       sx={isSmall ? sxSidePanelContainerSmall : sxSidePanelContainer}
       disableScrollLock
     >
-      {props.children}
+      {children ?? <></>}
     </Drawer>
   );
 };

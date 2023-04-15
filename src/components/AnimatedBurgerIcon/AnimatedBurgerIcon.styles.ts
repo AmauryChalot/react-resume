@@ -17,17 +17,17 @@ export const sxAnimatedBurgerIcon: SxProps = {
   transition: '.5s ease-in-out',
   cursor: 'pointer',
 
-  '& span:nth-child(1)': {
+  '& span:nth-of-type(1)': {
     top: 0,
     transformOrigin: 'left center',
   },
 
-  '& span:nth-child(2)': {
+  '& span:nth-of-type(2)': {
     top: 5,
     transformOrigin: 'left center',
   },
 
-  '& span:nth-child(3)': {
+  '& span:nth-of-type(3)': {
     top: 10,
     transformOrigin: 'left center',
   },
@@ -49,20 +49,20 @@ export const sxAnimatedBUrgerIconSpan: SxProps<Theme> = {
 
 export const sxAnimatedBurgerIconActive: SxProps = {
   ...sxAnimatedBurgerIcon,
-  '& span:nth-child(1)': {
+  '& span:nth-of-type(1)': {
     top: '-1px',
     left: '3px',
     transform: 'rotate(45deg)',
     transformOrigin: 'left center',
   },
 
-  '& span:nth-child(2)': {
+  '& span:nth-of-type(2)': {
     width: '0%',
     opacity: 0,
     transformOrigin: 'left center',
   },
 
-  '& span:nth-child(3)': {
+  '& span:nth-of-type(3)': {
     transform: 'rotate(-45deg)',
     top: '12px',
     left: '3px',

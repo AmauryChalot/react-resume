@@ -1,6 +1,7 @@
-import { List, ListItem, useMediaQuery, useTheme } from '@mui/material';
+import { List, ListItem } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useThemeMediaQuery } from '../../utils/hooks/useThemeMediaQuery';
 import { DynamicText } from '../DynamicText/DynamicText';
 import {
   isContentList,
@@ -23,10 +24,10 @@ import {
   sxProjectContentItemTitleContainerMedium,
 } from './ProjectContent.styles';
 
-export const ProjectContent = ({ projects }: ProjectContentProps) => {
-  const theme = useTheme();
-  const isMedium = useMediaQuery(theme.breakpoints.down('md'));
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+export const ProjectContent = (props: ProjectContentProps) => {
+  const { projects } = props;
+
+  const { isSmall, isMedium } = useThemeMediaQuery();
 
   return (
     <Box sx={sxProjectContentContainer}>
@@ -35,7 +36,7 @@ export const ProjectContent = ({ projects }: ProjectContentProps) => {
           <Box key={index} sx={sxProjectContentItemContainer}>
             <Box
               sx={
-                isMedium
+                isSmall || isMedium
                   ? sxProjectContentItemTitleContainerMedium
                   : sxProjectContentItemTitleContainer
               }
