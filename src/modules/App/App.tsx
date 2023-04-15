@@ -17,6 +17,7 @@ import { ProjectItem } from '../../components/ProjectContent/ProjectContent.mode
 import { SkillCard } from '../../components/SkillCard/SkillCard';
 import { SkillSection } from '../../components/SkillCard/SkillCard.models';
 import { Appbar } from '../Appbar/Appbar';
+import { useVisibility } from './App.hooks';
 import {
   sxAppContainer,
   sxAppContentContainer,
@@ -34,75 +35,17 @@ function App() {
 
   //all refs
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const aboutRef = useRef<HTMLDivElement | null>(null);
-  const [aboutIsVisible, setAboutIsVisible] = useState<boolean>(false);
-  const downloadRef = useRef<HTMLDivElement | null>(null);
-  const [downloadIsVisible, setDownloadIsVisible] = useState<boolean>(false);
-  const experienceRef = useRef<HTMLDivElement | null>(null);
-  const [experienceIsVisible, setExperienceIsVisible] =
-    useState<boolean>(false);
-  const skillRef = useRef<HTMLDivElement | null>(null);
-  const [skillIsVisible, setSkillIsVisible] = useState<boolean>(false);
-  const projectRef = useRef<HTMLDivElement | null>(null);
-  const [projectIsVisible, setProjectIsVisible] = useState<boolean>(false);
-  const contactRef = useRef<HTMLDivElement | null>(null);
-  const [contactIsVisible, setContactIsVisible] = useState<boolean>(false);
-  const infoRef = useRef<HTMLDivElement | null>(null);
-  const [infoIsVisible, setInfoIsVisible] = useState<boolean>(false);
-  const languageRef = useRef<HTMLDivElement | null>(null);
-  const [languageIsVisible, setLanguageIsVisible] = useState<boolean>(false);
+  const { ref: aboutRef, refIsVisible: aboutIsVisible } = useVisibility();
+  const { ref: experienceRef, refIsVisible: experienceIsVisible } =
+    useVisibility();
+  const { ref: skillRef, refIsVisible: skillIsVisible } = useVisibility();
+  const { ref: projectRef, refIsVisible: projectIsVisible } = useVisibility();
+  const { ref: contactRef, refIsVisible: contactIsVisible } = useVisibility();
+  const { ref: infoRef, refIsVisible: infoIsVisible } = useVisibility();
+  const { ref: languageRef, refIsVisible: languageIsVisible } = useVisibility();
 
   useEffect(() => {
     containerRef.current?.focus();
-    aboutRef.current?.focus();
-    const aboutObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setAboutIsVisible(entry.isIntersecting);
-    });
-    if (aboutRef.current) aboutObserver.observe(aboutRef.current);
-    experienceRef.current?.focus();
-    const experienceObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setExperienceIsVisible(entry.isIntersecting);
-    });
-    if (experienceRef.current)
-      experienceObserver.observe(experienceRef.current);
-    skillRef.current?.focus();
-    const skillObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setSkillIsVisible(entry.isIntersecting);
-    });
-    if (skillRef.current) skillObserver.observe(skillRef.current);
-    projectRef.current?.focus();
-    const projectObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setProjectIsVisible(entry.isIntersecting);
-    });
-    if (projectRef.current) projectObserver.observe(projectRef.current);
-    contactRef.current?.focus();
-    const contactObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setContactIsVisible(entry.isIntersecting);
-    });
-    if (contactRef.current) contactObserver.observe(contactRef.current);
-    infoRef.current?.focus();
-    const infoObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setInfoIsVisible(entry.isIntersecting);
-    });
-    if (infoRef.current) infoObserver.observe(infoRef.current);
-    languageRef.current?.focus();
-    const languageObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setLanguageIsVisible(entry.isIntersecting);
-    });
-    if (languageRef.current) languageObserver.observe(languageRef.current);
-    downloadRef.current?.focus();
-    const downloadObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      setLanguageIsVisible(entry.isIntersecting);
-    });
-    if (downloadRef.current) downloadObserver.observe(downloadRef.current);
   }, []);
 
   const experiences: ExperienceItem[] = [
