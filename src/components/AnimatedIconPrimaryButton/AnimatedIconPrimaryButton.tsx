@@ -17,10 +17,6 @@ export const AnimatedIconPrimaryButton = (
 
   const context = React.useContext(LanguageContext);
 
-  React.useEffect(() => {
-    console.log(context);
-  }, [context]);
-
   return (
     <Button component="button" sx={sxDownloadButton}>
       <a

@@ -30,7 +30,6 @@ export const ContactCard = (props: ContactCardProps) => {
   React.useEffect(() => {
     myRef.current?.focus();
     const handleScroll = (e: Event) => {
-      console.log();
       if (
         myRef.current &&
         props.containerRef.current &&
