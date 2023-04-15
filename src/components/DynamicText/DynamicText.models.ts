@@ -1,3 +1,3 @@
 export interface DynamicTextProps {
-    textId: string;
+  textId: string;
 }
