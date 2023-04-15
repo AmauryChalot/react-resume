@@ -1,25 +1,25 @@
-import { SxProps, Theme } from "@mui/material";
+import { SxProps, Theme } from '@mui/material';
 
 export const sxLanguageCardContainer: SxProps<Theme> = {
-  display: "flex",
-  alignItems: "flex-start",
-  flexDirection: "column",
-  justifyContent: "center",
+  display: 'flex',
+  alignItems: 'flex-start',
+  flexDirection: 'column',
+  justifyContent: 'center',
   backgroundColor: (theme) => theme.palette.background.paper,
-  borderRadius: "10px",
-  padding: "16px",
-  width: "100%",
-  height: "fit-content",
-  boxSizing: "border-box",
-  gap: "16px",
-  scrollMarginTop: "96px",
+  borderRadius: '10px',
+  padding: '16px',
+  width: '100%',
+  height: 'fit-content',
+  boxSizing: 'border-box',
+  gap: '16px',
+  scrollMarginTop: '96px',
   boxShadow:
-    "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
+    '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)',
 };
 
 export const sxLanguageCardContainerSmall: SxProps<Theme> = {
   ...sxLanguageCardContainer,
-  gap: "12px",
+  gap: '12px',
 };
 
 export const sxLanguageCardContainerTitle: SxProps<Theme> = {
@@ -30,8 +30,8 @@ export const sxLanguageCardContainerTitle: SxProps<Theme> = {
 };
 
 export const sxLanguageCardItemContainer: SxProps<Theme> = {
-  display: "flex",
-  flexDirection: "column",
+  display: 'flex',
+  flexDirection: 'column',
 };
 
 export const sxLanguageCardItemTitle: SxProps<Theme> = {
@@ -46,7 +46,7 @@ export const sxLanguageCardItemSubtitle: SxProps<Theme> = {
   fontSize: (theme) => theme.typography.body2.fontSize,
   fontWeight: 600,
   fontFamily: (theme) => theme.typography.fontFamily,
-  fontStyle: "italic",
+  fontStyle: 'italic',
 };
 
 export const sxLanguageCardItemInfo: SxProps<Theme> = {
@@ -54,5 +54,5 @@ export const sxLanguageCardItemInfo: SxProps<Theme> = {
   fontSize: (theme) => theme.typography.body2.fontSize,
   fontWeight: 500,
   fontFamily: (theme) => theme.typography.fontFamily,
-  fontStyle: "italic",
+  fontStyle: 'italic',
 };

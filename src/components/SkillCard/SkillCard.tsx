@@ -1,8 +1,8 @@
-import { useMediaQuery, useTheme } from "@mui/material";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { DynamicText } from "../DynamicText/DynamicText";
-import { SkillCardProps } from "./SkillCard.models";
+import { useMediaQuery, useTheme } from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { DynamicText } from '../DynamicText/DynamicText';
+import { SkillCardProps } from './SkillCard.models';
 import {
   sxSkillCardContainer,
   sxSkillCardContainerSmall,
@@ -11,11 +11,11 @@ import {
   sxSkillCardItemContent,
   sxSkillCardItemContentText,
   sxSkillCardItemTitle,
-} from "./SkillCard.styles";
+} from './SkillCard.styles';
 
 export const SkillCard = ({ skills, id }: SkillCardProps) => {
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Box
@@ -23,7 +23,7 @@ export const SkillCard = ({ skills, id }: SkillCardProps) => {
       sx={isSmall ? sxSkillCardContainerSmall : sxSkillCardContainer}
     >
       <Typography sx={sxSkillCardContainerTitle}>
-        <DynamicText textId={"skills"} />
+        <DynamicText textId={'skills'} />
       </Typography>
 
       {skills.map((section, sectionIndex) => {
